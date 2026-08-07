@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard · Sola Admin</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+  </head>
+  <body id="pagina-admin-dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-grade"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="8" height="8" rx="1.5" />
+          <rect x="13" y="3" width="8" height="8" rx="1.5" />
+          <rect x="3" y="13" width="8" height="8" rx="1.5" />
+          <rect x="13" y="13" width="8" height="8" rx="1.5" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="painel">
+      <aside id="menu-lateral">
+        <button
+          class="botao-menu botao-fechar-menu"
+          type="button"
+          data-abrir-menu
+          aria-label="Fechar menu"
+          aria-expanded="false"
+        >
+          <span class="botao-menu-barra"></span>
+          <span class="botao-menu-barra"></span>
+        </button>
+        <div>
+          <div class="menu-marca">
+            <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+            <span class="marca-texto">Sola</span>
+          </div>
+          <nav class="menu-lista" aria-label="Navegação do admin">
+            <a class="item-menu ativo" href="admin-dashboard.html">
+              <svg class="icone"><use href="#icone-grade"></use></svg>
+              Dashboard
+            </a>
+            <a class="item-menu" href="admin-moderacao.html">
+              <img class="icone" src="../../assets/icons/icone-escudo.png" alt="" />
+              Moderação de tênis
+            </a>
+            <a class="item-menu" href="admin-categorias.html">
+              <img class="icone" src="../../assets/icons/icone-etiqueta.png" alt="" />
+              Categorias
+            </a>
+            <a class="item-menu" href="admin-marcas.html">
+              <img class="icone" src="../../assets/icons/icone-medalha.png" alt="" />
+              Marcas
+            </a>
+            <a class="item-menu" href="admin-usuarios.html">
+              <img class="icone" src="../../assets/icons/icone-usuarios.png" alt="" />
+              Usuários
+            </a>
+            <a class="item-menu" href="admin-pedidos-pagamentos.html">
+              <img class="icone" src="../../assets/icons/icone-cartao.png" alt="" />
+              Pedidos e pagamentos
+            </a>
+          </nav>
+        </div>
+        <div class="menu-rodape">
+          <a href="admin-minha-conta.html" class="usuario link-limpo">
+            <span class="avatar-editavel">
+              <span class="avatar" data-avatar-usuario>
+                <span class="avatar-iniciais">RL</span>
+              </span>
+              <span class="avatar-editar-selo" aria-hidden="true">
+                <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+              </span>
+            </span>
+            <div>
+              <p class="usuario-nome">Rodrigo Lima</p>
+              <p class="usuario-papel">Administrador</p>
+            </div>
+          </a>
+          <button class="trocar-modo" type="button" data-abrir="dialogo-sair">
+            <img class="icone icone-pequeno" src="../../assets/icons/icone-logout.png" alt="" />
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <div id="area-principal">
+        <header id="topo">
+          <div class="linha">
+            <button
+              class="botao-menu"
+              type="button"
+              data-abrir-menu
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <span class="botao-menu-barra"></span>
+              <span class="botao-menu-barra"></span>
+            </button>
+            <div>
+              <p class="topo-rotulo">Admin</p>
+              <h1 class="topo-titulo">Dashboard</h1>
+            </div>
+          </div>
+          <div class="topo-acoes">
+            <button
+              class="botao-icone"
+              type="button"
+              data-abrir="dialogo-notificacoes"
+              aria-label="Notificações"
+            >
+              <img class="icone" src="../../assets/icons/icone-notificacao.png" alt="" />
+            </button>
+            <a class="avatar avatar-pequeno" data-avatar-usuario href="admin-minha-conta.html">
+              <span class="avatar-iniciais">RL</span>
+            </a>
+          </div>
+        </header>
+
+        <main id="conteudo">
+          <div id="cabecalho-pagina">
+            <div>
+              <h2 class="titulo-pagina">Visão geral da plataforma</h2>
+              <p class="subtitulo-pagina">Resumo de julho de 2026.</p>
+            </div>
+          </div>
+
+          <div id="grade-numeros">
+            <div class="cartao-numero">
+              <p class="numero-rotulo">GMV do mês</p>
+              <p class="numero-valor">R$ 482.900,00</p>
+              <p class="numero-variacao variacao-subiu">↑ 8% vs. mês anterior</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Pedidos totais</p>
+              <p class="numero-valor">1.284</p>
+              <p class="numero-variacao">96 nas últimas 24h</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Lojas ativas</p>
+              <p class="numero-valor">63</p>
+              <p class="numero-variacao variacao-subiu">4 novas este mês</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Tênis pendentes de moderação</p>
+              <p class="numero-valor">9</p>
+              <p class="numero-variacao">Aguardando revisão</p>
+            </div>
+          </div>
+
+          <div class="cartao-grafico">
+            <p class="grafico-titulo">GMV dos últimos 7 dias</p>
+            <div class="barras">
+              <div style="height: 58%"></div>
+              <div style="height: 64%"></div>
+              <div style="height: 45%"></div>
+              <div style="height: 72%"></div>
+              <div style="height: 80%"></div>
+              <div class="barra-alta" style="height: 100%"></div>
+              <div style="height: 70%"></div>
+            </div>
+            <div class="barras-rotulos">
+              <span>Seg</span>
+              <span>Ter</span>
+              <span>Qua</span>
+              <span>Qui</span>
+              <span>Sex</span>
+              <span>Sáb</span>
+              <span>Dom</span>
+            </div>
+          </div>
+
+          <div class="quadro-tabela">
+            <table class="tabela">
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Detalhe</th>
+                  <th>Quando</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="celula-forte">Novo tênis enviado para moderação</td>
+                  <td class="apagado">Astra Trail X · Loja Runfy</td>
+                  <td>há 20 min</td>
+                </tr>
+                <tr>
+                  <td class="celula-forte">Nova loja cadastrada</td>
+                  <td class="apagado">Loja Passo Urbano</td>
+                  <td>há 1h</td>
+                </tr>
+                <tr>
+                  <td class="celula-forte">Pagamento estornado</td>
+                  <td class="apagado">Pedido #SOLA-3402</td>
+                  <td>há 3h</td>
+                </tr>
+                <tr>
+                  <td class="celula-forte">Usuário suspenso</td>
+                  <td class="apagado">Cliente marcado por fraude</td>
+                  <td>há 5h</td>
+                </tr>
+                <tr>
+                  <td class="celula-forte">Categoria criada</td>
+                  <td class="apagado">Edição Limitada</td>
+                  <td>ontem</td>
+                </tr>
+                <tr>
+                  <td class="celula-forte">Tênis reprovado</td>
+                  <td class="apagado">Zenith Air Zero v2 · Loja Nova Kicks</td>
+                  <td>ontem</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+    <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-notificacoes">Notificações</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            <strong>Pedido #SOLA-3391 a caminho.</strong>
+            <br />
+            Saiu para entrega hoje de manhã.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Avaliação respondida.</strong>
+            <br />
+            A loja Nova Kicks respondeu seu comentário.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Promoção em Corrida.</strong>
+            <br />
+            Cinco modelos com desconto até domingo.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-preto" type="button" data-fechar>Fechar</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <dialog class="dialogo" id="dialogo-sair" aria-labelledby="titulo-sair">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-sair">Sair da conta</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            Você volta para a página inicial e precisa entrar de novo para acessar o painel.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="button" onclick="sair()">Sair</button>
+        </footer>
+      </div>
+    </dialog>
+  </body>
+</html>

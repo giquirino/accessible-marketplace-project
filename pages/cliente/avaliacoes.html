@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minhas Avaliações · Sola</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/avaliacoes.css" />
+  </head>
+  <body id="pagina-avaliacoes">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-grade"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="8" height="8" rx="1.5" />
+          <rect x="13" y="3" width="8" height="8" rx="1.5" />
+          <rect x="3" y="13" width="8" height="8" rx="1.5" />
+          <rect x="13" y="13" width="8" height="8" rx="1.5" />
+        </symbol>
+        <symbol
+          id="icone-coracao"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M20.2 5.6a5.4 5.4 0 0 0-7.6 0L12 6.2l-.6-.6a5.4 5.4 0 0 0-7.6 7.6l.6.6L12 21l7.6-7.2.6-.6a5.4 5.4 0 0 0 0-7.6Z"
+          />
+        </symbol>
+        <symbol
+          id="icone-lixeira"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 7h16" />
+          <path d="M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7" />
+          <path d="M6.5 7 7.3 20a1.5 1.5 0 0 0 1.5 1.4h6.4a1.5 1.5 0 0 0 1.5-1.4L17.5 7" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="painel">
+      <aside id="menu-lateral">
+        <button
+          class="botao-menu botao-fechar-menu"
+          type="button"
+          data-abrir-menu
+          aria-label="Fechar menu"
+          aria-expanded="false"
+        >
+          <span class="botao-menu-barra"></span>
+          <span class="botao-menu-barra"></span>
+        </button>
+        <div>
+          <div class="menu-marca">
+            <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+            <span class="marca-texto">Sola</span>
+          </div>
+          <nav class="menu-lista" aria-label="Navegação do cliente">
+            <a class="item-menu" href="catalogo.html">
+              <img class="icone" src="../../assets/icons/icone-home.png" alt="" />
+              Voltar para a loja
+            </a>
+            <a class="item-menu" href="cliente-dashboard.html">
+              <svg class="icone"><use href="#icone-grade"></use></svg>
+              Painel inicial
+            </a>
+            <a class="item-menu" href="carrinho.html">
+              <img class="icone" src="../../assets/icons/icone-sacola.png" alt="" />
+              Meu carrinho
+              <span class="menu-aviso">3</span>
+            </a>
+            <a class="item-menu" href="meus-pedidos.html">
+              <img class="icone" src="../../assets/icons/icone-caixa.png" alt="" />
+              Meus pedidos
+            </a>
+            <a class="item-menu" href="favoritos.html">
+              <svg class="icone"><use href="#icone-coracao"></use></svg>
+              Favoritos
+              <span class="menu-aviso">12</span>
+            </a>
+            <a class="item-menu ativo" href="avaliacoes.html">
+              <img class="icone" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              Minhas avaliações
+            </a>
+          </nav>
+        </div>
+        <div class="menu-rodape">
+          <a href="minha-conta.html" class="usuario link-limpo">
+            <span class="avatar-editavel">
+              <span class="avatar" data-avatar-usuario>
+                <span class="avatar-iniciais">MA</span>
+              </span>
+              <span class="avatar-editar-selo" aria-hidden="true">
+                <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+              </span>
+            </span>
+            <div>
+              <p class="usuario-nome">Marcos Aurélio</p>
+              <p class="usuario-papel">Cliente</p>
+            </div>
+          </a>
+          <button class="trocar-modo" type="button" data-abrir="dialogo-sair">
+            <img class="icone icone-pequeno" src="../../assets/icons/icone-logout.png" alt="" />
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <div id="area-principal">
+        <header id="topo">
+          <div class="linha-cresce">
+            <button
+              class="botao-menu"
+              type="button"
+              data-abrir-menu
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <span class="botao-menu-barra"></span>
+              <span class="botao-menu-barra"></span>
+            </button>
+            <div>
+              <p class="topo-rotulo">Cliente</p>
+              <h1 class="topo-titulo">Minhas avaliações</h1>
+            </div>
+            <div class="campo-busca topo-busca">
+              <img class="icone" src="../../assets/icons/icone-lupa.png" alt="" />
+              <input
+                type="text"
+                placeholder="Buscar avaliações..."
+                aria-label="Buscar avaliações"
+              />
+            </div>
+          </div>
+          <div class="topo-acoes">
+            <button
+              class="botao-icone"
+              type="button"
+              data-abrir="dialogo-notificacoes"
+              aria-label="Notificações"
+            >
+              <img class="icone" src="../../assets/icons/icone-notificacao.png" alt="" />
+            </button>
+            <a class="avatar avatar-pequeno" data-avatar-usuario href="minha-conta.html">
+              <span class="avatar-iniciais">MA</span>
+            </a>
+          </div>
+        </header>
+
+        <main id="conteudo">
+          <div id="cabecalho-pagina">
+            <div>
+              <h2 class="titulo-pagina">Minhas avaliações</h2>
+              <p class="subtitulo-pagina">Produtos que você avaliou</p>
+            </div>
+          </div>
+
+          <div id="lista-avaliacoes">
+            <div class="avaliacao">
+              <div class="avaliacao-topo">
+                <div class="avaliacao-item">
+                  <div class="foto-exemplo foto-mini"></div>
+                  <div class="cresce">
+                    <p class="avaliacao-produto">Volker Cloud</p>
+                    <p class="texto-apoio">Avaliado em 10/06/2026</p>
+                  </div>
+                </div>
+                <div class="avaliacao-acoes">
+                  <button
+                    class="botao-icone"
+                    type="button"
+                    data-abrir="dialogo-editar-avaliacao"
+                    aria-label="Editar avaliação"
+                  >
+                    <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+                  </button>
+                  <button
+                    class="botao-icone"
+                    type="button"
+                    data-abrir="dialogo-excluir"
+                    aria-label="Excluir avaliação"
+                  >
+                    <svg class="icone icone-vermelho"><use href="#icone-lixeira"></use></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="avaliacao-estrelas">
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+              </div>
+              <p class="avaliacao-mensagem">
+                "Muito confortável e chegou antes do prazo! Recomendo muito para caminhadas longas."
+              </p>
+            </div>
+
+            <div class="avaliacao">
+              <div class="avaliacao-topo">
+                <div class="avaliacao-item">
+                  <div class="foto-exemplo foto-mini"></div>
+                  <div class="cresce">
+                    <p class="avaliacao-produto">Zenith Pulse</p>
+                    <p class="texto-apoio">Avaliado em 20/04/2026</p>
+                  </div>
+                </div>
+                <div class="avaliacao-acoes">
+                  <button
+                    class="botao-icone"
+                    type="button"
+                    data-abrir="dialogo-editar-avaliacao"
+                    aria-label="Editar avaliação"
+                  >
+                    <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+                  </button>
+                  <button
+                    class="botao-icone"
+                    type="button"
+                    data-abrir="dialogo-excluir"
+                    aria-label="Excluir avaliação"
+                  >
+                    <svg class="icone icone-vermelho"><use href="#icone-lixeira"></use></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="avaliacao-estrelas">
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img class="vazia" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              </div>
+              <p class="avaliacao-mensagem">"Ótimo tênis de basquete, só achei o cadarço curto."</p>
+            </div>
+
+            <div class="avaliacao">
+              <div class="avaliacao-topo">
+                <div class="avaliacao-item">
+                  <div class="foto-exemplo foto-mini"></div>
+                  <div class="cresce">
+                    <p class="avaliacao-produto">Nortek Retro 90</p>
+                    <p class="texto-apoio">Avaliado em 15/02/2026</p>
+                  </div>
+                </div>
+                <div class="avaliacao-acoes">
+                  <button
+                    class="botao-icone"
+                    type="button"
+                    data-abrir="dialogo-editar-avaliacao"
+                    aria-label="Editar avaliação"
+                  >
+                    <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+                  </button>
+                  <button
+                    class="botao-icone"
+                    type="button"
+                    data-abrir="dialogo-excluir"
+                    aria-label="Excluir avaliação"
+                  >
+                    <svg class="icone icone-vermelho"><use href="#icone-lixeira"></use></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="avaliacao-estrelas">
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+              </div>
+              <p class="avaliacao-mensagem">
+                "Estilo retrô perfeito! Muito confortável para o dia a dia."
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+    <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-notificacoes">Notificações</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            <strong>Pedido #SOLA-3391 a caminho.</strong>
+            <br />
+            Saiu para entrega hoje de manhã.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Avaliação respondida.</strong>
+            <br />
+            A loja Nova Kicks respondeu seu comentário.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Promoção em Corrida.</strong>
+            <br />
+            Cinco modelos com desconto até domingo.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-preto" type="button" data-fechar>Fechar</button>
+        </footer>
+      </div>
+    </dialog>
+    <dialog class="dialogo" id="dialogo-sair" aria-labelledby="titulo-sair">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-sair">Sair da conta</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            Você volta para a página inicial e precisa entrar de novo para acessar seus pedidos.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="button" onclick="sair()">Sair</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <dialog class="dialogo" id="dialogo-excluir" aria-labelledby="titulo-excluir">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-excluir">Confirmar exclusão</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">Sua avaliação será removida da página do produto.</p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button
+            class="botao botao-vermelho"
+            type="button"
+            data-confirmar-exclusao=".avaliacao"
+            data-aviso="Avaliação excluída"
+          >
+            Excluir
+          </button>
+        </footer>
+      </div>
+    </dialog>
+
+    <dialog class="dialogo" id="dialogo-editar-avaliacao" aria-labelledby="titulo-editar-avaliacao">
+      <form class="dialogo-caixa" data-form-dialogo data-aviso="Avaliação atualizada">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-editar-avaliacao">Editar avaliação</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <div class="campo">
+            <span class="rotulo-nota" id="rotulo-nota-edicao">Sua nota</span>
+            <div class="escolher-nota" aria-labelledby="rotulo-nota-edicao">
+              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+              <img class="vazia" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+            </div>
+          </div>
+          <div class="campo">
+            <label for="avaliacao-texto">Seu comentário</label>
+            <textarea id="avaliacao-texto" rows="4">
+Muito confortável e chegou antes do prazo! Recomendo muito para caminhadas longas.</textarea>
+          </div>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="submit">Salvar</button>
+        </footer>
+      </form>
+    </dialog>
+  </body>
+</html>

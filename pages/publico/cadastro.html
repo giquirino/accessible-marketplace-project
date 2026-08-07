@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar conta · Sola</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+  </head>
+  <body id="pagina-cadastro">
+    <div id="tela-acesso">
+      <header id="cabecalho" class="cabecalho-simples">
+        <a class="cabecalho-marca" href="../../index.html">
+          <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+          <span class="marca-texto">Sola</span>
+        </a>
+        <a
+          href="../../index.html"
+          style="font-size: 1.35rem; font-weight: 600; color: var(--cinza)"
+        >
+          Voltar para a loja
+        </a>
+      </header>
+      <main id="area-acesso">
+        <div id="caixa-acesso">
+          <h1 class="acesso-titulo">Criar conta</h1>
+          <p class="acesso-subtitulo">Leva menos de um minuto para começar a comprar na Sola.</p>
+          <form id="form-cadastro">
+            <div class="campo">
+              <label for="cadastro-nome">Nome completo</label>
+              <input id="cadastro-nome" type="text" placeholder="Seu nome completo" required />
+            </div>
+            <div class="campo">
+              <label for="cadastro-email">E-mail</label>
+              <input id="cadastro-email" type="email" placeholder="seuemail@exemplo.com" required />
+            </div>
+            <div class="campo">
+              <label for="cadastro-senha">Senha</label>
+              <input id="cadastro-senha" type="password" placeholder="Crie uma senha" required />
+            </div>
+            <div class="campo">
+              <label for="cadastro-confirmar">Confirmar senha</label>
+              <input
+                id="cadastro-confirmar"
+                type="password"
+                placeholder="Repita a senha"
+                required
+              />
+            </div>
+            <div class="linha-checkbox" style="margin-bottom: 1.8rem">
+              <input type="checkbox" id="cadastro-termos" required checked />
+              <label for="cadastro-termos">
+                Concordo com os Termos de Uso e a Política de Privacidade da Sola.
+              </label>
+            </div>
+            <button class="botao botao-preto" type="submit">Criar conta</button>
+          </form>
+          <p class="acesso-link">
+            Já tem uma conta?
+            <a href="login.html">Entrar</a>
+          </p>
+        </div>
+      </main>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+  </body>
+</html>

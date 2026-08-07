@@ -1,0 +1,131 @@
+#pagina-cliente-dashboard #painel-resumo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+/* Lista dentro de um cartão */
+
+#pagina-cliente-dashboard .lista-blocos {
+  margin-top: 2rem;
+}
+
+/* Linha de pedido: código + situação */
+
+#pagina-cliente-dashboard .linha-pedido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  border-bottom: 0.1rem solid var(--borda);
+}
+
+#pagina-cliente-dashboard .pedido-codigo {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Linha de item do carrinho: miniatura + descrição */
+
+#pagina-cliente-dashboard .linha-item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.2rem 0;
+  border-bottom: 0.1rem solid var(--borda);
+}
+
+#pagina-cliente-dashboard .item-nome {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+#pagina-cliente-dashboard .item-variacao {
+  font-size: 1.3rem;
+  color: var(--cinza);
+  margin-bottom: 0.6rem;
+}
+
+#pagina-cliente-dashboard .item-preco {
+  font-weight: 600;
+  color: var(--preto);
+}
+
+/* Total do carrinho */
+
+#pagina-cliente-dashboard #total-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+
+#pagina-cliente-dashboard .total-rotulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#pagina-cliente-dashboard .total-valor {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--preto);
+}
+
+/* Botão que ocupa a largura do cartão */
+
+#pagina-cliente-dashboard #bloco-cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+/* "Ver todos" */
+
+#pagina-cliente-dashboard .ver-todos {
+  display: inline-block;
+  margin-top: 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+#pagina-cliente-dashboard .ver-todos-linha {
+  margin-top: 0;
+}
+
+/* Cabeçalho de seção com ação à direita */
+
+#pagina-cliente-dashboard #cabecalho-secao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Vitrine de recomendados em 4 colunas */
+
+#pagina-cliente-dashboard .quatro-colunas {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 64rem) {
+  #pagina-cliente-dashboard #painel-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  #pagina-cliente-dashboard .quatro-colunas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 40rem) {
+  #pagina-cliente-dashboard .quatro-colunas {
+    grid-template-columns: 1fr;
+  }
+
+  #pagina-cliente-dashboard #cabecalho-secao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}

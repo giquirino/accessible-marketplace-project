@@ -1,0 +1,54 @@
+#pagina-avaliacoes #lista-avaliacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* Cada avaliação ganha um respiro maior que o cartão padrão */
+
+#pagina-avaliacoes .avaliacao {
+  padding: 2rem;
+}
+
+#pagina-avaliacoes .avaliacao-topo {
+  margin-bottom: 1.2rem;
+}
+
+/* Miniatura + identificação do produto avaliado */
+
+#pagina-avaliacoes .avaliacao-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  flex: 1;
+}
+
+/* Nome do produto em destaque dentro do cartão */
+
+#pagina-avaliacoes .avaliacao-produto {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Editar / excluir */
+
+#pagina-avaliacoes .avaliacao-acoes {
+  display: flex;
+  gap: 0.8rem;
+}
+
+#pagina-avaliacoes .avaliacao-estrelas {
+  margin-bottom: 1.2rem;
+}
+
+@media (max-width: 40rem) {
+  #pagina-avaliacoes .avaliacao-topo {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  #pagina-avaliacoes .avaliacao-acoes {
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loja · Sola</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/catalogo.css" />
+  </head>
+  <body id="pagina-catalogo">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-grade"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="8" height="8" rx="1.5" />
+          <rect x="13" y="3" width="8" height="8" rx="1.5" />
+          <rect x="3" y="13" width="8" height="8" rx="1.5" />
+          <rect x="13" y="13" width="8" height="8" rx="1.5" />
+        </symbol>
+        <symbol
+          id="icone-coracao"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M20.2 5.6a5.4 5.4 0 0 0-7.6 0L12 6.2l-.6-.6a5.4 5.4 0 0 0-7.6 7.6l.6.6L12 21l7.6-7.2.6-.6a5.4 5.4 0 0 0 0-7.6Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="painel">
+      <aside id="menu-lateral">
+        <button
+          class="botao-menu botao-fechar-menu"
+          type="button"
+          data-abrir-menu
+          aria-label="Fechar menu"
+          aria-expanded="false"
+        >
+          <span class="botao-menu-barra"></span>
+          <span class="botao-menu-barra"></span>
+        </button>
+        <div>
+          <div class="menu-marca">
+            <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+            <span class="marca-texto">Sola</span>
+          </div>
+          <nav class="menu-lista" aria-label="Navegação do cliente">
+            <a class="item-menu ativo" href="catalogo.html">
+              <img class="icone" src="../../assets/icons/icone-home.png" alt="" />
+              Voltar para a loja
+            </a>
+            <a class="item-menu" href="cliente-dashboard.html">
+              <svg class="icone"><use href="#icone-grade"></use></svg>
+              Painel inicial
+            </a>
+            <a class="item-menu" href="carrinho.html">
+              <img class="icone" src="../../assets/icons/icone-sacola.png" alt="" />
+              Meu carrinho
+              <span class="menu-aviso">3</span>
+            </a>
+            <a class="item-menu" href="meus-pedidos.html">
+              <img class="icone" src="../../assets/icons/icone-caixa.png" alt="" />
+              Meus pedidos
+            </a>
+            <a class="item-menu" href="favoritos.html">
+              <svg class="icone"><use href="#icone-coracao"></use></svg>
+              Favoritos
+              <span class="menu-aviso">12</span>
+            </a>
+            <a class="item-menu" href="avaliacoes.html">
+              <img class="icone" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              Minhas avaliações
+            </a>
+          </nav>
+        </div>
+        <div class="menu-rodape">
+          <a href="minha-conta.html" class="usuario link-limpo">
+            <span class="avatar-editavel">
+              <span class="avatar" data-avatar-usuario>
+                <span class="avatar-iniciais">MA</span>
+              </span>
+              <span class="avatar-editar-selo" aria-hidden="true">
+                <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+              </span>
+            </span>
+            <div>
+              <p class="usuario-nome">Marcos Aurélio</p>
+              <p class="usuario-papel">Cliente</p>
+            </div>
+          </a>
+          <button class="trocar-modo" type="button" data-abrir="dialogo-sair">
+            <img class="icone icone-pequeno" src="../../assets/icons/icone-logout.png" alt="" />
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <div id="area-principal">
+        <header id="topo">
+          <div class="linha-cresce">
+            <button
+              class="botao-menu"
+              type="button"
+              data-abrir-menu
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <span class="botao-menu-barra"></span>
+              <span class="botao-menu-barra"></span>
+            </button>
+            <div>
+              <p class="topo-rotulo">Cliente</p>
+              <h1 class="topo-titulo">Loja</h1>
+            </div>
+          </div>
+          <div class="topo-acoes">
+            <button
+              class="botao-icone"
+              type="button"
+              data-abrir="dialogo-notificacoes"
+              aria-label="Notificações"
+            >
+              <img class="icone" src="../../assets/icons/icone-notificacao.png" alt="" />
+            </button>
+            <a class="avatar avatar-pequeno" data-avatar-usuario href="minha-conta.html">
+              <span class="avatar-iniciais">MA</span>
+            </a>
+          </div>
+        </header>
+
+        <main id="conteudo" class="secao-loja">
+          <div id="cabecalho-pagina">
+            <div>
+              <h2 class="titulo-pagina">Catálogo</h2>
+              <p class="subtitulo-pagina">
+                <span data-filtro-contagem>16</span>
+                tênis disponíveis
+              </p>
+            </div>
+            <button class="botao botao-branco" type="button" data-abrir="dialogo-filtros">
+              <img class="icone icone-medio" src="../../assets/icons/icone-filtro.png" alt="" />
+              Filtros
+            </button>
+          </div>
+
+          <div id="barra-filtros">
+            <div class="campo-busca">
+              <img class="icone" src="../../assets/icons/icone-lupa.png" alt="" />
+              <input
+                type="text"
+                placeholder="Buscar tênis..."
+                aria-label="Buscar tênis"
+                data-filtro-busca
+              />
+            </div>
+            <div id="pilulas-filtro">
+              <button
+                class="pilula ativo"
+                type="button"
+                data-filtro-categoria="todas"
+                aria-pressed="true"
+              >
+                Todas
+              </button>
+              <button
+                class="pilula"
+                type="button"
+                data-filtro-categoria="Corrida"
+                aria-pressed="false"
+              >
+                Corrida
+              </button>
+              <button
+                class="pilula"
+                type="button"
+                data-filtro-categoria="Casual"
+                aria-pressed="false"
+              >
+                Casual
+              </button>
+              <button
+                class="pilula"
+                type="button"
+                data-filtro-categoria="Basquete"
+                aria-pressed="false"
+              >
+                Basquete
+              </button>
+              <button
+                class="pilula"
+                type="button"
+                data-filtro-categoria="Skate"
+                aria-pressed="false"
+              >
+                Skate
+              </button>
+              <button
+                class="pilula"
+                type="button"
+                data-filtro-categoria="Caminhada"
+                aria-pressed="false"
+              >
+                Caminhada
+              </button>
+              <button
+                class="pilula"
+                type="button"
+                data-filtro-categoria="Trilha"
+                aria-pressed="false"
+              >
+                Trilha
+              </button>
+            </div>
+          </div>
+
+          <div id="grade-produtos" data-filtro-lista>
+            <!-- Produto 1 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Volker Strike 2"
+              data-categoria="Corrida"
+              data-marca="Volker"
+              data-preco="549.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Volker Strike 2</p>
+                <p class="produto-info">Volker · Corrida</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 549,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Astra Run Flux"
+              data-categoria="Corrida"
+              data-marca="Astra Run"
+              data-preco="479.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Astra Run Flux</p>
+                <p class="produto-info">Astra Run · Corrida</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 479,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Nortek Glide"
+              data-categoria="Caminhada"
+              data-marca="Nortek"
+              data-preco="389.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Nortek Glide</p>
+                <p class="produto-info">Nortek · Caminhada</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 389,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 4 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Zenith Pulse"
+              data-categoria="Basquete"
+              data-marca="Zenith"
+              data-preco="629.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Zenith Pulse</p>
+                <p class="produto-info">Zenith · Basquete</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 629,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 5 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Kaya Street Low"
+              data-categoria="Casual"
+              data-marca="Kaya"
+              data-preco="349.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Kaya Street Low</p>
+                <p class="produto-info">Kaya · Casual</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 349,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 6 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Volker Cloud"
+              data-categoria="Caminhada"
+              data-marca="Volker"
+              data-preco="459.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Volker Cloud</p>
+                <p class="produto-info">Volker · Caminhada</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 459,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 7 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Nortek Retro 90"
+              data-categoria="Casual"
+              data-marca="Nortek"
+              data-preco="419.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Nortek Retro 90</p>
+                <p class="produto-info">Nortek · Casual</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 419,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 8 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Kaya High Top"
+              data-categoria="Skate"
+              data-marca="Kaya"
+              data-preco="379.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Kaya High Top</p>
+                <p class="produto-info">Kaya · Skate</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 379,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 9 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Zenith Air Zero"
+              data-categoria="Corrida"
+              data-marca="Zenith"
+              data-preco="899.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Zenith Air Zero</p>
+                <p class="produto-info">Zenith · Corrida</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 899,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 10 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Astra Trail X"
+              data-categoria="Trilha"
+              data-marca="Astra Run"
+              data-preco="599.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Astra Trail X</p>
+                <p class="produto-info">Astra Run · Trilha</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 599,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 11 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Volker Speed Pro"
+              data-categoria="Corrida"
+              data-marca="Volker"
+              data-preco="699.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Volker Speed Pro</p>
+                <p class="produto-info">Volker · Corrida</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 699,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 12 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Nortek Urban Plus"
+              data-categoria="Casual"
+              data-marca="Nortek"
+              data-preco="369.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Nortek Urban Plus</p>
+                <p class="produto-info">Nortek · Casual</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 369,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 13 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Kaya Bolt"
+              data-categoria="Skate"
+              data-marca="Kaya"
+              data-preco="399.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Kaya Bolt</p>
+                <p class="produto-info">Kaya · Skate</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 399,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 14 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Zenith Jump Max"
+              data-categoria="Basquete"
+              data-marca="Zenith"
+              data-preco="749.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Zenith Jump Max</p>
+                <p class="produto-info">Zenith · Basquete</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 749,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 15 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Astra Light Runner"
+              data-categoria="Corrida"
+              data-marca="Astra Run"
+              data-preco="529.00"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Astra Light Runner</p>
+                <p class="produto-info">Astra Run · Corrida</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 529,00</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Produto 16 -->
+            <div
+              class="produto"
+              data-filtro-item
+              data-nome="Volker Comfort Walk"
+              data-categoria="Caminhada"
+              data-marca="Volker"
+              data-preco="429.90"
+            >
+              <button
+                class="botao-icone produto-favorito"
+                title="Adicionar aos favoritos"
+                aria-label="Adicionar aos favoritos"
+              >
+                <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+              </button>
+              <div class="foto-exemplo foto-quadrada"></div>
+              <div class="produto-corpo">
+                <p class="produto-nome">Volker Comfort Walk</p>
+                <p class="produto-info">Volker · Caminhada</p>
+                <div class="produto-rodape"><span class="produto-preco">R$ 429,90</span></div>
+                <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="filtro-vazio" data-filtro-vazio hidden>
+            <p class="filtro-vazio-titulo">Nenhum tênis encontrado</p>
+            <p>Tente outra busca ou limpe os filtros.</p>
+            <button class="botao botao-branco topo-20" type="button" data-filtro-limpar>
+              Limpar filtros
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+    <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-notificacoes">Notificações</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            <strong>Pedido #SOLA-3391 a caminho.</strong>
+            <br />
+            Saiu para entrega hoje de manhã.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Avaliação respondida.</strong>
+            <br />
+            A loja Nova Kicks respondeu seu comentário.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Promoção em Corrida.</strong>
+            <br />
+            Cinco modelos com desconto até domingo.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-preto" type="button" data-fechar>Fechar</button>
+        </footer>
+      </div>
+    </dialog>
+    <dialog class="dialogo" id="dialogo-sair" aria-labelledby="titulo-sair">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-sair">Sair da conta</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            Você volta para a página inicial e precisa entrar de novo para acessar seus pedidos.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="button" onclick="sair()">Sair</button>
+        </footer>
+      </div>
+    </dialog>
+    <dialog class="dialogo" id="dialogo-filtros" aria-labelledby="titulo-filtros">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-filtros">Filtros</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <div class="campo">
+            <label for="filtro-marca">Marca</label>
+            <select id="filtro-marca" data-filtro-marca>
+              <option value="todas">Todas as marcas</option>
+              <option value="Volker">Volker</option>
+              <option value="Astra Run">Astra Run</option>
+              <option value="Nortek">Nortek</option>
+              <option value="Zenith">Zenith</option>
+              <option value="Kaya">Kaya</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="filtro-preco">
+              Preço máximo:
+              <span data-filtro-preco-saida>R$ 900,00</span>
+            </label>
+            <input
+              type="range"
+              id="filtro-preco"
+              min="300"
+              max="900"
+              step="10"
+              value="900"
+              data-filtro-preco-max
+            />
+          </div>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-filtro-limpar>Limpar</button>
+          <button class="botao botao-preto" type="button" data-fechar>Ver resultados</button>
+        </footer>
+      </div>
+    </dialog>
+  </body>
+</html>
