@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Área · Sola</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/cliente-dashboard.css" />
+  </head>
+  <body id="pagina-cliente-dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-grade"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="8" height="8" rx="1.5" />
+          <rect x="13" y="3" width="8" height="8" rx="1.5" />
+          <rect x="3" y="13" width="8" height="8" rx="1.5" />
+          <rect x="13" y="13" width="8" height="8" rx="1.5" />
+        </symbol>
+        <symbol
+          id="icone-coracao"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M20.2 5.6a5.4 5.4 0 0 0-7.6 0L12 6.2l-.6-.6a5.4 5.4 0 0 0-7.6 7.6l.6.6L12 21l7.6-7.2.6-.6a5.4 5.4 0 0 0 0-7.6Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="painel">
+      <aside id="menu-lateral">
+        <button
+          class="botao-menu botao-fechar-menu"
+          type="button"
+          data-abrir-menu
+          aria-label="Fechar menu"
+          aria-expanded="false"
+        >
+          <span class="botao-menu-barra"></span>
+          <span class="botao-menu-barra"></span>
+        </button>
+        <div>
+          <div class="menu-marca">
+            <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+            <span class="marca-texto">Sola</span>
+          </div>
+          <nav class="menu-lista" aria-label="Navegação do cliente">
+            <a class="item-menu" href="catalogo.html">
+              <img class="icone" src="../../assets/icons/icone-home.png" alt="" />
+              Voltar para a loja
+            </a>
+            <a class="item-menu ativo" href="cliente-dashboard.html">
+              <svg class="icone"><use href="#icone-grade"></use></svg>
+              Painel inicial
+            </a>
+            <a class="item-menu" href="carrinho.html">
+              <img class="icone" src="../../assets/icons/icone-sacola.png" alt="" />
+              Meu carrinho
+              <span class="menu-aviso">3</span>
+            </a>
+            <a class="item-menu" href="meus-pedidos.html">
+              <img class="icone" src="../../assets/icons/icone-caixa.png" alt="" />
+              Meus pedidos
+            </a>
+            <a class="item-menu" href="favoritos.html">
+              <svg class="icone"><use href="#icone-coracao"></use></svg>
+              Favoritos
+              <span class="menu-aviso">12</span>
+            </a>
+            <a class="item-menu" href="avaliacoes.html">
+              <img class="icone" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              Minhas avaliações
+            </a>
+          </nav>
+        </div>
+        <div class="menu-rodape">
+          <a href="minha-conta.html" class="usuario link-limpo">
+            <span class="avatar-editavel">
+              <span class="avatar" data-avatar-usuario>
+                <span class="avatar-iniciais">MA</span>
+              </span>
+              <span class="avatar-editar-selo" aria-hidden="true">
+                <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+              </span>
+            </span>
+            <div>
+              <p class="usuario-nome">Marcos Aurélio</p>
+              <p class="usuario-papel">Cliente</p>
+            </div>
+          </a>
+          <button class="trocar-modo" type="button" data-abrir="dialogo-sair">
+            <img class="icone icone-pequeno" src="../../assets/icons/icone-logout.png" alt="" />
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <div id="area-principal">
+        <header id="topo">
+          <div class="linha-cresce">
+            <button
+              class="botao-menu"
+              type="button"
+              data-abrir-menu
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <span class="botao-menu-barra"></span>
+              <span class="botao-menu-barra"></span>
+            </button>
+            <div>
+              <p class="topo-rotulo">Cliente</p>
+              <h1 class="topo-titulo">Minha área</h1>
+            </div>
+            <div class="campo-busca topo-busca">
+              <img class="icone" src="../../assets/icons/icone-lupa.png" alt="" />
+              <input type="text" placeholder="Buscar produtos..." aria-label="Buscar produtos" />
+            </div>
+          </div>
+          <div class="topo-acoes">
+            <button
+              class="botao-icone"
+              type="button"
+              data-abrir="dialogo-notificacoes"
+              aria-label="Notificações"
+            >
+              <img class="icone" src="../../assets/icons/icone-notificacao.png" alt="" />
+            </button>
+            <a class="avatar avatar-pequeno" data-avatar-usuario href="minha-conta.html">
+              <span class="avatar-iniciais">MA</span>
+            </a>
+          </div>
+        </header>
+
+        <main id="conteudo">
+          <div id="cabecalho-pagina">
+            <div>
+              <h2 class="titulo-pagina">Olá, Marcos!</h2>
+              <p class="subtitulo-pagina">Bem-vindo de volta à sua área na Sola.</p>
+            </div>
+            <a class="botao botao-preto" href="../../index.html">
+              <img class="icone icone-medio" src="../../assets/icons/icone-lupa.png" alt="" />
+              Explorar produtos
+            </a>
+          </div>
+
+          <div id="grade-numeros">
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Pedidos realizados</p>
+              <p class="numero-valor">12</p>
+              <p class="numero-variacao">3 nos últimos 30 dias</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Em andamento</p>
+              <p class="numero-valor">2</p>
+              <p class="numero-variacao">1 será entregue hoje</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Total gasto</p>
+              <p class="numero-valor">R$ 4.329,00</p>
+              <p class="numero-variacao">Desde out/2025</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Favoritos</p>
+              <p class="numero-valor">12</p>
+              <p class="numero-variacao">5 com desconto hoje</p>
+            </div>
+          </div>
+
+          <div id="painel-resumo">
+            <div class="cartao-grafico" id="pedidos-recentes">
+              <p class="grafico-titulo">Seus pedidos recentes</p>
+              <div class="lista-blocos">
+                <div class="linha-pedido">
+                  <div>
+                    <p class="pedido-codigo">#SOLA-3391</p>
+                    <p class="texto-apoio">Volker Strike 2 · R$ 549,90</p>
+                  </div>
+                  <span class="etiqueta etiqueta-amarela">A caminho</span>
+                </div>
+                <div class="linha-pedido">
+                  <div>
+                    <p class="pedido-codigo">#SOLA-3385</p>
+                    <p class="texto-apoio">Kaya Street Low · R$ 349,90</p>
+                  </div>
+                  <span class="etiqueta etiqueta-verde">Entregue</span>
+                </div>
+                <div class="linha-pedido">
+                  <div>
+                    <p class="pedido-codigo">#SOLA-3378</p>
+                    <p class="texto-apoio">Nortek Glide · R$ 389,90</p>
+                  </div>
+                  <span class="etiqueta etiqueta-verde">Entregue</span>
+                </div>
+              </div>
+              <a href="meus-pedidos.html" class="ver-todos">Ver todos os pedidos →</a>
+            </div>
+
+            <div class="cartao-grafico" id="carrinho-atual">
+              <p class="grafico-titulo">Carrinho atual</p>
+              <div class="lista-blocos">
+                <div class="linha-item">
+                  <div class="foto-exemplo foto-mini"></div>
+                  <div class="cresce">
+                    <p class="item-nome">Astra Run Flux</p>
+                    <p class="item-variacao">Tamanho 42 · Quantidade: 1</p>
+                    <p class="item-preco">R$ 479,00</p>
+                  </div>
+                </div>
+                <div class="linha-item">
+                  <div class="foto-exemplo foto-mini"></div>
+                  <div class="cresce">
+                    <p class="item-nome">Kaya Street Low</p>
+                    <p class="item-variacao">Tamanho 40 · Quantidade: 2</p>
+                    <p class="item-preco">R$ 699,80</p>
+                  </div>
+                </div>
+                <div id="total-carrinho">
+                  <p class="total-rotulo">Total:</p>
+                  <p class="total-valor">R$ 1.178,80</p>
+                </div>
+              </div>
+              <a id="bloco-cta" href="carrinho.html" class="botao botao-preto">
+                Ir para o carrinho
+              </a>
+            </div>
+          </div>
+
+          <div class="cartao-grafico" id="recomendados">
+            <div id="cabecalho-secao">
+              <p class="grafico-titulo">Produtos recomendados para você</p>
+              <a href="catalogo.html" class="ver-todos ver-todos-linha">Ver todos →</a>
+            </div>
+            <div id="grade-produtos" class="quatro-colunas">
+              <div class="produto">
+                <button
+                  class="botao-icone produto-favorito"
+                  aria-label="Adicionar aos favoritos"
+                  title="Adicionar aos favoritos"
+                >
+                  <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+                </button>
+                <div class="foto-exemplo foto-quadrada"></div>
+                <div class="produto-corpo">
+                  <p class="produto-nome">Volker Cloud</p>
+                  <p class="produto-info">Volker · Caminhada</p>
+                  <div class="produto-rodape"><span class="produto-preco">R$ 459,00</span></div>
+                  <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="produto">
+                <button
+                  class="botao-icone produto-favorito"
+                  aria-label="Adicionar aos favoritos"
+                  title="Adicionar aos favoritos"
+                >
+                  <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+                </button>
+                <div class="foto-exemplo foto-quadrada"></div>
+                <div class="produto-corpo">
+                  <p class="produto-nome">Nortek Retro 90</p>
+                  <p class="produto-info">Nortek · Casual</p>
+                  <div class="produto-rodape"><span class="produto-preco">R$ 419,00</span></div>
+                  <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="produto">
+                <button
+                  class="botao-icone produto-favorito"
+                  aria-label="Adicionar aos favoritos"
+                  title="Adicionar aos favoritos"
+                >
+                  <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+                </button>
+                <div class="foto-exemplo foto-quadrada"></div>
+                <div class="produto-corpo">
+                  <p class="produto-nome">Zenith Pulse</p>
+                  <p class="produto-info">Zenith · Basquete</p>
+                  <div class="produto-rodape"><span class="produto-preco">R$ 629,00</span></div>
+                  <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="produto">
+                <button
+                  class="botao-icone produto-favorito"
+                  aria-label="Adicionar aos favoritos"
+                  title="Adicionar aos favoritos"
+                >
+                  <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+                </button>
+                <div class="foto-exemplo foto-quadrada"></div>
+                <div class="produto-corpo">
+                  <p class="produto-nome">Kaya High Top</p>
+                  <p class="produto-info">Kaya · Skate</p>
+                  <div class="produto-rodape"><span class="produto-preco">R$ 379,90</span></div>
+                  <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+    <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-notificacoes">Notificações</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            <strong>Pedido #SOLA-3391 a caminho.</strong>
+            <br />
+            Saiu para entrega hoje de manhã.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Avaliação respondida.</strong>
+            <br />
+            A loja Nova Kicks respondeu seu comentário.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Promoção em Corrida.</strong>
+            <br />
+            Cinco modelos com desconto até domingo.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-preto" type="button" data-fechar>Fechar</button>
+        </footer>
+      </div>
+    </dialog>
+    <dialog class="dialogo" id="dialogo-sair" aria-labelledby="titulo-sair">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-sair">Sair da conta</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            Você volta para a página inicial e precisa entrar de novo para acessar seus pedidos.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="button" onclick="sair()">Sair</button>
+        </footer>
+      </div>
+    </dialog>
+  </body>
+</html>
