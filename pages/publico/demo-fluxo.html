@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demonstração do Fluxo de Autenticação - Sola</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/demo-fluxo.css" />
+  </head>
+  <body id="pagina-demo-fluxo">
+    <header id="cabecalho">
+      <a class="cabecalho-marca" href="../../index.html">
+        <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+        <span class="marca-texto">Sola</span>
+      </a>
+      <nav class="cabecalho-links">
+        <a href="../../index.html">Voltar para a loja</a>
+      </nav>
+    </header>
+
+    <div id="area-demo">
+      <div class="demo-secao">
+        <h2>Demonstração do Sistema de Autenticação</h2>
+        <p style="font-size: 1.6rem; color: var(--cinza); margin-top: 0.8rem">
+          Este é o novo fluxo de autenticação da Sola. O sistema detecta automaticamente o tipo de
+          usuário baseado no domínio do e-mail e redireciona para o dashboard apropriado.
+        </p>
+      </div>
+
+      <div class="demo-secao">
+        <h2>Tipos de Usuário</h2>
+
+        <div class="demo-grade">
+          <div class="demo-cartao">
+            <h4>Cliente</h4>
+            <p>
+              <strong>Domínios:</strong>
+              @gmail.com, @outlook.com, @hotmail.com, @yahoo.com, etc.
+            </p>
+            <p><strong>Exemplos:</strong></p>
+            <ul style="font-size: 1.3rem; color: var(--cinza); margin-left: 2rem">
+              <li>joao@gmail.com</li>
+              <li>maria@outlook.com</li>
+              <li>pedro@yahoo.com.br</li>
+            </ul>
+            <span class="demo-etiqueta demo-cliente">Redireciona para: cliente-dashboard.html</span>
+            <div class="topo-12">
+              <a href="../cliente/cliente-dashboard.html" class="botao botao-branco botao-pequeno">
+                Ir para dashboard
+              </a>
+            </div>
+          </div>
+
+          <div class="demo-cartao">
+            <h4>Vendedor</h4>
+            <p>
+              <strong>Domínios:</strong>
+              Qualquer e-mail com "@vendedor"
+            </p>
+            <p><strong>Exemplos:</strong></p>
+            <ul style="font-size: 1.3rem; color: var(--cinza); margin-left: 2rem">
+              <li>loja@vendedor.com</li>
+              <li>contato@vendedor.com.br</li>
+              <li>maria@vendedor.net</li>
+            </ul>
+            <span class="demo-etiqueta demo-vendedor">
+              Redireciona para: vendedor-dashboard.html
+            </span>
+            <div class="topo-12">
+              <a
+                href="../vendedor/vendedor-dashboard.html"
+                class="botao botao-branco botao-pequeno"
+              >
+                Ir para dashboard
+              </a>
+            </div>
+          </div>
+
+          <div class="demo-cartao">
+            <h4>Admin</h4>
+            <p>
+              <strong>Domínios:</strong>
+              Qualquer e-mail com "@admin"
+            </p>
+            <p><strong>Exemplos:</strong></p>
+            <ul style="font-size: 1.3rem; color: var(--cinza); margin-left: 2rem">
+              <li>admin@admin.com</li>
+              <li>suporte@admin.com.br</li>
+              <li>gerente@admin.net</li>
+            </ul>
+            <span class="demo-etiqueta demo-admin">Redireciona para: admin-dashboard.html</span>
+            <div class="topo-12">
+              <a href="../admin/admin-dashboard.html" class="botao botao-branco botao-pequeno">
+                Ir para dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-secao">
+        <h2>Fluxo de Autenticação</h2>
+
+        <h3>Cadastro:</h3>
+        <div class="demo-fluxo">
+          <div class="demo-item">index.html</div>
+          <span class="demo-seta">→</span>
+          <div class="demo-item">cadastro.html</div>
+          <span class="demo-seta">→</span>
+          <div class="demo-item">Detecta tipo pelo e-mail</div>
+          <span class="demo-seta">→</span>
+          <div class="demo-item">Dashboard correspondente</div>
+        </div>
+
+        <h3>Login:</h3>
+        <div class="demo-fluxo">
+          <div class="demo-item">index.html</div>
+          <span class="demo-seta">→</span>
+          <div class="demo-item">login.html</div>
+          <span class="demo-seta">→</span>
+          <div class="demo-item">Detecta tipo pelo e-mail</div>
+          <span class="demo-seta">→</span>
+          <div class="demo-item">Dashboard correspondente</div>
+        </div>
+      </div>
+
+      <div class="demo-secao">
+        <h2>Teste o Sistema</h2>
+        <p class="baixo-16">
+          Digite um e-mail abaixo para ver qual tipo de usuário seria detectado:
+        </p>
+
+        <div class="teste-form">
+          <input
+            type="email"
+            class="teste-campo"
+            id="teste-email"
+            placeholder="Digite um e-mail (ex: joao@gmail.com)"
+          />
+          <button class="botao botao-preto" onclick="testarEmail()">Testar</button>
+
+          <div id="teste-resultado" class="teste-resultado"></div>
+        </div>
+      </div>
+
+      <div class="demo-secao">
+        <h2>Código JavaScript</h2>
+        <p>Função que detecta o tipo de usuário:</p>
+
+        <div class="bloco-codigo">
+          function tipoDeUsuarioPeloEmail(email) { var e = email.toLowerCase(); if
+          (e.indexOf('@admin') !== -1) { return 'admin'; } else if (e.indexOf('@vendedor') !== -1) {
+          return 'vendedor'; } else { return 'cliente'; // Gmail, Outlook, etc. } }
+        </div>
+      </div>
+
+      <div class="demo-secao">
+        <h2>Links Rápidos</h2>
+        <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.6rem">
+          <a href="../../index.html" class="botao botao-preto">Página Inicial</a>
+          <a href="login.html" class="botao botao-branco">Página de Login</a>
+          <a href="cadastro.html" class="botao botao-branco">Página de Cadastro</a>
+          <a href="../cliente/cliente-dashboard.html" class="botao botao-branco">
+            Dashboard Cliente
+          </a>
+          <a href="../vendedor/vendedor-dashboard.html" class="botao botao-branco">
+            Dashboard Vendedor
+          </a>
+          <a href="../admin/admin-dashboard.html" class="botao botao-branco">Dashboard Admin</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function testarEmail() {
+        const email = document.getElementById("teste-email").value;
+        const resultado = document.getElementById("teste-resultado");
+
+        if (!email || !email.includes("@")) {
+          resultado.style.background = "#ffebee";
+          resultado.style.color = "#c62828";
+          resultado.textContent = "Por favor, digite um e-mail válido";
+          resultado.classList.add("aparece");
+          return;
+        }
+
+        let tipo = "";
+        let destino = "";
+        let corFundo = "";
+        let corTexto = "";
+
+        if (email.toLowerCase().includes("@admin")) {
+          tipo = "Admin";
+          destino = "admin-dashboard.html";
+          corFundo = "#fce4ec";
+          corTexto = "#c2185b";
+        } else if (email.toLowerCase().includes("@vendedor")) {
+          tipo = "Vendedor";
+          destino = "vendedor-dashboard.html";
+          corFundo = "#f3e5f5";
+          corTexto = "#6a1b9a";
+        } else {
+          tipo = "Cliente";
+          destino = "cliente-dashboard.html";
+          corFundo = "#e3f2fd";
+          corTexto = "#1565c0";
+        }
+
+        resultado.style.background = corFundo;
+        resultado.style.color = corTexto;
+        resultado.innerHTML = `<strong>Tipo detectado:</strong> ${tipo}<br><strong>Redirecionaria para:</strong> ${destino}`;
+        resultado.classList.add("aparece");
+      }
+
+      // Permite testar com Enter
+      document.getElementById("teste-email")?.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          testarEmail();
+        }
+      });
+    </script>
+
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+  </body>
+</html>
