@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sola — Marketplace de tênis</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+  </head>
+  <body id="pagina-index">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-coracao"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M20.2 5.6a5.4 5.4 0 0 0-7.6 0L12 6.2l-.6-.6a5.4 5.4 0 0 0-7.6 7.6l.6.6L12 21l7.6-7.2.6-.6a5.4 5.4 0 0 0 0-7.6Z"
+          />
+        </symbol>
+        <symbol
+          id="icone-troca"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 11a8 8 0 1 0-2.3 5.7" />
+          <path d="M20 6v5h-5" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header id="cabecalho">
+      <a class="cabecalho-marca" href="index.html">
+        <img class="marca-logo" src="assets/img/Logo.png" alt="" />
+        <span class="marca-texto">Sola</span>
+      </a>
+      <nav class="cabecalho-links">
+        <a href="index.html">Início</a>
+        <a href="pages/publico/catalogo.html">Catálogo da Loja</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#ajuda">Ajuda</a>
+      </nav>
+      <div class="cabecalho-acoes">
+        <a class="cabecalho-icone" href="pages/cliente/carrinho.html" aria-label="Carrinho">
+          <img class="icone" src="assets/icons/icone-sacola.png" alt="" />
+          <span class="cabecalho-contador" data-contador-carrinho>0</span>
+        </a>
+        <a class="botao botao-branco botao-pequeno" href="pages/publico/login.html">Entrar</a>
+        <a class="botao botao-preto botao-pequeno" href="pages/publico/cadastro.html">Cadastrar</a>
+      </div>
+    </header>
+
+    <section class="destaque">
+      <p class="destaque-rotulo">Marketplace de tênis</p>
+      <h1 class="destaque-titulo">Sola</h1>
+      <p class="destaque-canto">
+        Nova coleção
+        <br />
+        Inverno 2026
+      </p>
+      <p class="destaque-texto">
+        Do corrida ao skate, ache o seu próximo tênis entre dezenas de lojas — tudo em um só
+        marketplace.
+      </p>
+      <div class="destaque-acoes">
+        <a class="botao botao-preto" href="pages/publico/catalogo.html">Explorar loja</a>
+        <a href="#sobre" style="font-size: 1.4rem; font-weight: 600; text-decoration: underline">
+          Como funciona
+        </a>
+      </div>
+      <!-- <div class="foto-exemplo foto-destaque"></div> -->
+    </section>
+
+    <section id="faixa-categorias">
+      <div id="grade-categorias">
+        <div class="categoria">
+          <div class="foto-exemplo foto-quadrada categoria-foto"></div>
+          <p class="categoria-nome">Corrida</p>
+          <p class="categoria-texto">Leveza e amortecimento para todo tipo de treino.</p>
+          <a class="categoria-link" href="pages/publico/catalogo.html?categoria=Corrida">Ver corrida →</a>
+        </div>
+        <div class="categoria">
+          <div class="foto-exemplo foto-quadrada categoria-foto"></div>
+          <p class="categoria-nome">Casual</p>
+          <p class="categoria-texto">Conforto pro dia a dia, do streetwear ao básico.</p>
+          <a class="categoria-link" href="pages/publico/catalogo.html?categoria=Casual">Ver casual →</a>
+        </div>
+        <div class="categoria">
+          <div class="foto-exemplo foto-quadrada categoria-foto"></div>
+          <p class="categoria-nome">Basquete</p>
+          <p class="categoria-texto">Impacto e estabilidade pra quadra.</p>
+          <a class="categoria-link" href="pages/publico/catalogo.html?categoria=Basquete">Ver basquete →</a>
+        </div>
+      </div>
+      <p class="faixa-categorias-mais"><a href="pages/publico/catalogo.html">Ver todas as categorias →</a></p>
+    </section>
+
+    <section class="destaque" style="padding-bottom: 6.4rem">
+      <div class="foto-exemplo foto-larga"></div>
+      <div class="topo-28">
+        <p class="destaque-rotulo" style="margin-bottom: 0.8rem">Edição limitada</p>
+        <h2 style="font-size: 3.2rem; margin-bottom: 1.4rem">Peças únicas, produção limitada.</h2>
+        <a class="botao botao-branco" href="pages/publico/catalogo.html">Explorar edição limitada</a>
+      </div>
+    </section>
+
+    <section
+      id="faixa-vantagens"
+      style="border-top: 0.1rem solid var(--borda); border-bottom: 0.1rem solid var(--borda)"
+    >
+      <div class="vantagem">
+        <img class="icone" src="assets/icons/icone-caminhao.png" alt="" />
+        <div>
+          <p class="vantagem-titulo">Entrega rápida</p>
+          <p class="vantagem-texto">Para todo o Brasil</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <svg class="icone"><use href="#icone-troca"></use></svg>
+        <div>
+          <p class="vantagem-titulo">Troca fácil</p>
+          <p class="vantagem-texto">Até 30 dias</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <img class="icone" src="assets/icons/icone-escudo.png" alt="" />
+        <div>
+          <p class="vantagem-titulo">Pagamento seguro</p>
+          <p class="vantagem-texto">Ambiente 100% protegido</p>
+        </div>
+      </div>
+      <div class="vantagem">
+        <img class="icone" src="assets/icons/icone-medalha.png" alt="" />
+        <div>
+          <p class="vantagem-titulo">Autenticidade garantida</p>
+          <p class="vantagem-texto">Todo tênis é verificado</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao-loja" id="mais-vendidos">
+      <div class="secao-loja-topo">
+        <h2 class="secao-loja-titulo">Mais vendidos</h2>
+      </div>
+      <div id="grade-produtos">
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Volker Strike 2</p>
+            <p class="produto-info">Volker · Corrida</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 549,90</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Astra Run Flux</p>
+            <p class="produto-info">Astra Run · Corrida</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 479,00</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Nortek Glide</p>
+            <p class="produto-info">Nortek · Caminhada</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 389,90</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Zenith Pulse</p>
+            <p class="produto-info">Zenith · Basquete</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 629,00</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Kaya Street Low</p>
+            <p class="produto-info">Kaya · Casual</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 349,90</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Volker Cloud</p>
+            <p class="produto-info">Volker · Caminhada</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 459,00</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Nortek Retro 90</p>
+            <p class="produto-info">Nortek · Casual</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 419,00</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="produto">
+          <button
+            class="botao-icone produto-favorito"
+            title="Adicionar aos favoritos"
+            aria-label="Adicionar aos favoritos"
+          >
+            <svg class="icone icone-cinza"><use href="#icone-coracao"></use></svg>
+          </button>
+          <div class="foto-exemplo foto-quadrada"></div>
+          <div class="produto-corpo">
+            <p class="produto-nome">Kaya High Top</p>
+            <p class="produto-info">Kaya · Skate</p>
+            <div class="produto-rodape"><span class="produto-preco">R$ 379,90</span></div>
+            <button class="botao botao-preto botao-pequeno produto-botao" type="button">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="rodape">
+      <div class="rodape-grade">
+        <div>
+          <p class="rodape-marca">Sola</p>
+          <p class="rodape-texto">
+            Marketplace de tênis para todo o Brasil — dezenas de lojas, uma única compra.
+          </p>
+        </div>
+        <div class="rodape-coluna" id="sobre">
+          <p class="rodape-coluna-titulo">Sobre</p>
+          <a href="#">Quem somos</a>
+          <a href="#">Carreiras</a>
+          <a href="#">Imprensa</a>
+        </div>
+        <div class="rodape-coluna" id="ajuda">
+          <p class="rodape-coluna-titulo">Suporte</p>
+          <a href="#">Contato</a>
+          <a href="#">Trocas e devoluções</a>
+          <a href="#">Frete</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="rodape-coluna">
+          <p class="rodape-coluna-titulo">Redes sociais</p>
+          <div class="rodape-redes">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TT</a>
+            <a href="#" aria-label="X">X</a>
+          </div>
+        </div>
+      </div>
+      <div class="rodape-final">
+        <span>© 2026 Sola. Todos os direitos reservados.</span>
+        <span>Termos de Uso · Política de Privacidade</span>
+      </div>
+    </footer>
+
+    <script src="assets/js/core.js"></script>
+    <script src="assets/js/animacoes.js"></script>
+    <script src="assets/js/navegacao.js"></script>
+    <script src="assets/js/dialogos.js"></script>
+    <script src="assets/js/catalogo.js"></script>
+    <script src="assets/js/autenticacao.js"></script>
+  </body>
+</html>
