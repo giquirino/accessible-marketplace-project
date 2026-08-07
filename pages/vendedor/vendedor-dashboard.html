@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard da loja · Sola Vendedor</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+  </head>
+  <body id="pagina-vendedor-dashboard">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-grade"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="8" height="8" rx="1.5" />
+          <rect x="13" y="3" width="8" height="8" rx="1.5" />
+          <rect x="3" y="13" width="8" height="8" rx="1.5" />
+          <rect x="13" y="13" width="8" height="8" rx="1.5" />
+        </symbol>
+        <symbol
+          id="icone-tenis"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M3 16.2c0-1.1.8-2.1 1.9-2.6L11 10c1-.9 2-1.2 3-.9l4 1.3c1 .3 1.8 1 2.1 2l1 3.1c.3 1-.4 2-1.4 2.2-2.7.6-9.8 1.3-14.9.3-1-.2-1.8-1-1.8-1.8Z"
+          />
+          <path d="M3 16.4h18" />
+          <path d="M8 10 7 13.3" />
+        </symbol>
+        <symbol
+          id="icone-camadas"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+          <path d="M2 12l10 5 10-5" />
+          <path d="M2 17l10 5 10-5" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="painel">
+      <aside id="menu-lateral">
+        <button
+          class="botao-menu botao-fechar-menu"
+          type="button"
+          data-abrir-menu
+          aria-label="Fechar menu"
+          aria-expanded="false"
+        >
+          <span class="botao-menu-barra"></span>
+          <span class="botao-menu-barra"></span>
+        </button>
+        <div>
+          <div class="menu-marca">
+            <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+            <span class="marca-texto">Sola</span>
+          </div>
+          <nav class="menu-lista" aria-label="Navegação do vendedor">
+            <a class="item-menu ativo" href="vendedor-dashboard.html">
+              <svg class="icone"><use href="#icone-grade"></use></svg>
+              Dashboard da loja
+            </a>
+            <a class="item-menu" href="vendedor-dados-loja.html">
+              <img class="icone" src="../../assets/icons/icone-loja.png" alt="" />
+              Dados da loja
+            </a>
+            <a class="item-menu" href="vendedor-tenis.html">
+              <svg class="icone"><use href="#icone-tenis"></use></svg>
+              Lista de tênis
+            </a>
+            <a class="item-menu" href="vendedor-estoque.html">
+              <svg class="icone"><use href="#icone-camadas"></use></svg>
+              Estoque
+            </a>
+            <a class="item-menu" href="vendedor-pedidos.html">
+              <img class="icone" src="../../assets/icons/icone-caixa.png" alt="" />
+              Pedidos recebidos
+            </a>
+            <a class="item-menu" href="vendedor-avaliacoes.html">
+              <img class="icone" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              Avaliações recebidas
+            </a>
+          </nav>
+        </div>
+        <div class="menu-rodape">
+          <a href="vendedor-minha-conta.html" class="usuario link-limpo">
+            <span class="avatar-editavel">
+              <span class="avatar" data-avatar-usuario>
+                <span class="avatar-iniciais">FD</span>
+              </span>
+              <span class="avatar-editar-selo" aria-hidden="true">
+                <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+              </span>
+            </span>
+            <div>
+              <p class="usuario-nome">Fernanda Duarte</p>
+              <p class="usuario-papel">Nova Kicks</p>
+            </div>
+          </a>
+          <button class="trocar-modo" type="button" data-abrir="dialogo-sair">
+            <img class="icone icone-pequeno" src="../../assets/icons/icone-logout.png" alt="" />
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <div id="area-principal">
+        <header id="topo">
+          <div class="linha">
+            <button
+              class="botao-menu"
+              type="button"
+              data-abrir-menu
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <span class="botao-menu-barra"></span>
+              <span class="botao-menu-barra"></span>
+            </button>
+            <div>
+              <p class="topo-rotulo">Vendedor</p>
+              <h1 class="topo-titulo">Dashboard da loja</h1>
+            </div>
+          </div>
+          <div class="topo-acoes">
+            <button
+              class="botao-icone"
+              type="button"
+              data-abrir="dialogo-notificacoes"
+              aria-label="Notificações"
+            >
+              <img class="icone" src="../../assets/icons/icone-notificacao.png" alt="" />
+            </button>
+            <a class="avatar avatar-pequeno" data-avatar-usuario href="vendedor-minha-conta.html">
+              <span class="avatar-iniciais">FD</span>
+            </a>
+          </div>
+        </header>
+
+        <main id="conteudo">
+          <div id="cabecalho-pagina">
+            <div>
+              <h2 class="titulo-pagina">Olá, Nova Kicks</h2>
+              <p class="subtitulo-pagina">Resumo do desempenho da sua loja em julho de 2026.</p>
+            </div>
+          </div>
+
+          <div id="grade-numeros">
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Vendas no mês</p>
+              <p class="numero-valor">R$ 18.420,00</p>
+              <p class="numero-variacao variacao-subiu">↑ 12% vs. mês anterior</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Pedidos pendentes</p>
+              <p class="numero-valor">7</p>
+              <p class="numero-variacao">2 novos hoje</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Avaliação média</p>
+              <p class="numero-valor">4.8</p>
+              <p class="numero-variacao">312 avaliações</p>
+            </div>
+            <div class="cartao-numero">
+              <p class="numero-rotulo">Produtos ativos</p>
+              <p class="numero-valor">24</p>
+              <p class="numero-variacao variacao-subiu">3 adicionados este mês</p>
+            </div>
+          </div>
+
+          <div class="cartao-grafico">
+            <p class="grafico-titulo">Vendas dos últimos 7 dias</p>
+            <div class="barras">
+              <div style="height: 52%"></div>
+              <div style="height: 68%"></div>
+              <div style="height: 38%"></div>
+              <div style="height: 81%"></div>
+              <div style="height: 60%"></div>
+              <div style="height: 74%"></div>
+              <div class="barra-alta" style="height: 100%"></div>
+            </div>
+            <div class="barras-rotulos">
+              <span>Seg</span>
+              <span>Ter</span>
+              <span>Qua</span>
+              <span>Qui</span>
+              <span>Sex</span>
+              <span>Sáb</span>
+              <span>Dom</span>
+            </div>
+          </div>
+
+          <div
+            style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: start"
+          >
+            <div class="quadro-tabela">
+              <table class="tabela">
+                <thead>
+                  <tr>
+                    <th>Pedido</th>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#SOLA-3391</td>
+                    <td>Marcos Aurélio</td>
+                    <td>Volker Strike 2</td>
+                    <td>R$ 549,90</td>
+                    <td><span class="etiqueta etiqueta-amarela">Novo</span></td>
+                  </tr>
+                  <tr>
+                    <td>#SOLA-3390</td>
+                    <td>Juliana Prado</td>
+                    <td>Kaya Street Low</td>
+                    <td>R$ 349,90</td>
+                    <td><span class="etiqueta etiqueta-cinza">Em preparação</span></td>
+                  </tr>
+                  <tr>
+                    <td>#SOLA-3388</td>
+                    <td>Bianca Ferraz</td>
+                    <td>Zenith Air Zero</td>
+                    <td>R$ 899,00</td>
+                    <td><span class="etiqueta etiqueta-verde">Enviado</span></td>
+                  </tr>
+                  <tr>
+                    <td>#SOLA-3385</td>
+                    <td>Diego Salomão</td>
+                    <td>Nortek Retro 90</td>
+                    <td>R$ 419,00</td>
+                    <td><span class="etiqueta etiqueta-verde">Entregue</span></td>
+                  </tr>
+                  <tr>
+                    <td>#SOLA-3381</td>
+                    <td>Helena Vidal</td>
+                    <td>Astra Trail X</td>
+                    <td>R$ 399,90</td>
+                    <td><span class="etiqueta etiqueta-vermelha">Cancelado</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1.4rem">
+              <div class="avaliacao">
+                <div class="avaliacao-topo">
+                  <div class="avaliacao-usuario">
+                    <span class="avatar avatar-pequeno">MP</span>
+                    <div>
+                      <p class="avaliacao-autor">Marina Paiva</p>
+                      <p class="avaliacao-produto">Volker Cloud</p>
+                    </div>
+                  </div>
+                  <div class="avaliacao-estrelas">
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                  </div>
+                </div>
+                <p class="avaliacao-mensagem">"Muito confortável e chegou antes do prazo!"</p>
+              </div>
+              <div class="avaliacao">
+                <div class="avaliacao-topo">
+                  <div class="avaliacao-usuario">
+                    <span class="avatar avatar-pequeno">TS</span>
+                    <div>
+                      <p class="avaliacao-autor">Thiago Souza</p>
+                      <p class="avaliacao-produto">Zenith Pulse</p>
+                    </div>
+                  </div>
+                  <div class="avaliacao-estrelas">
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img src="../../assets/icons/icone-estrela-field.png" alt="" />
+                    <img class="vazia" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+                  </div>
+                </div>
+                <p class="avaliacao-mensagem">
+                  "Ótimo tênis de basquete, só achei o cadarço curto."
+                </p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+    <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-notificacoes">Notificações</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            <strong>Pedido #SOLA-3391 a caminho.</strong>
+            <br />
+            Saiu para entrega hoje de manhã.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Avaliação respondida.</strong>
+            <br />
+            A loja Nova Kicks respondeu seu comentário.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Promoção em Corrida.</strong>
+            <br />
+            Cinco modelos com desconto até domingo.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-preto" type="button" data-fechar>Fechar</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <dialog class="dialogo" id="dialogo-sair" aria-labelledby="titulo-sair">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-sair">Sair da conta</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            Você volta para a página inicial e precisa entrar de novo para acessar o painel.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="button" onclick="sair()">Sair</button>
+        </footer>
+      </div>
+    </dialog>
+  </body>
+</html>
