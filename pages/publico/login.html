@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar · Sola</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+  </head>
+  <body id="pagina-login">
+    <div id="tela-acesso">
+      <header id="cabecalho" class="cabecalho-simples">
+        <a class="cabecalho-marca" href="../../index.html">
+          <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+          <span class="marca-texto">Sola</span>
+        </a>
+        <a
+          href="../../index.html"
+          style="font-size: 1.35rem; font-weight: 600; color: var(--cinza)"
+        >
+          Voltar para a loja
+        </a>
+      </header>
+      <main id="area-acesso">
+        <div id="caixa-acesso">
+          <h1 class="acesso-titulo">Entrar</h1>
+          <p class="acesso-subtitulo">
+            Acesse sua conta Sola para acompanhar pedidos e finalizar compras.
+          </p>
+          <form id="form-login">
+            <div class="campo">
+              <label for="login-email">E-mail</label>
+              <input id="login-email" type="email" placeholder="seuemail@exemplo.com" required />
+            </div>
+            <div class="campo">
+              <label for="login-senha">Senha</label>
+              <input id="login-senha" type="password" placeholder="Sua senha" required />
+            </div>
+            <p style="text-align: right; margin-bottom: 1.6rem">
+              <a href="#" style="font-size: 1.3rem; color: var(--cinza)">Esqueci minha senha</a>
+            </p>
+            <button class="botao botao-preto" type="submit">Entrar</button>
+          </form>
+          <div class="acesso-divisor">ou</div>
+          <a
+            class="botao botao-branco"
+            href="cadastro.html"
+            style="width: 100%; justify-content: center"
+          >
+            Criar uma conta
+          </a>
+        </div>
+      </main>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+  </body>
+</html>
