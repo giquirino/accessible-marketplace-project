@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha conta · Sola Admin</title>
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/admin-minha-conta.css" />
+  </head>
+  <body id="pagina-admin-minha-conta">
+    <svg xmlns="http://www.w3.org/2000/svg" class="folha-icones">
+      <defs>
+        <symbol
+          id="icone-grade"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="8" height="8" rx="1.5" />
+          <rect x="13" y="3" width="8" height="8" rx="1.5" />
+          <rect x="3" y="13" width="8" height="8" rx="1.5" />
+          <rect x="13" y="13" width="8" height="8" rx="1.5" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="painel">
+      <aside id="menu-lateral">
+        <button
+          class="botao-menu botao-fechar-menu"
+          type="button"
+          data-abrir-menu
+          aria-label="Fechar menu"
+          aria-expanded="false"
+        >
+          <span class="botao-menu-barra"></span>
+          <span class="botao-menu-barra"></span>
+        </button>
+        <div>
+          <div class="menu-marca">
+            <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
+            <span class="marca-texto">Sola</span>
+          </div>
+          <nav class="menu-lista" aria-label="Navegação do admin">
+            <a class="item-menu" href="admin-dashboard.html">
+              <svg class="icone"><use href="#icone-grade"></use></svg>
+              Dashboard
+            </a>
+            <a class="item-menu" href="admin-moderacao.html">
+              <img class="icone" src="../../assets/icons/icone-escudo.png" alt="" />
+              Moderação de tênis
+            </a>
+            <a class="item-menu" href="admin-categorias.html">
+              <img class="icone" src="../../assets/icons/icone-etiqueta.png" alt="" />
+              Categorias
+            </a>
+            <a class="item-menu" href="admin-marcas.html">
+              <img class="icone" src="../../assets/icons/icone-medalha.png" alt="" />
+              Marcas
+            </a>
+            <a class="item-menu" href="admin-usuarios.html">
+              <img class="icone" src="../../assets/icons/icone-usuarios.png" alt="" />
+              Usuários
+            </a>
+            <a class="item-menu" href="admin-pedidos-pagamentos.html">
+              <img class="icone" src="../../assets/icons/icone-cartao.png" alt="" />
+              Pedidos e pagamentos
+            </a>
+          </nav>
+        </div>
+        <div class="menu-rodape">
+          <a href="admin-minha-conta.html" class="usuario link-limpo">
+            <span class="avatar-editavel">
+              <span class="avatar" data-avatar-usuario>
+                <span class="avatar-iniciais">RL</span>
+              </span>
+              <span class="avatar-editar-selo" aria-hidden="true">
+                <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+              </span>
+            </span>
+            <div>
+              <p class="usuario-nome">Rodrigo Lima</p>
+              <p class="usuario-papel">Administrador</p>
+            </div>
+          </a>
+          <button class="trocar-modo" type="button" data-abrir="dialogo-sair">
+            <img class="icone icone-pequeno" src="../../assets/icons/icone-logout.png" alt="" />
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      <div id="area-principal">
+        <header id="topo">
+          <div class="linha">
+            <button
+              class="botao-menu"
+              type="button"
+              data-abrir-menu
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <span class="botao-menu-barra"></span>
+              <span class="botao-menu-barra"></span>
+            </button>
+            <div>
+              <p class="topo-rotulo">Admin</p>
+              <h1 class="topo-titulo">Minha conta</h1>
+            </div>
+          </div>
+          <div class="topo-acoes">
+            <button
+              class="botao-icone"
+              type="button"
+              data-abrir="dialogo-notificacoes"
+              aria-label="Notificações"
+            >
+              <img class="icone" src="../../assets/icons/icone-notificacao.png" alt="" />
+            </button>
+            <a class="avatar avatar-pequeno" data-avatar-usuario href="admin-minha-conta.html">
+              <span class="avatar-iniciais">RL</span>
+            </a>
+          </div>
+        </header>
+
+        <main id="conteudo">
+          <div class="cartao-form">
+            <div class="bloco-form">
+              <p class="bloco-form-titulo">Foto do perfil</p>
+              <p class="bloco-form-dica">Aparece no menu lateral e no topo de todas as páginas.</p>
+              <div class="linha-foto-perfil">
+                <label class="avatar-editavel avatar-editavel-grande" for="campo-foto-perfil">
+                  <span class="avatar avatar-grande" data-avatar-usuario>
+                    <span class="avatar-iniciais">RL</span>
+                  </span>
+                  <span class="avatar-editar-selo" aria-hidden="true">
+                    <img class="icone" src="../../assets/icons/icone-editar.png" alt="" />
+                  </span>
+                </label>
+                <div class="linha-foto-perfil-acoes">
+                  <p class="linha-foto-perfil-nome">Rodrigo Lima</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    id="campo-foto-perfil"
+                    data-campo-foto
+                    hidden
+                  />
+                  <button class="botao-texto" type="button" data-remover-foto>
+                    Remover foto atual
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bloco-form">
+              <p class="bloco-form-titulo">Dados pessoais</p>
+              <div class="grade-form">
+                <div class="campo">
+                  <label for="conta-nome">Nome completo</label>
+                  <input id="conta-nome" type="text" value="Rodrigo Lima" />
+                </div>
+                <div class="campo">
+                  <label for="conta-email">E-mail de acesso</label>
+                  <input id="conta-email" type="email" value="rodrigo.lima@sola.com" />
+                </div>
+                <div class="campo">
+                  <label for="conta-telefone">Telefone</label>
+                  <input id="conta-telefone" type="text" value="(11) 98040-6621" />
+                </div>
+              </div>
+            </div>
+
+            <div class="bloco-form">
+              <div style="display: flex; gap: 1.2rem">
+                <button class="botao botao-preto" type="button">Salvar alterações</button>
+                <button class="botao botao-vermelho" type="button" data-abrir="dialogo-sair">
+                  Sair da conta
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../../assets/js/core.js"></script>
+    <script src="../../assets/js/animacoes.js"></script>
+    <script src="../../assets/js/navegacao.js"></script>
+    <script src="../../assets/js/dialogos.js"></script>
+    <script src="../../assets/js/catalogo.js"></script>
+    <script src="../../assets/js/autenticacao.js"></script>
+    <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-notificacoes">Notificações</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            <strong>Pedido #SOLA-3391 a caminho.</strong>
+            <br />
+            Saiu para entrega hoje de manhã.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Avaliação respondida.</strong>
+            <br />
+            A loja Nova Kicks respondeu seu comentário.
+          </p>
+          <p class="dialogo-texto">
+            <strong>Promoção em Corrida.</strong>
+            <br />
+            Cinco modelos com desconto até domingo.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-preto" type="button" data-fechar>Fechar</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <dialog class="dialogo" id="dialogo-sair" aria-labelledby="titulo-sair">
+      <div class="dialogo-caixa">
+        <header class="dialogo-topo">
+          <h2 class="dialogo-titulo" id="titulo-sair">Sair da conta</h2>
+          <button class="botao-icone" type="button" data-fechar aria-label="Fechar">
+            <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
+          </button>
+        </header>
+        <div class="dialogo-corpo">
+          <p class="dialogo-texto">
+            Você volta para a página inicial e precisa entrar de novo para acessar o painel.
+          </p>
+        </div>
+        <footer class="dialogo-rodape">
+          <button class="botao botao-branco" type="button" data-fechar>Cancelar</button>
+          <button class="botao botao-preto" type="button" onclick="sair()">Sair</button>
+        </footer>
+      </div>
+    </dialog>
+  </body>
+</html>
