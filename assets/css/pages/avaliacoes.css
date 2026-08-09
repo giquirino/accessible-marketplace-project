@@ -4,7 +4,6 @@
   gap: 1.6rem;
 }
 
-/* Cada avaliação ganha um respiro maior que o cartão padrão */
 
 #pagina-avaliacoes .avaliacao {
   padding: 2rem;
@@ -14,7 +13,6 @@
   margin-bottom: 1.2rem;
 }
 
-/* Miniatura + identificação do produto avaliado */
 
 #pagina-avaliacoes .avaliacao-item {
   display: flex;
@@ -23,7 +21,6 @@
   flex: 1;
 }
 
-/* Nome do produto em destaque dentro do cartão */
 
 #pagina-avaliacoes .avaliacao-produto {
   font-size: 1.6rem;
@@ -31,7 +28,6 @@
   margin-bottom: 0.4rem;
 }
 
-/* Editar / excluir */
 
 #pagina-avaliacoes .avaliacao-acoes {
   display: flex;
