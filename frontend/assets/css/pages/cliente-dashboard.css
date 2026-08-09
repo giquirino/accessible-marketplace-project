@@ -5,13 +5,11 @@
   margin-bottom: 2.4rem;
 }
 
-/* Lista dentro de um cartão */
 
 #pagina-cliente-dashboard .lista-blocos {
   margin-top: 2rem;
 }
 
-/* Linha de pedido: código + situação */
 
 #pagina-cliente-dashboard .linha-pedido {
   display: flex;
@@ -26,7 +24,6 @@
   margin-bottom: 0.4rem;
 }
 
-/* Linha de item do carrinho: miniatura + descrição */
 
 #pagina-cliente-dashboard .linha-item {
   display: flex;
@@ -51,7 +48,6 @@
   color: var(--preto);
 }
 
-/* Total do carrinho */
 
 #pagina-cliente-dashboard #total-carrinho {
   display: flex;
@@ -71,7 +67,6 @@
   color: var(--preto);
 }
 
-/* Botão que ocupa a largura do cartão */
 
 #pagina-cliente-dashboard #bloco-cta {
   width: 100%;
@@ -79,7 +74,6 @@
   margin-top: 1.6rem;
 }
 
-/* "Ver todos" */
 
 #pagina-cliente-dashboard .ver-todos {
   display: inline-block;
@@ -93,7 +87,6 @@
   margin-top: 0;
 }
 
-/* Cabeçalho de seção com ação à direita */
 
 #pagina-cliente-dashboard #cabecalho-secao {
   display: flex;
@@ -102,7 +95,6 @@
   margin-bottom: 2rem;
 }
 
-/* Vitrine de recomendados em 4 colunas */
 
 #pagina-cliente-dashboard .quatro-colunas {
   grid-template-columns: repeat(4, 1fr);
