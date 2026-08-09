@@ -1444,6 +1444,20 @@ table {
   overflow: hidden;
 }
 
+.destaque-topo {
+  min-height: 64rem;
+  background-image: url('../img/tenis-verde-lading.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.destaque-conteudo {
+  position: relative;
+  z-index: 2;
+  max-width: 52rem;
+}
+
 .destaque-rotulo {
   font-size: 1.3rem;
   font-weight: 700;
@@ -1452,7 +1466,7 @@ table {
 }
 
 .destaque-titulo {
-  font-size: clamp(5.6rem,11vw,15.2rem);
+  font-size: clamp(5.6rem,8.5vw,11.2rem);
   line-height: .92;
   margin-bottom: 2.4rem;
 }
@@ -1473,10 +1487,24 @@ table {
 
 .destaque-canto {
   position: absolute;
+  z-index: 2;
   top: 6.4rem;
   right: 4.8rem;
   text-align: right;
   font-size: 1.25rem;
+  color: var(--cinza);
+  line-height: 1.6;
+}
+
+.destaque-legenda {
+  position: absolute;
+  z-index: 2;
+  right: 4.8rem;
+  bottom: 2.4rem;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: var(--cinza);
   line-height: 1.6;
 }
@@ -1524,6 +1552,41 @@ table {
 .faixa-categorias-mais a {
   color: rgba(255,255,255,.7);
   font-size: 1.35rem;
+}
+
+.secao-vitrine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 4.8rem;
+  background: var(--fundo);
+}
+
+.vitrine-foto {
+  overflow: hidden;
+  background: var(--fundo);
+}
+
+.vitrine-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.vitrine-titulo {
+  font-size: 5.2rem;
+  line-height: 1.1;
+  margin-bottom: 1.6rem;
+}
+
+.vitrine-legenda {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cinza);
+  line-height: 1.6;
 }
 
 #faixa-vantagens {
@@ -1981,7 +2044,12 @@ table {
   }
 
   .destaque {
-    padding: 4rem 2.4rem 0;
+    padding: 4rem 2.4rem 3.2rem;
+    min-height: 0;
+  }
+
+  .destaque-conteudo {
+    max-width: none;
   }
 
   .destaque-canto {
@@ -1990,9 +2058,25 @@ table {
     margin-bottom: 1.6rem;
   }
 
+  .destaque-topo {
+    min-height: 44rem;
+    background-position: center bottom;
+  }
+
+  .destaque-legenda {
+    position: static;
+    text-align: left;
+    margin-top: 1.6rem;
+  }
+
   #grade-categorias,
-  #faixa-vantagens {
+  #faixa-vantagens,
+  .secao-vitrine {
     grid-template-columns: 1fr;
+  }
+
+  .secao-vitrine {
+    padding: 4rem 2.4rem;
   }
 
   #area-checkout {
