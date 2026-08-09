@@ -1417,6 +1417,9 @@ table {
 .foto-exemplo {
   border-radius: var(--canto-m);
   background: var(--cinza-fundo);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .foto-destaque {
@@ -1436,6 +1439,20 @@ table {
   height: 7.2rem;
   flex-shrink: 0;
 }
+
+/* Destaques de acessibilidade e o guia visual de Libras. */
+:root { --laranja: #d75216; --laranja-claro: #fff0e8; }
+:focus-visible { outline: .35rem solid var(--laranja); outline-offset: .3rem; }
+.pilula.ativo, .pilula[aria-pressed="true"] { background: var(--laranja); border-color: var(--laranja); }
+
+/* Orientação textual selecionável para tradução pelo VLibras. */
+.orientacao-vlibras { margin: 0 0 2.4rem; padding: 1.8rem 2rem; border: .1rem solid var(--laranja); border-left: .5rem solid var(--laranja); border-radius: var(--canto-m); background: var(--laranja-claro); }
+.orientacao-vlibras h2 { margin-bottom: .8rem; font-size: 1.9rem; }.orientacao-vlibras-dica { margin-top: .8rem; color: var(--cinza-texto); font-size: 1.3rem; }
+/* O widget oficial cria seus próprios elementos; esta regra impede sobreposição pelo site. */
+div[vw] { z-index: 10000 !important; } div[vw-access-button] { outline-offset: .35rem; } div[vw-plugin-wrapper] { z-index: 10001 !important; }
+@media (max-width: 600px) { .orientacao-vlibras { padding: 1.4rem; } div[vw-plugin-wrapper] { max-width: calc(100vw - 1.6rem); } }
+
+.botao-preto:hover { background: var(--laranja); }
 
 .destaque {
   position: relative;
@@ -2664,5 +2681,8 @@ body > section:first-of-type {
 input[type="range"],
 input[type="checkbox"],
 input[type="radio"] {
-  accent-color: var(--preto);
+  accent-color: var(--laranja);
 }
+
+/* Mantém os estados ativos em laranja mesmo após regras específicas das páginas. */
+.pilula.ativo, .pilula[aria-pressed="true"] { background: var(--laranja); border-color: var(--laranja); }

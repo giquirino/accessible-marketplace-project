@@ -14,5 +14,6 @@ export const config = {
   port: Number(process.env.PORT || 3000),
   databaseUrl: process.env.DATABASE_URL,
   jwtSecret: process.env.JWT_SECRET,
-  frontendOrigin: process.env.FRONTEND_ORIGIN || 'http://localhost:5500'
+  frontendOrigin: process.env.FRONTEND_ORIGIN || 'http://localhost:5500',
+  pexelsApiKey: process.env.PEXELS_API_KEY
 };

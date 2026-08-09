@@ -9,11 +9,54 @@ import { validar, schemas } from './validation.js';
 
 const app = express();
 app.use(helmet());
-app.use(cors({ origin: config.frontendOrigin }));
+const origensPermitidas = new Set([
+  config.frontendOrigin,
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
+]);
+app.use(cors({ origin(origin, callback) {
+  if (!origin || origensPermitidas.has(origin)) return callback(null, true);
+  callback(new Error('Origem n\u00e3o permitida pelo CORS.'));
+} }));
 app.use(express.json({ limit: '100kb' }));
 app.use('/api/auth', rateLimit({ windowMs: 15 * 60 * 1000, max: 20, standardHeaders: true, legacyHeaders: false }));
 
 app.get('/api/saude', async (_req, res, next) => { try { await pool.query('SELECT 1'); res.json({ status: 'ok' }); } catch (e) { next(e); } });
+
+app.get('/api/imagens/tenis', async (req, res, next) => {
+  try {
+    const busca = String(req.query.q || 'running sneakers').slice(0, 80);
+    const categoria = String(req.query.categoria || '').toLowerCase();
+    const consultasPorCategoria = {
+      corrida: 'running sneakers shoe', casual: 'casual sneakers shoe', basquete: 'basketball sneakers shoe',
+      skate: 'skateboarding sneakers shoe', caminhada: 'walking sneakers shoe', trilha: 'hiking shoes'
+    };
+    const chaveCategoria = Object.keys(consultasPorCategoria).find((chave) => categoria.includes(chave));
+    const consulta = consultasPorCategoria[chaveCategoria] || 'closed toe sneakers shoe';
+    if (config.pexelsApiKey) {
+      const resposta = await fetch(`https://api.pexels.com/v1/search?query=${encodeURIComponent(consulta)}&per_page=10&orientation=landscape`, {
+        headers: { Authorization: config.pexelsApiKey }
+      });
+      if (resposta.ok) {
+        const dados = await resposta.json();
+        const fotos = dados.photos || [];
+        const foto = fotos[Math.abs([...busca].reduce((s, letra) => s + letra.charCodeAt(0), 0)) % fotos.length];
+        if (foto) return res.json({ url: foto.src.large, alt: foto.alt || busca, autor: foto.photographer, pagina: foto.url, fonte: 'Pexels' });
+      }
+    }
+    const parametros = new URLSearchParams({ action: 'query', format: 'json', generator: 'search', gsrsearch: consulta, gsrnamespace: '6', gsrlimit: '10', prop: 'imageinfo', iiprop: 'url', iiurlwidth: '800', origin: '*' });
+    const resposta = await fetch(`https://commons.wikimedia.org/w/api.php?${parametros}`, { headers: { 'User-Agent': 'SolaMarketplace/1.0 (catalog image search)' } });
+    if (!resposta.ok) return res.status(502).json({ erro: 'N\u00e3o foi poss\u00edvel obter imagens.' });
+    const dados = await resposta.json();
+    const paginas = Object.values(dados.query?.pages || {}).filter((item) => item.imageinfo?.[0]?.thumburl || item.imageinfo?.[0]?.url);
+    const pagina = paginas[Math.abs([...busca].reduce((s, letra) => s + letra.charCodeAt(0), 0)) % paginas.length];
+    const imagem = pagina?.imageinfo?.[0];
+    if (!imagem) return res.status(404).json({ erro: 'Nenhuma imagem encontrada.' });
+    res.json({ url: imagem.thumburl || imagem.url, alt: pagina.title.replace(/^File:/, ''), autor: 'Wikimedia Commons', pagina: imagem.descriptionurl || `https://commons.wikimedia.org/wiki/${encodeURIComponent(pagina.title.replace(/ /g, '_'))}`, fonte: 'Wikimedia Commons' });
+  } catch (e) { next(e); }
+});
 
 app.post('/api/auth/cadastro', validar(schemas.cadastro), async (req, res, next) => {
   try {
@@ -41,9 +84,11 @@ app.get('/api/tenis', async (req, res, next) => {
   try {
     const { busca = '', marca, categoria } = req.query;
     const { rows } = await pool.query(`SELECT t.id_tenis,t.nome,t.descricao,t.preco,t.status,m.nome AS marca,c.nome AS categoria,l.nome AS loja,
-      COALESCE(json_agg(DISTINCT f.url) FILTER (WHERE f.url IS NOT NULL), '[]') AS fotos
+      COALESCE(json_agg(DISTINCT f.url) FILTER (WHERE f.url IS NOT NULL), '[]') AS fotos,
+      MIN(es.id_em_estoque) FILTER (WHERE es.quantidade > 0) AS id_estoque
       FROM tenis t JOIN marcas m ON m.id_marca=t.fk_id_marca JOIN categorias c ON c.id_categoria=t.fk_id_categoria JOIN lojas l ON l.id_loja=t.fk_id_loja
-      LEFT JOIN fotos_tenis f ON f.fk_id_tenis=t.id_tenis WHERE t.status='ativo' AND t.nome ILIKE $1
+      LEFT JOIN fotos_tenis f ON f.fk_id_tenis=t.id_tenis LEFT JOIN em_estoque es ON es.fk_id_tenis=t.id_tenis
+      WHERE t.status='ativo' AND t.nome ILIKE $1
       AND ($2::bigint IS NULL OR t.fk_id_marca=$2) AND ($3::bigint IS NULL OR t.fk_id_categoria=$3)
       GROUP BY t.id_tenis,m.nome,c.nome,l.nome ORDER BY t.id_tenis DESC LIMIT 50`, [`%${busca}%`, marca || null, categoria || null]);
     res.json(rows);

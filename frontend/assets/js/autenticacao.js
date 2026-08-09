@@ -8,22 +8,24 @@
     return 'cliente';
   }
 
-  function entrarComo(tipo, dados) {
+  function entrarComo(tipo, dados, token) {
     localStorage.setItem('usuarioAtual', JSON.stringify(dados));
     localStorage.setItem('tipoUsuario', tipo);
+    if (token) localStorage.setItem('token', token);
     window.location.href = Sola.url(Sola.inicioPorTipo[tipo] || Sola.inicioPorTipo.cliente);
   }
 
   window.sair = function () {
     localStorage.removeItem('usuarioAtual');
     localStorage.removeItem('tipoUsuario');
+    localStorage.removeItem('token');
     window.location.href = Sola.url('index.html');
   };
 
   document.addEventListener('DOMContentLoaded', function () {
     var formLogin = document.getElementById('form-login');
     if (formLogin) {
-      formLogin.addEventListener('submit', function (e) {
+      formLogin.addEventListener('submit', async function (e) {
         e.preventDefault();
         var email = document.getElementById('login-email').value;
         var senha = document.getElementById('login-senha').value;
@@ -31,14 +33,16 @@
           alert('Preencha o e-mail e a senha para entrar.');
           return;
         }
-        var tipo = tipoDeUsuarioPeloEmail(email);
-        entrarComo(tipo, { email: email, tipo: tipo, dataLogin: new Date().toISOString() });
+        try {
+          var resultado = await Sola.api('/auth/login', { method: 'POST', body: JSON.stringify({ email: email, senha: senha }) });
+          entrarComo(resultado.usuario.tipo, resultado.usuario, resultado.token);
+        } catch (erro) { alert(erro.message); }
       });
     }
 
     var formCadastro = document.getElementById('form-cadastro');
     if (formCadastro) {
-      formCadastro.addEventListener('submit', function (e) {
+      formCadastro.addEventListener('submit', async function (e) {
         e.preventDefault();
         var nome = document.getElementById('cadastro-nome').value;
         var email = document.getElementById('cadastro-email').value;
@@ -58,8 +62,10 @@
           alert('Aceite os Termos de Uso para criar a conta.');
           return;
         }
-        var tipo = tipoDeUsuarioPeloEmail(email);
-        entrarComo(tipo, { nome: nome, email: email, tipo: tipo, dataCadastro: new Date().toISOString() });
+        try {
+          var resultado = await Sola.api('/auth/cadastro', { method: 'POST', body: JSON.stringify({ nome: nome, email: email, senha: senha, tipo: 'cliente' }) });
+          entrarComo(resultado.usuario.tipo, resultado.usuario, resultado.token);
+        } catch (erro) { alert(erro.message); }
       });
     }
 
