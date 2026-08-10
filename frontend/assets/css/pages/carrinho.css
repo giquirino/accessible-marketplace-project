@@ -1,3 +1,88 @@
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.8rem 0;
+  border-bottom: 0.1rem solid var(--borda);
+}
+
+.item-carrinho:last-child {
+  border-bottom: none;
+}
+
+.carrinho-info {
+  flex: 1;
+}
+
+.carrinho-nome {
+  font-weight: 700;
+  font-size: 1.45rem;
+  margin-bottom: 0.3rem;
+}
+
+.carrinho-variacao {
+  font-size: 1.25rem;
+  color: var(--cinza);
+}
+
+.contador-qtd {
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid var(--borda);
+  border-radius: var(--canto-redondo);
+}
+
+.contador-qtd button {
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  color: var(--preto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contador-qtd span {
+  width: 2.6rem;
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.carrinho-preco {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.5rem;
+  width: 10rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+@media (max-width:40rem) {
+.item-carrinho {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+
+.carrinho-info {
+    flex-basis: calc(100% - 8.8rem);
+  }
+
+.carrinho-preco {
+    width: auto;
+    margin-left: auto;
+  }
+}
+
+.contador-qtd button {
+  transition: background-color var(--dur-rapida) var(--suave);
+}
+
+.contador-qtd button:hover {
+  background: var(--fundo);
+}
+
 #pagina-carrinho #itens-carrinho {
   padding: 0.8rem 2.4rem;
 }

@@ -1,0 +1,78 @@
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.paginacao-info {
+  font-size: 1.3rem;
+  color: var(--cinza);
+}
+
+.paginacao-botoes {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.paginacao-botoes button {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--canto-p);
+  border: 0.1rem solid var(--borda);
+  background: var(--branco);
+  font-size: 1.35rem;
+  color: var(--cinza-escuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginacao-botoes button.ativo {
+  background: var(--preto);
+  color: var(--branco);
+  border-color: var(--preto);
+}
+
+.paginacao-botoes button .icone {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.produto-foto {
+  aspect-ratio: 1/1;
+  background: var(--fundo);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--borda);
+}
+
+.produto-foto .icone {
+  width: 5.6rem;
+  height: 5.6rem;
+}
+
+.produto-etiqueta {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+}
+
+.produto-estoque {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+}
+
+.paginacao-botoes button.ativo { background: var(--laranja); border-color: var(--laranja); color: var(--branco); }
+
+.paginacao-botoes button.ativo:hover { background: var(--roxo); border-color: var(--roxo); }
+
+.paginacao-botoes button.ativo img.icone {
+  filter: brightness(0) invert(1);
+}

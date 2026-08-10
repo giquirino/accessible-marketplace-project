@@ -1,0 +1,87 @@
+.escolha-status {
+  display: flex;
+  gap: 1rem;
+}
+
+.escolha-status label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 0.15rem solid var(--borda);
+  border-radius: var(--canto-redondo);
+  padding: 0.96rem 1.92rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cinza);
+}
+
+.escolha-status input {
+  accent-color: var(--preto);
+}
+
+.escolha-status label:has(input:checked) {
+  border-color: var(--preto);
+  color: var(--preto);
+  background: var(--fundo);
+}
+
+#grade-imagens {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 1.2rem;
+}
+
+.vaga-imagem {
+  aspect-ratio: 1/1;
+  border: 0.15rem dashed #cfccc4;
+  border-radius: var(--canto-m);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--borda);
+  background: var(--fundo);
+}
+
+.vaga-imagem.com-imagem {
+  border-style: solid;
+  border-color: var(--borda);
+  color: var(--cinza);
+}
+
+.vaga-imagem .icone {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+#tabela-variacoes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.4rem;
+}
+
+#tabela-variacoes th {
+  text-align: left;
+  font-size: 1.25rem;
+  color: var(--cinza);
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+}
+
+#tabela-variacoes td {
+  padding: 0.6rem 1rem;
+}
+
+#tabela-variacoes input,
+#tabela-variacoes select {
+  width: 100%;
+  padding: 0.8rem 1.12rem;
+  border: 0.1rem solid var(--borda);
+  border-radius: var(--canto-p);
+  font-family: inherit;
+  font-size: 1.35rem;
+}
+
+#tabela-variacoes .botao-icone {
+  width: 3.2rem;
+  height: 3.2rem;
+}

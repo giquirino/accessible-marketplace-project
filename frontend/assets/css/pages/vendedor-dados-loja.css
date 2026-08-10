@@ -1,0 +1,17 @@
+#pagina-vendedor-dados-loja .caixa-envio-ativa {
+  border-color: var(--preto);
+  background: var(--fundo);
+}
+
+#pagina-vendedor-dados-loja [data-campo-logo]:focus-visible + .caixa-envio {
+  outline: 0.2rem solid var(--preto);
+  outline-offset: 0.2rem;
+}
+
+#pagina-vendedor-dados-loja .logo-loja-previa {
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: var(--canto-m);
+  border: 0.1rem solid var(--borda);
+}

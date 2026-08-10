@@ -3,26 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demonstração do Fluxo de Autenticação - Sola</title>
+    <title>Demonstração do Fluxo de Autenticação - Last Dance Club</title>
     <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/globalPublico.css" />
     <link rel="stylesheet" href="../../assets/css/pages/demo-fluxo.css" />
   </head>
   <body id="pagina-demo-fluxo">
+    <a class="pular-conteudo" href="#area-demo">Pular para o conteúdo</a>
     <header id="cabecalho">
       <a class="cabecalho-marca" href="../../index.html">
         <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
-        <span class="marca-texto">Sola</span>
+        <span class="marca-texto">Last Dance Club</span>
       </a>
       <nav class="cabecalho-links">
         <a href="../../index.html">Voltar para a loja</a>
       </nav>
     </header>
 
-    <div id="area-demo">
+    <main id="area-demo" tabindex="-1">
       <div class="demo-secao">
         <h2>Demonstração do Sistema de Autenticação</h2>
         <p style="font-size: 1.6rem; color: var(--cinza); margin-top: 0.8rem">
-          Este é o novo fluxo de autenticação da Sola. O sistema detecta automaticamente o tipo de
+          Este é o novo fluxo de autenticação da Last Dance Club. O sistema detecta automaticamente o tipo de
           usuário baseado no domínio do e-mail e redireciona para o dashboard apropriado.
         </p>
       </div>
@@ -169,7 +171,7 @@
           <a href="../admin/admin-dashboard.html" class="botao botao-branco">Dashboard Admin</a>
         </div>
       </div>
-    </div>
+    </main>
 
     <script>
       function testarEmail() {

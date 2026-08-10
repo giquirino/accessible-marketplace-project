@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Entrar · Sola</title>
+    <title>Entrar · Last Dance Club</title>
     <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/globalPublico.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/login.css" />
   </head>
   <body id="pagina-login">
+    <a class="pular-conteudo" href="#area-acesso">Pular para o conteúdo</a>
     <div id="tela-acesso">
       <header id="cabecalho" class="cabecalho-simples">
         <a class="cabecalho-marca" href="../../index.html">
           <img class="marca-logo" src="../../assets/img/Logo.png" alt="" />
-          <span class="marca-texto">Sola</span>
+          <span class="marca-texto">Last Dance Club</span>
         </a>
         <a
           href="../../index.html"
@@ -20,11 +23,11 @@
           Voltar para a loja
         </a>
       </header>
-      <main id="area-acesso">
+      <main id="area-acesso" tabindex="-1">
         <div id="caixa-acesso">
           <h1 class="acesso-titulo">Entrar</h1>
           <p class="acesso-subtitulo">
-            Acesse sua conta Sola para acompanhar pedidos e finalizar compras.
+            Acesse sua conta Last Dance Club para acompanhar pedidos e finalizar compras.
           </p>
           <form id="form-login">
             <div class="campo">
@@ -36,7 +39,7 @@
               <input id="login-senha" type="password" placeholder="Sua senha" required />
             </div>
             <p style="text-align: right; margin-bottom: 1.6rem">
-              <a href="#" style="font-size: 1.3rem; color: var(--cinza)">Esqueci minha senha</a>
+              <span class="link-indisponivel" style="font-size: 1.3rem; color: var(--cinza)">Esqueci minha senha<span class="apenas-leitor">(em breve)</span></span>
             </p>
             <button class="botao botao-preto" type="submit">Entrar</button>
           </form>

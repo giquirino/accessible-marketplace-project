@@ -1,0 +1,122 @@
+#etapas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3.6rem;
+  flex-wrap: wrap;
+}
+
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.etapa-numero {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: 0.15rem solid var(--borda);
+  color: var(--cinza);
+  flex-shrink: 0;
+}
+
+.etapa.concluido .etapa-numero {
+  background: var(--preto);
+  border-color: var(--preto);
+  color: var(--branco);
+}
+
+.etapa.ativo .etapa-numero {
+  border-color: var(--preto);
+  color: var(--preto);
+}
+
+.etapa-nome {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cinza);
+}
+
+.etapa.ativo .etapa-nome,
+.etapa.concluido .etapa-nome {
+  color: var(--preto);
+}
+
+.etapa-linha {
+  width: 4.8rem;
+  height: 0.15rem;
+  background: var(--borda);
+}
+
+.opcao-pagamento {
+  border: 0.15rem solid var(--borda);
+  border-radius: var(--canto-m);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.4rem;
+}
+
+.opcao-pagamento.escolhido {
+  border-color: var(--preto);
+}
+
+.pagamento-topo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-weight: 700;
+}
+
+.pagamento-bolinha {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 0.15rem solid var(--borda);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opcao-pagamento.escolhido .pagamento-bolinha {
+  border-color: var(--preto);
+}
+
+.opcao-pagamento.escolhido .pagamento-bolinha::after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--preto);
+}
+
+.pagamento-corpo {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 0.1rem solid var(--borda);
+}
+
+@media (max-width:40rem) {
+.etapa-nome {
+    display: none;
+  }
+}
+
+.opcao-pagamento {
+  cursor: pointer;
+  transition: border-color var(--dur-rapida) var(--suave), background-color var(--dur-rapida) var(--suave);
+}
+
+.opcao-pagamento:hover {
+  border-color: var(--cinza);
+}
+
+.etapa.concluido .etapa-numero img.icone {
+  filter: brightness(0) invert(1);
+}
