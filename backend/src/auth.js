@@ -13,8 +13,11 @@ export function autenticar(req, res, next) {
   catch { return res.status(401).json({ erro: 'Token inválido ou expirado.' }); }
 }
 
-export const permitir = (...tipos) => (req, res, next) =>
-  tipos.includes(req.usuario.tipo) ? next() : res.status(403).json({ erro: 'Você não tem permissão para esta ação.' });
+export const permitir = (...tipos) => (req, res, next) => {
+  if (!req.usuario) return res.status(401).json({ erro: 'Token de acesso ausente.' });
+  if (!tipos.includes(req.usuario.tipo)) return res.status(403).json({ erro: 'Você não tem permissão para esta ação.' });
+  next();
+};
 
 export const gerarHash = (senha) => bcrypt.hash(senha, 12);
 export const compararSenha = (senha, hash) => bcrypt.compare(senha, hash);
