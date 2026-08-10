@@ -71,7 +71,7 @@ O catálogo, o login/cadastro, a foto de perfil, a logo da loja e o carrinho (ad
 
 ## Acessibilidade
 
-Toda página tem um link "Pular para o conteúdo" como primeiro elemento focalizável, o `<main>` recebe o foco após o pulo, avisos de erro ficam presos ao formulário com `role="alert"`/`aria-live`, e o campo de foto de perfil é operável pelo teclado (não fica escondido com `hidden`). A acessibilidade do servidor aparece principalmente na qualidade dos dados e das respostas: as fotos exigem `texto_alternativo`, a API devolve erros claros em português e valida todos os dados recebidos.
+Toda página tem um link "Pular para o conteúdo" como primeiro elemento focalizável, o `<main>` recebe o foco após o pulo, avisos de erro ficam presos ao formulário com `role="alert"`/`aria-live`, e o campo de foto de perfil é operável pelo teclado (não fica escondido com `hidden`). A acessibilidade do servidor aparece principalmente na qualidade dos dados e das respostas: as fotos exigem `texto_alternativo`, a API devolve erros claros em português e valida todos os dados recebidos. Atendendo a todos os requisitos ensinados em aula.
 
 ## Segurança
 
