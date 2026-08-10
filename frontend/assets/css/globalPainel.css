@@ -1,0 +1,327 @@
+#menu-lateral :focus-visible {
+  outline-color: var(--branco);
+}
+
+#painel {
+  display: flex;
+  min-height: 100vh;
+}
+
+#menu-lateral {
+  width: var(--largura-menu);
+  flex-shrink: 0;
+  background: var(--preto);
+  color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.4rem 1.8rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  overflow-y: auto;
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0, rgba(255,255,255,.035) 0.1rem, transparent 0.1rem, transparent 0.9rem);
+}
+
+.menu-marca {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 0 0.6rem 4.4rem;
+}
+
+#menu-lateral > div:not(.menu-rodape) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.menu-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+
+  justify-content: flex-start;
+}
+
+.item-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1.8rem;
+  border-radius: var(--canto-m);
+  color: rgba(255,255,255,.62);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.item-menu:hover {
+  background: rgba(255,255,255,.08);
+  color: var(--branco);
+}
+
+.item-menu.ativo {
+  background: var(--branco);
+  color: var(--preto);
+  font-weight: 700;
+}
+
+.item-menu .icone {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.menu-lista .item-menu img.icone,
+.trocar-modo img.icone {
+  filter: brightness(0) invert(1);
+  opacity: 0.62;
+  transition: opacity var(--dur-rapida) var(--suave);
+}
+
+.menu-lista .item-menu:hover img.icone,
+.trocar-modo:hover img.icone {
+  opacity: 1;
+}
+
+.menu-lista .item-menu.ativo img.icone {
+  filter: brightness(0);
+  opacity: 1;
+}
+
+.menu-rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  margin-top: 2.4rem;
+  padding-top: 2.8rem;
+  border-top: 0.1rem solid rgba(255,255,255,.14);
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.usuario-nome {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--branco);
+}
+
+.usuario-papel {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,.6);
+  margin: 0;
+}
+
+.trocar-modo {
+  font-size: 1.25rem;
+  color: rgba(255,255,255,.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.trocar-modo:hover {
+  color: var(--branco);
+}
+
+.menu-rodape .trocar-modo .icone {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.usuario:hover .avatar-editar-selo {
+  transform: scale(1.08);
+}
+
+#area-principal {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--branco);
+  padding: 1.8rem 3.2rem;
+  border-bottom: 0.1rem solid var(--borda);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  gap: 1.6rem;
+}
+
+.botao-menu {
+  display: none;
+  position: relative;
+  width: 3.8rem;
+  height: 3.8rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--preto);
+  flex-shrink: 0;
+}
+
+.botao-menu-barra {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2rem;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+  background: currentColor;
+  transition: transform var(--dur-rapida) var(--suave);
+}
+
+.botao-menu-barra:first-child {
+  transform: translate(-50%, calc(-50% - 0.45rem));
+}
+
+.botao-menu-barra:last-child {
+  transform: translate(-50%, calc(-50% + 0.45rem));
+}
+
+.botao-menu[aria-expanded="true"] .botao-menu-barra:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.botao-menu[aria-expanded="true"] .botao-menu-barra:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.topo-rotulo {
+  font-size: 1.15rem;
+  color: var(--cinza);
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
+
+.topo-titulo {
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-family: var(--fonte-texto);
+  letter-spacing: -0.01em;
+}
+
+.topo-acoes {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-shrink: 0;
+}
+
+#barra-acoes {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (max-width:64rem) {
+#menu-lateral {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform .2s ease;
+  }
+
+#menu-lateral.aberto {
+    transform: translateX(0);
+  }
+
+.botao-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.botao-fechar-menu {
+    position: absolute;
+    top: 2rem;
+    right: 1.8rem;
+    color: var(--branco);
+  }
+}
+
+@media (max-width:40rem) {
+#topo {
+    padding: 1.6rem 2rem;
+  }
+}
+
+#menu-lateral {
+  background-color: var(--azul);
+  background-image:
+    radial-gradient(circle at 100% 0, rgba(147, 51, 234, .55), transparent 38%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0, rgba(255,255,255,.06) .1rem, transparent .1rem, transparent .9rem);
+}
+
+#menu-lateral .marca-texto::after { color: var(--branco); }
+
+.item-menu.ativo { background: var(--roxo); color: var(--branco); box-shadow: 0 .6rem 1.6rem rgba(0, 0, 0, .18); }
+
+.menu-lista .item-menu.ativo img.icone { filter: brightness(0) invert(1); }
+
+#area-principal > #conteudo {
+  animation: sola-entrada var(--dur-lenta) var(--suave) both;
+}
+
+#topo {
+  animation: sola-surgir var(--dur-media) var(--suave) both;
+}
+
+#menu-lateral {
+  animation: sola-surgir var(--dur-lenta) var(--suave) both;
+}
+
+.item-menu {
+  transition: background-color var(--dur-rapida) var(--suave), color var(--dur-rapida) var(--suave), padding-left var(--dur-rapida) var(--suave);
+}
+
+.item-menu:hover {
+  padding-left: 1.6rem;
+}
+
+@media (max-width: 64rem) {
+#menu-lateral {
+    box-shadow: 0 0 0 100vmax rgba(17,17,17,0);
+    transition: transform var(--dur-media) var(--suave), box-shadow var(--dur-media) var(--suave);
+  }
+
+#menu-lateral.aberto {
+    box-shadow: 0 0 0 100vmax rgba(17,17,17,.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+.item-menu:hover {
+    padding-left: 1.2rem;
+  }
+}
+
+.topo-busca {
+  margin-left: auto;
+  max-width: 40rem;
+}

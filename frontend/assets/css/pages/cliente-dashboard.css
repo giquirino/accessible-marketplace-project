@@ -1,3 +1,46 @@
+#grade-numeros {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1.8rem;
+  margin-bottom: 2.8rem;
+}
+
+.numero-variacao {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cinza);
+}
+
+.cartao-grafico {
+  background: var(--branco);
+  border-radius: var(--canto-g);
+  box-shadow: var(--sombra);
+  padding: 2.4rem 2.6rem;
+  margin-bottom: 2.6rem;
+}
+
+.grafico-titulo {
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  font-size: 1.5rem;
+}
+
+@media (max-width:64rem) {
+#grade-numeros {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:40rem) {
+#grade-numeros {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cartao-grafico {
+  transition: transform var(--dur-media) var(--suave), box-shadow var(--dur-media) var(--suave);
+}
+
 #pagina-cliente-dashboard #painel-resumo {
   display: grid;
   grid-template-columns: 1fr 1fr;

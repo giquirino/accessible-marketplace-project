@@ -1,3 +1,10 @@
+#grade-notas {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.8rem;
+  margin-bottom: 2.6rem;
+}
+
 #lista-avaliacoes {
   display: flex;
   flex-direction: column;
@@ -22,6 +29,17 @@
   gap: 1.2rem;
 }
 
+.avaliacao-usuario {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.avaliacao-autor {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
 .avaliacao-produto {
   font-size: 1.25rem;
   color: var(--cinza);
@@ -44,32 +62,35 @@
   color: var(--borda);
 }
 
+.avaliacao-data {
+  font-size: 1.2rem;
+  color: var(--cinza);
+  white-space: nowrap;
+}
+
 .avaliacao-mensagem {
   font-size: 1.4rem;
   line-height: 1.5;
 }
 
-.escolher-nota {
-  display: flex;
-  gap: 0.6rem;
-  color: var(--preto);
+.avaliacao-resposta {
+  background: var(--fundo);
+  border-radius: var(--canto-m);
+  padding: 1.2rem 1.4rem;
+  font-size: 1.35rem;
 }
 
-.escolher-nota svg,
-.escolher-nota img {
-  width: 3.2rem;
-  height: 3.2rem;
+.avaliacao-resposta-rotulo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--cinza);
+  margin-bottom: 0.5rem;
 }
 
-.escolher-nota svg.vazia {
-  color: var(--borda);
-}
-
-.rotulo-nota {
-  display: block;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.6rem;
+@media (max-width:64rem) {
+#grade-notas {
+    grid-template-columns: 1fr;
+  }
 }
 
 .avaliacao {
@@ -84,56 +105,5 @@
 @media (prefers-reduced-motion: reduce) {
 .avaliacao:hover {
     transform: none !important;
-  }
-}
-
-#pagina-avaliacoes #lista-avaliacoes {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-
-
-#pagina-avaliacoes .avaliacao {
-  padding: 2rem;
-}
-
-#pagina-avaliacoes .avaliacao-topo {
-  margin-bottom: 1.2rem;
-}
-
-
-#pagina-avaliacoes .avaliacao-item {
-  display: flex;
-  gap: 1.2rem;
-  align-items: flex-start;
-  flex: 1;
-}
-
-
-#pagina-avaliacoes .avaliacao-produto {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-}
-
-
-#pagina-avaliacoes .avaliacao-acoes {
-  display: flex;
-  gap: 0.8rem;
-}
-
-#pagina-avaliacoes .avaliacao-estrelas {
-  margin-bottom: 1.2rem;
-}
-
-@media (max-width: 40rem) {
-  #pagina-avaliacoes .avaliacao-topo {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  #pagina-avaliacoes .avaliacao-acoes {
-    align-self: flex-start;
   }
 }

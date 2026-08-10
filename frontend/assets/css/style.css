@@ -1,0 +1,312 @@
+#pagina-index #conteudo {
+  padding: 0;
+  max-width: none;
+}
+
+#pagina-index .destaque {
+  background: radial-gradient(circle at 88% 15%, rgba(147, 51, 234, .3), transparent 30%), radial-gradient(circle at 72% 90%, rgba(249, 115, 22, .22), transparent 28%), var(--preto);
+  color: var(--branco);
+}
+
+#pagina-index > .destaque:first-of-type {
+  min-height: 64rem;
+}
+
+#pagina-index .destaque-rotulo,
+#pagina-index .destaque-texto,
+#pagina-index .destaque-canto { color: rgba(255,255,255,.74); }
+
+#pagina-index .destaque .botao-branco { color: var(--branco); border-color: var(--branco); }
+
+#pagina-index .destaque .botao-branco:hover { background: var(--branco); color: var(--azul); }
+
+#pagina-index #faixa-categorias { background: linear-gradient(115deg, var(--azul), var(--roxo)); }
+
+.categoria-link { color: var(--laranja); }
+
+.categoria-link:hover { color: var(--roxo); }
+
+#pagina-index .destaque-jogadores {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 148%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: bottom right;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#pagina-index .destaque > :not(.destaque-jogadores) {
+  position: relative;
+  z-index: 1;
+}
+
+#pagina-index .destaque-canto,
+#pagina-index .destaque-legenda {
+  text-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, .85);
+}
+
+@media (max-width: 700px) {
+#pagina-index > .destaque:first-of-type { min-height: 54rem; }
+
+#pagina-index .destaque-jogadores {
+    right: -7rem;
+    width: 92vw;
+    opacity: .28;
+  }
+}
+
+.destaque {
+  position: relative;
+  padding: 6.4rem 4.8rem 0;
+  background: var(--fundo);
+  overflow: hidden;
+}
+
+.destaque-topo {
+  min-height: 64rem;
+  background-image: url('../img/tenis-verde-lading.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.destaque-conteudo {
+  position: relative;
+  z-index: 2;
+  max-width: 52rem;
+}
+
+.destaque-rotulo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cinza);
+  margin-bottom: 1.6rem;
+}
+
+.destaque-titulo {
+  font-size: clamp(5.2rem,9.8vw,13.6rem);
+  line-height: .92;
+  margin-bottom: 2.4rem;
+}
+
+.destaque-texto {
+  font-size: 1.6rem;
+  color: var(--cinza-escuro);
+  max-width: 40ch;
+  margin-bottom: 2.8rem;
+}
+
+.destaque-acoes {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3.2rem;
+}
+
+.destaque-canto {
+  position: absolute;
+  z-index: 2;
+  top: 6.4rem;
+  right: 4.8rem;
+  text-align: right;
+  font-size: 1.25rem;
+  color: var(--cinza);
+  line-height: 1.6;
+}
+
+.destaque-legenda {
+  position: absolute;
+  z-index: 2;
+  right: 4.8rem;
+  bottom: 2.4rem;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cinza);
+  line-height: 1.6;
+}
+
+#faixa-categorias {
+  background: var(--preto);
+  padding: 4.8rem;
+}
+
+#grade-categorias {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.categoria-foto {
+  margin-bottom: 1.6rem;
+}
+
+.categoria-nome {
+  font-family: var(--fonte-titulo);
+  color: var(--branco);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.categoria-texto {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 1rem;
+}
+
+.categoria-link {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--branco);
+}
+
+.faixa-categorias-mais {
+  text-align: center;
+}
+
+.faixa-categorias-mais a {
+  color: rgba(255,255,255,.7);
+  font-size: 1.35rem;
+}
+
+.secao-vitrine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 4.8rem;
+  background: var(--fundo);
+}
+
+.vitrine-foto {
+  overflow: hidden;
+  background: var(--fundo);
+}
+
+.vitrine-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.vitrine-titulo {
+  font-size: 5.2rem;
+  line-height: 1.1;
+  margin-bottom: 1.6rem;
+}
+
+.vitrine-legenda {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cinza);
+  line-height: 1.6;
+}
+
+#faixa-vantagens {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2.4rem;
+  padding: 4rem 4.8rem;
+}
+
+.vantagem {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.vantagem .icone {
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  color: var(--preto);
+}
+
+.vantagem-titulo {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.vantagem-texto {
+  font-size: 1.25rem;
+  color: var(--cinza);
+}
+
+.secao-loja-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.8rem;
+}
+
+.secao-loja-titulo {
+  font-size: 2.6rem;
+}
+
+@media (max-width:64rem) {
+.destaque {
+    padding: 4rem 2.4rem 3.2rem;
+    min-height: 0;
+  }
+
+.destaque-conteudo {
+    max-width: none;
+  }
+
+.destaque-canto {
+    position: static;
+    text-align: left;
+    margin-bottom: 1.6rem;
+  }
+
+.destaque-topo {
+    min-height: 44rem;
+    background-position: center bottom;
+  }
+
+.destaque-legenda {
+    position: static;
+    text-align: left;
+    margin-top: 1.6rem;
+  }
+
+#grade-categorias,
+#faixa-vantagens,
+.secao-vitrine {
+    grid-template-columns: 1fr;
+  }
+
+.secao-vitrine {
+    padding: 4rem 2.4rem;
+  }
+}
+
+@media (max-width:40rem) {
+.destaque,
+#faixa-categorias,
+#faixa-vantagens {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.categoria .foto-exemplo {
+  transition: transform var(--dur-media) var(--suave);
+}
+
+.categoria:hover .foto-exemplo {
+  transform: scale(1.02);
+}
+
+#faixa-categorias img.icone {
+  filter: brightness(0) invert(1);
+}

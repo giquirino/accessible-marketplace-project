@@ -1,0 +1,93 @@
+#etapas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3.6rem;
+  flex-wrap: wrap;
+}
+
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.etapa-numero {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: 0.15rem solid var(--borda);
+  color: var(--cinza);
+  flex-shrink: 0;
+}
+
+.etapa.concluido .etapa-numero {
+  background: var(--preto);
+  border-color: var(--preto);
+  color: var(--branco);
+}
+
+.etapa.ativo .etapa-numero {
+  border-color: var(--preto);
+  color: var(--preto);
+}
+
+.etapa-nome {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cinza);
+}
+
+.etapa.ativo .etapa-nome,
+.etapa.concluido .etapa-nome {
+  color: var(--preto);
+}
+
+.etapa-linha {
+  width: 4.8rem;
+  height: 0.15rem;
+  background: var(--borda);
+}
+
+.cartao-endereco {
+  border: 0.15rem solid var(--borda);
+  border-radius: var(--canto-m);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.4rem;
+}
+
+.cartao-endereco.escolhido {
+  border-color: var(--preto);
+}
+
+.endereco-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width:40rem) {
+.etapa-nome {
+    display: none;
+  }
+}
+
+.cartao-endereco {
+  cursor: pointer;
+  transition: border-color var(--dur-rapida) var(--suave), background-color var(--dur-rapida) var(--suave);
+}
+
+.cartao-endereco:hover {
+  border-color: var(--cinza);
+}
+
+.etapa.concluido .etapa-numero img.icone {
+  filter: brightness(0) invert(1);
+}

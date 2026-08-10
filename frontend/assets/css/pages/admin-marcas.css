@@ -1,0 +1,25 @@
+#form-rapido {
+  background: var(--branco);
+  border-radius: var(--canto-g);
+  box-shadow: var(--sombra);
+  padding: 2rem 2.2rem;
+  margin-bottom: 2.2rem;
+}
+
+.form-rapido-linha {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.form-rapido-linha .campo {
+  flex: 1;
+  min-width: 18rem;
+}
+
+.linha-junta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

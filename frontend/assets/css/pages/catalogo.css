@@ -1,3 +1,35 @@
+#barra-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+
+#barra-filtros .campo-busca {
+  flex: 1;
+  min-width: 22rem;
+  max-width: 36rem;
+}
+
+#pilulas-filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+#filtro-vazio {
+  padding: 5.6rem 2rem;
+  text-align: center;
+  color: var(--cinza);
+}
+
+.filtro-vazio-titulo {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+  color: var(--preto);
+}
+
 #pagina-catalogo #grade-produtos {
   grid-template-columns: repeat(4, 1fr);
 }
