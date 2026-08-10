@@ -3,7 +3,7 @@
   window.__solaVlibrasInicializado = true;
 
   var orientacoes = [
-    [/index\.html$/, 'Página inicial', 'Nesta página você conhece a Sola e vê tênis em destaque. Use o catálogo para buscar produtos ou entre na sua conta para acompanhar pedidos.'],
+    [/index\.html$/, 'Página inicial', 'Nesta página você conhece a Last Dance Club e vê tênis em destaque. Use o catálogo para buscar produtos ou entre na sua conta para acompanhar pedidos.'],
     [/publico\/login\.html$/, 'Entrar na conta', 'Preencha seu e-mail e senha. Selecione Entrar para acessar sua conta. Caso ainda não tenha uma conta, selecione Criar uma conta.'],
     [/publico\/cadastro\.html$/, 'Criar conta', 'Preencha seu nome, e-mail e senha. Confirme a senha, aceite os termos de uso e selecione Criar conta para concluir o cadastro.'],
     [/publico\/catalogo\.html$/, 'Catálogo de tênis', 'Use a busca, as categorias e o botão Filtros para encontrar tênis. Selecione Adicionar ao carrinho depois de escolher um produto.'],
@@ -19,10 +19,12 @@
   ];
   function obterOrientacao() {
     var rota = location.pathname;
-    return orientacoes.find(function (item) { return item[0].test(rota); }) || ['geral', 'Navegação nesta página', 'Esta página apresenta informações e ações da Sola. Use os títulos, campos e botões identificados para concluir o fluxo atual.'];
+    return orientacoes.find(function (item) { return item[0].test(rota); }) || ['geral', 'Navegação nesta página', 'Esta página apresenta informações e ações da Last Dance Club. Use os títulos, campos e botões identificados para concluir o fluxo atual.'];
   }
+  var SEM_ORIENTACAO = [/\/publico\/(login|cadastro)\.html$/, /(^|\/)index\.html$/, /\/$/];
+
   function inserirOrientacao() {
-    if (/\/publico\/(login|cadastro)\.html$/.test(location.pathname)) return;
+    if (SEM_ORIENTACAO.some(function (padrao) { return padrao.test(location.pathname); })) return;
     var alvo = document.querySelector('main');
     if (!alvo || document.getElementById('orientacao-pagina')) return;
     var dados = obterOrientacao(), secao = document.createElement('section');
