@@ -1,4 +1,5 @@
 window.Sola = window.Sola || {};
+document.title = document.title.replace(/Sola/g, 'Last Dance Club');
 Sola.raiz = (function () { var s = document.currentScript || document.querySelector('script[src*="assets/js/core.js"]'); return s ? s.src.replace(/assets\/js\/core\.js.*$/, '') : ''; })();
 Sola.inicioPorTipo = { admin: 'pages/admin/admin-dashboard.html', vendedor: 'pages/vendedor/vendedor-dashboard.html', cliente: 'pages/cliente/cliente-dashboard.html' };
 Sola.apiUrl = window.SOLA_API_URL || 'http://127.0.0.1:3000/api';

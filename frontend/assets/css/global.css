@@ -1278,7 +1278,7 @@ table {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 4.8rem;
+  padding: 2.5rem 4.8rem;
   background: var(--branco);
   border-bottom: 0.1rem solid var(--borda);
 }
@@ -1307,7 +1307,7 @@ table {
 .cabecalho-acoes {
   display: flex;
   align-items: center;
-  gap: 2.2rem;
+  gap: 1rem;
 }
 
 .cabecalho-icone {
@@ -1316,6 +1316,7 @@ table {
   align-items: center;
   justify-content: center;
   color: var(--preto);
+  margin-right: 1.2rem;
 }
 
 .cabecalho-contador {
@@ -1441,9 +1442,95 @@ table {
 }
 
 /* Destaques de acessibilidade e o guia visual de Libras. */
-:root { --laranja: #d75216; --laranja-claro: #fff0e8; }
+:root {
+  --azul: #0f299f;
+  --laranja: #f97316;
+  --roxo: #9333ea;
+  --preto: #000000;
+  --branco: #ffffff;
+  --fundo: #faf9ff;
+  --cinza-escuro: #29243b;
+  --cinza: #625d75;
+  --borda: #dedaf2;
+  --cinza-fundo: #f0edff;
+  --laranja-claro: #fff0e8;
+  --verde: #0f299f;
+  --verde-fundo: #e8edff;
+  --amarelo: #b74a00;
+  --amarelo-fundo: #fff0e8;
+}
 :focus-visible { outline: .35rem solid var(--laranja); outline-offset: .3rem; }
 .pilula.ativo, .pilula[aria-pressed="true"] { background: var(--laranja); border-color: var(--laranja); }
+
+/* Identidade visual Last Dance Club */
+#menu-lateral {
+  background-color: var(--azul);
+  background-image:
+    radial-gradient(circle at 100% 0, rgba(147, 51, 234, .55), transparent 38%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0, rgba(255,255,255,.06) .1rem, transparent .1rem, transparent .9rem);
+}
+
+.marca-logo { display: none; }
+.marca-texto { font-size: 0; }
+.marca-texto::after {
+  content: 'Last Dance Club';
+  font-size: 2.1rem;
+  letter-spacing: -.035em;
+}
+
+#menu-lateral .marca-texto::after { color: var(--branco); }
+.item-menu.ativo { background: var(--roxo); color: var(--branco); box-shadow: 0 .6rem 1.6rem rgba(0, 0, 0, .18); }
+.menu-lista .item-menu.ativo img.icone { filter: brightness(0) invert(1); }
+
+.botao-preto, .paginacao-botoes button.ativo { background: var(--laranja); border-color: var(--laranja); color: var(--branco); }
+.botao-preto:hover, .paginacao-botoes button.ativo:hover { background: var(--roxo); border-color: var(--roxo); }
+.botao-branco { border-color: var(--azul); color: var(--azul); }
+.botao-branco:hover { background: var(--azul); border-color: var(--azul); color: var(--branco); }
+
+#pagina-index .destaque {
+  background: radial-gradient(circle at 88% 15%, rgba(147, 51, 234, .3), transparent 30%), radial-gradient(circle at 72% 90%, rgba(249, 115, 22, .22), transparent 28%), var(--preto);
+  color: var(--branco);
+}
+
+#pagina-index > .destaque:first-of-type {
+  min-height: 64rem;
+}
+#pagina-index .destaque-rotulo, #pagina-index .destaque-texto, #pagina-index .destaque-canto { color: rgba(255,255,255,.74); }
+#pagina-index .destaque .botao-branco { color: var(--branco); border-color: var(--branco); }
+#pagina-index .destaque .botao-branco:hover { background: var(--branco); color: var(--azul); }
+#pagina-index #faixa-categorias { background: linear-gradient(115deg, var(--azul), var(--roxo)); }
+.categoria-link, .ver-todos { color: var(--laranja); }
+.categoria-link:hover, .ver-todos:hover { color: var(--roxo); }
+.cabecalho-contador { background: var(--laranja); }
+::selection { background: var(--roxo); color: var(--branco); }
+:focus-visible { outline-color: var(--laranja); }
+
+#pagina-index .destaque-jogadores {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 0;
+  width: min(72vw, 88rem);
+  max-height: 135%;
+  object-fit: contain;
+  object-position: bottom right;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#pagina-index .destaque > :not(.destaque-jogadores) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  #pagina-index > .destaque:first-of-type { min-height: 54rem; }
+
+  #pagina-index .destaque-jogadores {
+    right: -7rem;
+    width: 92vw;
+    opacity: .28;
+  }
+}
 
 /* Orientação textual selecionável para tradução pelo VLibras. */
 .orientacao-vlibras { margin: 0 0 2.4rem; padding: 1.8rem 2rem; border: .1rem solid var(--laranja); border-left: .5rem solid var(--laranja); border-radius: var(--canto-m); background: var(--laranja-claro); }
@@ -1452,7 +1539,7 @@ table {
 div[vw] { z-index: 10000 !important; } div[vw-access-button] { outline-offset: .35rem; } div[vw-plugin-wrapper] { z-index: 10001 !important; }
 @media (max-width: 600px) { .orientacao-vlibras { padding: 1.4rem; } div[vw-plugin-wrapper] { max-width: calc(100vw - 1.6rem); } }
 
-.botao-preto:hover { background: var(--laranja); }
+.botao-preto:hover { background: var(--roxo); }
 
 .destaque {
   position: relative;
@@ -1483,7 +1570,7 @@ div[vw] { z-index: 10000 !important; } div[vw-access-button] { outline-offset: .
 }
 
 .destaque-titulo {
-  font-size: clamp(5.6rem,8.5vw,11.2rem);
+  font-size: clamp(5.2rem,9.8vw,13.6rem);
   line-height: .92;
   margin-bottom: 2.4rem;
 }

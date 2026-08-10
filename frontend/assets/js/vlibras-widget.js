@@ -22,6 +22,7 @@
     return orientacoes.find(function (item) { return item[0].test(rota); }) || ['geral', 'Navegação nesta página', 'Esta página apresenta informações e ações da Sola. Use os títulos, campos e botões identificados para concluir o fluxo atual.'];
   }
   function inserirOrientacao() {
+    if (/\/publico\/(login|cadastro)\.html$/.test(location.pathname)) return;
     var alvo = document.querySelector('main');
     if (!alvo || document.getElementById('orientacao-pagina')) return;
     var dados = obterOrientacao(), secao = document.createElement('section');
