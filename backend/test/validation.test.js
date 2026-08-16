@@ -58,6 +58,12 @@ test('foto de perfil recusa imagem acima do limite da coluna', () => {
   assert.equal(analisar(schemas.foto, { body: { foto: gigante } }).success, false);
 });
 
+test('perfil exige nome com pelo menos 3 caracteres e e-mail válido', () => {
+  assert.equal(analisar(schemas.perfil, { body: { nome: 'Ana Souza', email: 'a@b.com' } }).success, true);
+  assert.equal(analisar(schemas.perfil, { body: { nome: 'An', email: 'a@b.com' } }).success, false);
+  assert.equal(analisar(schemas.perfil, { body: { nome: 'Ana Souza', email: 'nao-e-email' } }).success, false);
+});
+
 test('item de carrinho limita a quantidade por vez', () => {
   assert.equal(analisar(schemas.itemCarrinho, { body: { idEstoque: '5', quantidade: '20' } }).success, true);
   assert.equal(analisar(schemas.itemCarrinho, { body: { idEstoque: '5', quantidade: '21' } }).success, false);
