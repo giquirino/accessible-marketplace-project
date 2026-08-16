@@ -300,6 +300,7 @@
     <script src="../../assets/js/dialogos.js"></script>
     <script src="../../assets/js/catalogo.js"></script>
     <script src="../../assets/js/autenticacao.js"></script>
+    <script src="../../assets/js/avaliar-tenis.js"></script>
     <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
       <div class="dialogo-caixa">
         <header class="dialogo-topo">
@@ -386,12 +387,28 @@
         <div class="dialogo-corpo">
           <div class="campo">
             <span class="rotulo-nota" id="rotulo-nota-edicao">Sua nota</span>
-            <div class="escolher-nota" aria-labelledby="rotulo-nota-edicao">
-              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
-              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
-              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
-              <img src="../../assets/icons/icone-estrela-field.png" alt="" />
-              <img class="vazia" src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+            <div
+              class="escolher-nota"
+              data-estrelas
+              data-nota-inicial="4"
+              role="radiogroup"
+              aria-labelledby="rotulo-nota-edicao"
+            >
+              <button type="button" class="estrela-nota" data-valor-estrela="1" role="radio" aria-checked="false" aria-label="1 estrela">
+                <img src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              </button>
+              <button type="button" class="estrela-nota" data-valor-estrela="2" role="radio" aria-checked="false" aria-label="2 estrelas">
+                <img src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              </button>
+              <button type="button" class="estrela-nota" data-valor-estrela="3" role="radio" aria-checked="false" aria-label="3 estrelas">
+                <img src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              </button>
+              <button type="button" class="estrela-nota" data-valor-estrela="4" role="radio" aria-checked="false" aria-label="4 estrelas">
+                <img src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              </button>
+              <button type="button" class="estrela-nota" data-valor-estrela="5" role="radio" aria-checked="false" aria-label="5 estrelas">
+                <img src="../../assets/icons/icone-estrela-outLine.png" alt="" />
+              </button>
             </div>
           </div>
           <div class="campo">
