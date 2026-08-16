@@ -25,7 +25,10 @@
   font: 800 2.35rem/1 system-ui, sans-serif;
 }
 
-.sola-a11y-botao:hover { transform: translateY(-1px); }
+.sola-a11y-botao:hover {
+  transform: translateY(-1px);
+}
+
 .sola-a11y-botao:focus-visible,
 .sola-a11y-acao:focus-visible,
 .sola-a11y-controle:focus-visible,
@@ -38,7 +41,7 @@
   position: absolute;
   left: 0;
   bottom: 6.9rem;
-  width: min(39rem, calc(100vw - 2rem));
+  width: min(39rem, 94vw);
   max-height: min(78vh, 70rem);
   overflow: auto;
   overscroll-behavior: contain;
@@ -50,16 +53,67 @@
   box-shadow: 0 1.8rem 4.8rem rgba(0,0,0,.22);
 }
 
-.sola-a11y-painel[hidden] { display: none; }
-.sola-a11y-topo { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.2rem; }
-.sola-a11y-titulo { margin:0; font-size:1.8rem; line-height:1.2; }
-.sola-a11y-subtitulo { margin:.35rem 0 0; font-size:1.2rem; color:var(--cinza, #6b675f); }
-.sola-a11y-fechar { width:3.8rem; height:3.8rem; border:.1rem solid var(--borda, #e4e2dd); border-radius:.9rem; background:#fff; color:#111; cursor:pointer; font:700 1.8rem/1 system-ui,sans-serif; }
-.sola-a11y-secao { padding:1.25rem 0; border-top:.1rem solid var(--borda, #e4e2dd); }
-.sola-a11y-secao:first-of-type { border-top:0; }
-.sola-a11y-secao h3 { margin:0 0 .8rem; font-size:1.35rem; }
-.sola-a11y-controles { display:flex; flex-wrap:wrap; gap:.7rem; }
-.sola-a11y-grade { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; }
+.sola-a11y-painel[hidden] {
+  display: none;
+}
+
+.sola-a11y-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.sola-a11y-titulo {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.sola-a11y-subtitulo {
+  margin: .35rem 0 0;
+  font-size: 1.2rem;
+  color: var(--cinza, #6b675f);
+}
+
+.sola-a11y-fechar {
+  width: 3.8rem;
+  height: 3.8rem;
+  border: .1rem solid var(--borda, #e4e2dd);
+  border-radius: .9rem;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  font: 700 1.8rem/1 system-ui, sans-serif;
+}
+
+.sola-a11y-secao {
+  padding: 1.25rem 0;
+  border-top: .1rem solid var(--borda, #e4e2dd);
+}
+
+.sola-a11y-secao:first-of-type {
+  border-top: 0;
+}
+
+.sola-a11y-secao h3 {
+  margin: 0 0 .8rem;
+  font-size: 1.35rem;
+}
+
+.sola-a11y-controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.sola-a11y-grade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+}
+
 .sola-a11y-controle,
 .sola-a11y-acao {
   min-height:4.2rem;
@@ -71,140 +125,158 @@
   cursor:pointer;
   font:600 1.25rem/1.25 var(--fonte-texto, system-ui, sans-serif);
 }
-.sola-a11y-controle { min-width:4.6rem; font-weight:800; }
-.sola-a11y-acao { text-align:left; }
-.sola-a11y-acao:hover,
-.sola-a11y-controle:hover { border-color:#111; }
-.sola-a11y-acao[aria-pressed="true"],
-.sola-a11y-controle[aria-pressed="true"] { background:#111; border-color:#111; color:#fff; }
-.sola-a11y-voz-status { min-height:3.4rem; padding:.8rem 1rem; border-radius:.9rem; background:#f0f0ec; color:#111; font-size:1.15rem; margin-top:.8rem; }
-.sola-a11y-ajuda { margin:.7rem 0 0; font-size:1.1rem; color:#5d5a53; line-height:1.45; }
+.sola-a11y-controle {
+  min-width: 4.6rem;
+  font-weight: 800;
+}
 
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h1,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h2,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h3,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h4,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h5,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h6,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) p,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) li,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) label,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) legend,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) a,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) button,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) input,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) select,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) textarea,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) th,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) td,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) figcaption,
-html.sola-a11y-dislexia body > :not(#sola-acessibilidade) blockquote {
+.sola-a11y-acao {
+  text-align: left;
+}
+
+.sola-a11y-acao:hover,
+.sola-a11y-controle:hover {
+  border-color: #111;
+}
+
+.sola-a11y-acao[aria-pressed="true"],
+.sola-a11y-controle[aria-pressed="true"] {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.sola-a11y-voz-status {
+  min-height: 3.4rem;
+  padding: .8rem 1rem;
+  border-radius: .9rem;
+  background: #f0f0ec;
+  color: #111;
+  font-size: 1.15rem;
+  margin-top: .8rem;
+}
+
+.sola-a11y-ajuda {
+  margin: .7rem 0 0;
+  font-size: 1.1rem;
+  color: #5d5a53;
+  line-height: 1.45;
+}
+
+html.sola-a11y-dislexia body > :not(#sola-acessibilidade) :is(h1, h2, h3, h4, h5, h6, p, li, label, legend, a, button, input, select, textarea, th, td, figcaption, blockquote) {
   font-family: Verdana, Arial, sans-serif !important;
   letter-spacing: .035em !important;
   word-spacing: .12em !important;
   line-height: 1.7 !important;
 }
 
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h1,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h2,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h3,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h4,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h5,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h6,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) p,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) li,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) label,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) legend,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) a,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) button,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) input,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) select,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) textarea,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) th,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) td,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) figcaption,
-html.sola-a11y-espacamento body > :not(#sola-acessibilidade) blockquote {
+html.sola-a11y-espacamento body > :not(#sola-acessibilidade) :is(h1, h2, h3, h4, h5, h6, p, li, label, legend, a, button, input, select, textarea, th, td, figcaption, blockquote) {
   letter-spacing: .06em !important;
   word-spacing: .16em !important;
   line-height: 1.75 !important;
 }
 
-html.sola-a11y-area-clique body > :not(#sola-acessibilidade) button,
-html.sola-a11y-area-clique body > :not(#sola-acessibilidade) input,
-html.sola-a11y-area-clique body > :not(#sola-acessibilidade) select,
-html.sola-a11y-area-clique body > :not(#sola-acessibilidade) textarea,
-html.sola-a11y-area-clique body > :not(#sola-acessibilidade) [role="button"],
-html.sola-a11y-area-clique body > :not(#sola-acessibilidade) a {
+html.sola-a11y-area-clique body > :not(#sola-acessibilidade) :is(button, input, select, textarea, [role="button"], a) {
   min-height: max(4.4rem, 44px);
 }
 
 html.sola-a11y-foco body > :not(#sola-acessibilidade) :focus-visible {
-  outline:.35rem solid #ff00b8 !important;
-  outline-offset:.3rem !important;
-  box-shadow:0 0 0 .2rem #000 !important;
+  outline: .35rem solid #ff00b8 !important;
+  outline-offset: .3rem !important;
+  box-shadow: 0 0 0 .2rem #000 !important;
 }
 
 html.sola-a11y-reduzir-estimulos body > :not(#sola-acessibilidade) *,
 html.sola-a11y-reduzir-estimulos body > :not(#sola-acessibilidade) *::before,
 html.sola-a11y-reduzir-estimulos body > :not(#sola-acessibilidade) *::after {
-  animation:none !important;
-  transition:none !important;
-  scroll-behavior:auto !important;
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
 }
 
 html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) {
-  background:#000 !important;
-  color:#fff !important;
-  border-color:#fff !important;
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
 }
+
 html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) * {
-  border-color:#fff !important;
+  border-color: #fff !important;
 }
+
 html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) a {
-  color:#ffff00 !important;
-  text-decoration:underline !important;
-}
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) button,
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) input,
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) select,
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) textarea,
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) [role="button"] {
-  background:#000 !important;
-  color:#fff !important;
-  border:2px solid #fff !important;
-}
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) img,
-html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) svg {
-  background:transparent !important;
-  outline:1px solid #fff;
+  color: #ffff00 !important;
+  text-decoration: underline !important;
 }
 
-html.sola-a11y-inverso body > :not(#sola-acessibilidade) { filter:invert(1) hue-rotate(180deg); }
-html.sola-a11y-inverso body > :not(#sola-acessibilidade) img,
-html.sola-a11y-inverso body > :not(#sola-acessibilidade) video,
-html.sola-a11y-inverso body > :not(#sola-acessibilidade) canvas { filter:invert(1) hue-rotate(180deg); }
+html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) :is(button, input, select, textarea, [role="button"]) {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
 
-html.sola-a11y-protanopia body > :not(#sola-acessibilidade) { filter:url("#sola-protanopia"); }
-html.sola-a11y-deuteranopia body > :not(#sola-acessibilidade) { filter:url("#sola-deuteranopia"); }
-html.sola-a11y-tritanopia body > :not(#sola-acessibilidade) { filter:url("#sola-tritanopia"); }
+html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) :is(img, svg) {
+  background: transparent !important;
+  outline: 1px solid #fff;
+}
+
+html.sola-a11y-inverso body > :not(#sola-acessibilidade) {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.sola-a11y-inverso body > :not(#sola-acessibilidade) :is(img, video, canvas) {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.sola-a11y-tema-escuro {
+  --fundo: #121212;
+  --branco: #1e1e1e;
+  --preto: #f2f2f2;
+  --cinza-escuro: #d6d6d6;
+  --cinza: #a3a3a3;
+  --cinza-texto: #b8b8b8;
+  --cinza-fundo: #262626;
+  --borda: #3a3a3a;
+}
+
+html.sola-a11y-protanopia body > :not(#sola-acessibilidade) {
+  filter: url("#sola-protanopia");
+}
+
+html.sola-a11y-deuteranopia body > :not(#sola-acessibilidade) {
+  filter: url("#sola-deuteranopia");
+}
+
+html.sola-a11y-tritanopia body > :not(#sola-acessibilidade) {
+  filter: url("#sola-tritanopia");
+}
 
 html.sola-a11y-mascara::after {
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:2147482000;
-  pointer-events:none;
-  background:linear-gradient(to bottom,
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
     rgba(0,0,0,.58) 0,
-    rgba(0,0,0,.58) calc(var(--sola-mascara-top,42vh) - 5rem),
-    transparent calc(var(--sola-mascara-top,42vh) - 5rem),
-    transparent calc(var(--sola-mascara-top,42vh) + 6rem),
-    rgba(0,0,0,.58) calc(var(--sola-mascara-top,42vh) + 6rem),
+    rgba(0,0,0,.58) calc(var(--sola-mascara-top, 42vh) - 5rem),
+    transparent calc(var(--sola-mascara-top, 42vh) - 5rem),
+    transparent calc(var(--sola-mascara-top, 42vh) + 6rem),
+    rgba(0,0,0,.58) calc(var(--sola-mascara-top, 42vh) + 6rem),
     rgba(0,0,0,.58) 100%);
 }
 
-@media (max-width:48rem) {
-  #sola-acessibilidade { left:1rem; bottom:1rem; }
-  .sola-a11y-painel { width:min(36rem,calc(100vw - 2rem)); }
-  .sola-a11y-grade { grid-template-columns:1fr; }
+@media (max-width: 48rem) {
+  #sola-acessibilidade {
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .sola-a11y-painel {
+    width: min(36rem, 94vw);
+  }
+
+  .sola-a11y-grade {
+    grid-template-columns: 1fr;
+  }
 }
