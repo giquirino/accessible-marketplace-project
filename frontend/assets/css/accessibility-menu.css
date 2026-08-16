@@ -1,4 +1,3 @@
-/* Accessibility layer: keeps the marketplace layout intact and changes only the requested accessibility modes. */
 #sola-acessibilidade,
 #sola-acessibilidade * {
   box-sizing: border-box;
@@ -81,8 +80,6 @@
 .sola-a11y-voz-status { min-height:3.4rem; padding:.8rem 1rem; border-radius:.9rem; background:#f0f0ec; color:#111; font-size:1.15rem; margin-top:.8rem; }
 .sola-a11y-ajuda { margin:.7rem 0 0; font-size:1.1rem; color:#5d5a53; line-height:1.45; }
 
-/* A-/A+: a escala é aplicada somente em elementos textuais.
-   Não alteramos containers, imagens, SVGs ou a unidade rem da página. */
 html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h1,
 html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h2,
 html.sola-a11y-dislexia body > :not(#sola-acessibilidade) h3,
@@ -108,8 +105,6 @@ html.sola-a11y-dislexia body > :not(#sola-acessibilidade) blockquote {
   line-height: 1.7 !important;
 }
 
-/* Espaçamento de texto: perceptível, mas sem alterar caixas de imagem e layout
-   inteiro da página. */
 html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h1,
 html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h2,
 html.sola-a11y-espacamento body > :not(#sola-acessibilidade) h3,
@@ -134,7 +129,6 @@ html.sola-a11y-espacamento body > :not(#sola-acessibilidade) blockquote {
   line-height: 1.75 !important;
 }
 
-/* Only enlarge actual interactive targets; do not force every link/input to a fixed height. */
 html.sola-a11y-area-clique body > :not(#sola-acessibilidade) button,
 html.sola-a11y-area-clique body > :not(#sola-acessibilidade) input,
 html.sola-a11y-area-clique body > :not(#sola-acessibilidade) select,
@@ -158,8 +152,6 @@ html.sola-a11y-reduzir-estimulos body > :not(#sola-acessibilidade) *::after {
   scroll-behavior:auto !important;
 }
 
-/* Alto contraste: modo visual forte, porém previsível.
-   Ao sair do modo, a classe é removida e o CSS original volta a valer. */
 html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) {
   background:#000 !important;
   color:#fff !important;
@@ -187,13 +179,11 @@ html.sola-a11y-alto-contraste body > :not(#sola-acessibilidade) svg {
   outline:1px solid #fff;
 }
 
-/* Inversion is applied to the site only; the accessibility UI remains readable. */
 html.sola-a11y-inverso body > :not(#sola-acessibilidade) { filter:invert(1) hue-rotate(180deg); }
 html.sola-a11y-inverso body > :not(#sola-acessibilidade) img,
 html.sola-a11y-inverso body > :not(#sola-acessibilidade) video,
 html.sola-a11y-inverso body > :not(#sola-acessibilidade) canvas { filter:invert(1) hue-rotate(180deg); }
 
-/* Color-vision simulations affect the site, not the control panel. */
 html.sola-a11y-protanopia body > :not(#sola-acessibilidade) { filter:url("#sola-protanopia"); }
 html.sola-a11y-deuteranopia body > :not(#sola-acessibilidade) { filter:url("#sola-deuteranopia"); }
 html.sola-a11y-tritanopia body > :not(#sola-acessibilidade) { filter:url("#sola-tritanopia"); }

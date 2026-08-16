@@ -92,7 +92,6 @@ Sola.carregarScript('assets/js/guarda.js');
 Sola.carregarScript('assets/js/perfil.js');
 Sola.carregarScript('assets/js/vlibras-widget.js');
 
-// Additive accessibility layer: loaded by every page that already includes core.js.
 (function carregarCSSAcessibilidade() {
   var href = Sola.url('assets/css/accessibility-menu.css');
 
