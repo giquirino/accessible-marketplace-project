@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão do Marketplace · Last Dance Club Admin</title>
+  <link rel="stylesheet" href="../../assets/css/global.css" />
+  <link rel="stylesheet" href="../../assets/css/globalPainel.css" />
+  <link rel="stylesheet" href="../../assets/css/pages/admin-marketplace.css" />
+</head>
+<body id="pagina-admin-marketplace">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+  <div id="painel">
+    <aside id="menu-lateral">
+      <a class="botao botao-branco" href="admin-dashboard.html" style="margin-bottom:1.4rem">← Painel existente</a>
+      <div>
+        <div class="menu-marca"><span class="marca-texto">Last Dance Club</span></div>
+        <nav class="menu-lista" aria-label="Navegação administrativa">
+          <a class="item-menu ativo" href="admin-marketplace.html">Gestão do marketplace</a>
+          <a class="item-menu" href="admin-dashboard.html">Dashboard existente</a>
+          <a class="item-menu" href="admin-marcas.html">Marcas existente</a>
+          <a class="item-menu" href="admin-usuarios.html">Usuários existente</a>
+        </nav>
+      </div>
+      <div class="menu-rodape">
+        <a href="../../index.html" class="usuario link-limpo">Voltar para a loja pública</a>
+      </div>
+    </aside>
+
+    <div id="area-principal">
+      <header id="topo">
+        <div class="linha">
+          <button class="botao-menu" type="button" data-abrir-menu aria-label="Abrir menu" aria-expanded="false">
+            <span class="botao-menu-barra"></span><span class="botao-menu-barra"></span>
+          </button>
+          <div>
+            <p class="topo-rotulo">Admin</p>
+            <h1 class="topo-titulo">Gestão do marketplace</h1>
+          </div>
+        </div>
+        <a class="botao botao-branco" href="../../index.html">Loja pública</a>
+      </header>
+
+      <main id="conteudo" tabindex="-1">
+        <section id="admin-marketplace">
+          <div class="admin-cabecalho">
+            <div><h2>CRUD administrativo</h2><p>Produtos, marcas e usuários usando a API protegida por autenticação de administrador.</p></div>
+          </div>
+
+          <div class="admin-grid-resumo" aria-label="Resumo">
+            <article class="admin-cartao"><div class="admin-cartao-rotulo">Produtos</div><div class="admin-cartao-numero" data-resumo="produtos">—</div></article>
+            <article class="admin-cartao"><div class="admin-cartao-rotulo">Marcas</div><div class="admin-cartao-numero" data-resumo="marcas">—</div></article>
+            <article class="admin-cartao"><div class="admin-cartao-rotulo">Usuários</div><div class="admin-cartao-numero" data-resumo="usuarios">—</div></article>
+          </div>
+
+          <div class="admin-abas" role="tablist" aria-label="Recursos administrativos">
+            <button class="admin-aba ativo" type="button" role="tab" aria-selected="true" data-section="produtos">Produtos</button>
+            <button class="admin-aba" type="button" role="tab" aria-selected="false" data-section="marcas">Marcas</button>
+            <button class="admin-aba" type="button" role="tab" aria-selected="false" data-section="usuarios">Usuários</button>
+          </div>
+
+          <section id="secao-produtos" class="admin-painel-secao ativo" aria-labelledby="aba-produtos">
+            <div class="admin-acoes">
+              <div class="campo-busca"><span aria-hidden="true">⌕</span><input id="busca-produtos" type="search" placeholder="Buscar produtos..." aria-label="Buscar produtos"></div>
+              <button id="novo-produto" class="botao botao-preto" type="button">+ Novo produto</button>
+            </div>
+            <div class="quadro-tabela">
+              <table class="tabela">
+                <thead><tr><th>Produto</th><th>Marca</th><th>Categoria</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead>
+                <tbody id="tbody-produtos"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="secao-marcas" class="admin-painel-secao" aria-labelledby="aba-marcas">
+            <div class="admin-acoes"><div><h2 class="titulo-pagina">Marcas</h2></div><button id="nova-marca" class="botao botao-preto" type="button">+ Nova marca</button></div>
+            <div class="quadro-tabela">
+              <table class="tabela">
+                <thead><tr><th>Marca</th><th>Produtos</th><th>Ações</th></tr></thead>
+                <tbody id="tbody-marcas"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="secao-usuarios" class="admin-painel-secao" aria-labelledby="aba-usuarios">
+            <div class="admin-acoes">
+              <div class="admin-filtro"><div class="campo-busca"><span aria-hidden="true">⌕</span><input id="busca-usuarios" type="search" placeholder="Buscar nome ou e-mail..." aria-label="Buscar usuários"></div>
+              <select id="filtro-usuario" class="campo-busca admin-status" aria-label="Filtrar por papel"><option value="">Todos</option><option value="cliente">Clientes</option><option value="vendedor">Vendedores</option><option value="admin">Administradores</option></select></div>
+              <button id="novo-usuario" class="botao botao-preto" type="button">+ Novo usuário</button>
+            </div>
+            <div class="quadro-tabela">
+              <table class="tabela">
+                <thead><tr><th>Nome</th><th>E-mail</th><th>Papel</th><th>Ações</th></tr></thead>
+                <tbody id="tbody-usuarios"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../assets/js/core.js"></script>
+  <script src="../../assets/js/navegacao.js"></script>
+  <script src="../../assets/js/dialogos.js"></script>
+  <script src="../../assets/js/autenticacao.js"></script>
+  <script src="../../assets/js/admin-marketplace.js"></script>
+</body>
+</html>

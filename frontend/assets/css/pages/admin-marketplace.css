@@ -1,0 +1,31 @@
+
+#admin-marketplace {
+  padding: 3.2rem;
+}
+.admin-abas { display:flex; gap:.8rem; flex-wrap:wrap; margin-bottom:2rem; }
+.admin-aba { border:.1rem solid var(--borda); background:var(--branco); color:var(--cinza-escuro); border-radius:var(--canto-redondo); padding:1rem 1.5rem; cursor:pointer; font:inherit; font-weight:700; }
+.admin-aba.ativo { background:var(--laranja); color:#fff; border-color:var(--laranja); }
+.admin-painel-secao { display:none; }
+.admin-painel-secao.ativo { display:block; }
+.admin-grid-resumo { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-bottom:2rem; }
+.admin-cartao { background:var(--branco); border-radius:var(--canto-g); box-shadow:var(--sombra); padding:2rem; }
+.admin-cartao-numero { font-family:var(--fonte-titulo); font-size:3rem; font-weight:800; margin:.4rem 0 0; }
+.admin-cartao-rotulo { font-size:1.25rem; color:var(--cinza); font-weight:700; }
+.admin-acoes { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.4rem; }
+.admin-filtro { display:flex; gap:.8rem; flex-wrap:wrap; flex:1; }
+.admin-filtro .campo-busca { max-width:42rem; }
+.admin-form-card { margin-bottom:2rem; }
+.admin-form-actions { display:flex; justify-content:flex-end; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap; }
+.admin-vazio { padding:3rem; text-align:center; color:var(--cinza); }
+.admin-status { min-width:9rem; }
+.admin-cabecalho {
+  display:flex; align-items:flex-end; justify-content:space-between; gap:1.2rem; margin-bottom:2rem;
+}
+.admin-cabecalho h2 { font-size:2.4rem; margin:0 0 .35rem; }
+.admin-cabecalho p { margin:0; color:var(--cinza); font-size:1.3rem; }
+.admin-dialog-form .grade-form { margin:0; }
+.admin-perigo { color:#b42318; }
+@media (max-width: 64rem) {
+  #admin-marketplace { padding:2rem; }
+  .admin-grid-resumo { grid-template-columns:1fr; }
+}

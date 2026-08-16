@@ -91,3 +91,18 @@ Sola.carregarScript = function (arquivo, pronto) {
 Sola.carregarScript('assets/js/guarda.js');
 Sola.carregarScript('assets/js/perfil.js');
 Sola.carregarScript('assets/js/vlibras-widget.js');
+
+// Additive accessibility layer: loaded by every page that already includes core.js.
+(function carregarCSSAcessibilidade() {
+  var href = Sola.url('assets/css/accessibility-menu.css');
+
+  if (!document.querySelector('link[data-sola-accessibility-css]')) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute('data-sola-accessibility-css', '');
+    document.head.appendChild(link);
+  }
+})();
+
+Sola.carregarScript('assets/js/AccessibilityMenu.js');
