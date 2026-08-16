@@ -16,9 +16,15 @@
 #pagina-index .destaque-texto,
 #pagina-index .destaque-canto { color: rgba(255,255,255,.74); }
 
-#pagina-index .destaque .botao-branco { color: var(--branco); border-color: var(--branco); }
+#pagina-index .destaque .botao-branco {
+  color: var(--branco);
+  border-color: var(--branco);
+}
 
-#pagina-index .destaque .botao-branco:hover { background: var(--branco); color: var(--azul); }
+#pagina-index .destaque .botao-branco:hover {
+  background: var(--branco);
+  color: var(--azul);
+}
 
 #pagina-index #faixa-categorias { background: linear-gradient(115deg, var(--azul), var(--roxo)); }
 

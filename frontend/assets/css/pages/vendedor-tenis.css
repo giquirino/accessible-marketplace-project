@@ -69,9 +69,16 @@
   right: 1.2rem;
 }
 
-.paginacao-botoes button.ativo { background: var(--laranja); border-color: var(--laranja); color: var(--branco); }
+.paginacao-botoes button.ativo {
+  background: var(--laranja);
+  border-color: var(--laranja);
+  color: var(--branco);
+}
 
-.paginacao-botoes button.ativo:hover { background: var(--roxo); border-color: var(--roxo); }
+.paginacao-botoes button.ativo:hover {
+  background: var(--roxo);
+  border-color: var(--roxo);
+}
 
 .paginacao-botoes button.ativo img.icone {
   filter: brightness(0) invert(1);
