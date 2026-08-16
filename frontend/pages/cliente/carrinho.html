@@ -149,53 +149,12 @@
 
         <main id="conteudo" tabindex="-1">
           <div id="area-checkout">
-            <div class="quadro-tabela" id="itens-carrinho">
-              <div class="item-carrinho">
-                <div class="foto-exemplo foto-mini"></div>
-                <div class="carrinho-info">
-                  <p class="carrinho-nome">Astra Run Flux</p>
-                  <p class="carrinho-variacao">Tamanho 42 · Astra Run</p>
-                </div>
-                <div class="contador-qtd">
-                  <button type="button" aria-label="Diminuir quantidade">
-                    <img class="icone icone-mini" src="../../assets/icons/icone-menos.png" alt="" />
-                  </button>
-                  <span>1</span>
-                  <button type="button" aria-label="Aumentar quantidade">
-                    <img class="icone icone-mini" src="../../assets/icons/icone-add.png" alt="" />
-                  </button>
-                </div>
-                <span class="carrinho-preco">R$ 479,00</span>
-                <button class="botao-icone" type="button" aria-label="Remover item">
-                  <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
-                </button>
-              </div>
-              <div class="item-carrinho">
-                <div class="foto-exemplo foto-mini"></div>
-                <div class="carrinho-info">
-                  <p class="carrinho-nome">Kaya Street Low</p>
-                  <p class="carrinho-variacao">Tamanho 40 · Kaya</p>
-                </div>
-                <div class="contador-qtd">
-                  <button type="button" aria-label="Diminuir quantidade">
-                    <img class="icone icone-mini" src="../../assets/icons/icone-menos.png" alt="" />
-                  </button>
-                  <span>2</span>
-                  <button type="button" aria-label="Aumentar quantidade">
-                    <img class="icone icone-mini" src="../../assets/icons/icone-add.png" alt="" />
-                  </button>
-                </div>
-                <span class="carrinho-preco">R$ 699,80</span>
-                <button class="botao-icone" type="button" aria-label="Remover item">
-                  <img class="icone" src="../../assets/icons/icone-fechar.png" alt="" />
-                </button>
-              </div>
-            </div>
+            <div class="quadro-tabela" id="itens-carrinho"></div>
             <div id="resumo-pedido">
               <p class="resumo-titulo">Resumo do pedido</p>
               <div class="resumo-linha">
                 <span>Subtotal</span>
-                <span>R$ 1.178,80</span>
+                <span data-carrinho-subtotal>R$ 0,00</span>
               </div>
               <div class="resumo-linha">
                 <span>Frete</span>
@@ -203,7 +162,7 @@
               </div>
               <div class="resumo-linha resumo-total">
                 <span>Total</span>
-                <span>R$ 1.178,80</span>
+                <span data-carrinho-total>R$ 0,00</span>
               </div>
               <a class="botao botao-preto" href="checkout-endereco.html">Ir para o checkout</a>
             </div>
@@ -217,6 +176,7 @@
     <script src="../../assets/js/dialogos.js"></script>
     <script src="../../assets/js/catalogo.js"></script>
     <script src="../../assets/js/autenticacao.js"></script>
+    <script src="../../assets/js/carrinho.js"></script>
     <dialog class="dialogo" id="dialogo-notificacoes" aria-labelledby="titulo-notificacoes">
       <div class="dialogo-caixa">
         <header class="dialogo-topo">

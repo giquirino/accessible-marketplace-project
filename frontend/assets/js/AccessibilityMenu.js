@@ -1,9 +1,11 @@
 (function () {
   'use strict';
 
-  if (window.SolaAccessibility) return;
+  if (window.SolaAccessibility) {
+    return;
+  }
 
-  var STORAGE = {
+  var ARMAZENAMENTO = {
     font: 'solaA11yFont',
     contrast: 'solaA11yContrast',
     colorVision: 'solaA11yColorVision',
@@ -12,34 +14,34 @@
     clickArea: 'solaA11yClickArea',
     spacing: 'solaA11ySpacing',
     reduceMotion: 'solaA11yReduceMotion',
-    readingMask: 'solaA11yReadingMask'
+    readingMask: 'solaA11yReadingMask',
+    darkTheme: 'solaA11yDarkTheme'
   };
 
-  var state = {
-    font: localStorage.getItem(STORAGE.font) || 'normal',
-    contrast: localStorage.getItem(STORAGE.contrast) || 'normal',
-    colorVision: localStorage.getItem(STORAGE.colorVision) || 'normal',
-    dyslexia: localStorage.getItem(STORAGE.dyslexia) === '1',
-    focus: localStorage.getItem(STORAGE.focus) === '1',
-    clickArea: localStorage.getItem(STORAGE.clickArea) === '1',
-    spacing: localStorage.getItem(STORAGE.spacing) === '1',
-    reduceMotion: localStorage.getItem(STORAGE.reduceMotion) === '1',
-    readingMask: localStorage.getItem(STORAGE.readingMask) === '1',
-    recognition: null,
-    recognitionBusy: false,
-    voices: []
+  var estado = {
+    font: localStorage.getItem(ARMAZENAMENTO.font) || 'normal',
+    contrast: localStorage.getItem(ARMAZENAMENTO.contrast) || 'normal',
+    colorVision: localStorage.getItem(ARMAZENAMENTO.colorVision) || 'normal',
+    dyslexia: localStorage.getItem(ARMAZENAMENTO.dyslexia) === '1',
+    focus: localStorage.getItem(ARMAZENAMENTO.focus) === '1',
+    clickArea: localStorage.getItem(ARMAZENAMENTO.clickArea) === '1',
+    spacing: localStorage.getItem(ARMAZENAMENTO.spacing) === '1',
+    reduceMotion: localStorage.getItem(ARMAZENAMENTO.reduceMotion) === '1',
+    readingMask: localStorage.getItem(ARMAZENAMENTO.readingMask) === '1',
+    darkTheme: localStorage.getItem(ARMAZENAMENTO.darkTheme) === '1',
+    reconhecimento: null,
+    reconhecimentoAtivo: false,
+    vozes: []
   };
 
-  var FONT_SCALE = {
+  var ESCALA_FONTE = {
     small: 0.90,
     normal: 1,
     large: 1.10,
     larger: 1.20
   };
 
-  /* Somente elementos que realmente exibem texto. Containers, imagens e elementos
-     com aria-label foram removidos para que A-/A+ não redimensione a composição. */
-  var FONT_SELECTORS = [
+  var SELETORES_DE_FONTE = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'p', 'li', 'dt', 'dd', 'label', 'legend',
     'button', 'input', 'select', 'textarea',
@@ -49,53 +51,74 @@
     '[role="menuitem"]'
   ].join(',');
 
-  function save(key, value) {
-    var storageKey = STORAGE[key];
-    if (!storageKey) return;
-    localStorage.setItem(storageKey, value ? '1' : value);
+  function salvar(chave, valor) {
+    var chaveArmazenamento = ARMAZENAMENTO[chave];
+    if (!chaveArmazenamento) {
+      return;
+    }
+
+    var valorGravado = valor;
+    if (valor) {
+      valorGravado = '1';
+    }
+    localStorage.setItem(chaveArmazenamento, valorGravado);
   }
 
-  function getContentRoot() {
+  function obterRaizConteudo() {
     return document.querySelector('main, [role="main"], #conteudo') || document.body;
   }
 
-  function applyFontScale() {
-    var scale = FONT_SCALE[state.font] || 1;
-    var root = getContentRoot();
-    if (!root) return;
+  function aplicarEscalaFonte() {
+    var escala = ESCALA_FONTE[estado.font] || 1;
+    var root = obterRaizConteudo();
+    if (!root) {
+      return;
+    }
 
-    root.querySelectorAll(FONT_SELECTORS).forEach(function (el) {
-      if (el.closest('#sola-acessibilidade')) return;
-      var original = parseFloat(el.getAttribute('data-sola-a11y-font-original'));
-
-      /* Grava o tamanho original uma única vez. Isso evita a multiplicação
-         da escala em elementos aninhados a cada troca de A-/A+. */
-      if (!Number.isFinite(original)) {
-        var computed = window.getComputedStyle(el);
-        original = parseFloat(computed.fontSize);
-        if (!Number.isFinite(original) || original < 8 || original > 96) return;
-        el.setAttribute('data-sola-a11y-font-original', String(original));
+    root.querySelectorAll(SELETORES_DE_FONTE).forEach(function (elemento) {
+      if (elemento.closest('#sola-acessibilidade')) {
+        return;
       }
 
-      el.style.fontSize = scale === 1 ? '' : (original * scale) + 'px';
+      var tamanhoOriginal = parseFloat(elemento.getAttribute('data-sola-a11y-font-original'));
+      if (!Number.isFinite(tamanhoOriginal)) {
+        var estiloComputado = window.getComputedStyle(elemento);
+        tamanhoOriginal = parseFloat(estiloComputado.fontSize);
+        if (!Number.isFinite(tamanhoOriginal) || tamanhoOriginal < 8 || tamanhoOriginal > 96) {
+          return;
+        }
+        elemento.setAttribute('data-sola-a11y-font-original', String(tamanhoOriginal));
+      }
+
+      var novoTamanho;
+      if (escala === 1) {
+        novoTamanho = '';
+      } else {
+        novoTamanho = (tamanhoOriginal * escala) + 'px';
+      }
+      elemento.style.fontSize = novoTamanho;
     });
   }
 
-  function clearTransientFontScale() {
-    var root = getContentRoot();
-    if (!root) return;
-    root.querySelectorAll('[data-sola-a11y-font-original]').forEach(function (el) {
-      el.style.fontSize = '';
+  function limparEscalaFonteTransitoria() {
+    var root = obterRaizConteudo();
+    if (!root) {
+      return;
+    }
+
+    root.querySelectorAll('[data-sola-a11y-font-original]').forEach(function (elemento) {
+      elemento.style.fontSize = '';
     });
   }
 
-  function apply() {
+  var ultimaFonteAplicada = null;
+
+  function aplicar() {
     var root = document.documentElement;
 
-    /* Corrige combinações antigas salvas no navegador antes desta versão. */
-    if (state.contrast !== 'normal' && state.colorVision !== 'normal') {
-      state.colorVision = 'normal';
-      save('colorVision', state.colorVision);
+    if (estado.contrast !== 'normal' && estado.colorVision !== 'normal') {
+      estado.colorVision = 'normal';
+      salvar('colorVision', estado.colorVision);
     }
 
     root.classList.remove(
@@ -105,6 +128,7 @@
       'sola-a11y-dislexia',
       'sola-a11y-reduzir-estimulos',
       'sola-a11y-mascara',
+      'sola-a11y-tema-escuro',
       'sola-a11y-alto-contraste',
       'sola-a11y-inverso',
       'sola-a11y-protanopia',
@@ -112,91 +136,138 @@
       'sola-a11y-tritanopia'
     );
 
-    if (state.spacing) root.classList.add('sola-a11y-espacamento');
-    if (state.focus) root.classList.add('sola-a11y-foco');
-    if (state.clickArea) root.classList.add('sola-a11y-area-clique');
-    if (state.dyslexia) root.classList.add('sola-a11y-dislexia');
-    if (state.reduceMotion) root.classList.add('sola-a11y-reduzir-estimulos');
-    if (state.readingMask) root.classList.add('sola-a11y-mascara');
-    if (state.contrast === 'high') root.classList.add('sola-a11y-alto-contraste');
-    if (state.contrast === 'inverse') root.classList.add('sola-a11y-inverso');
-    if (state.colorVision !== 'normal') root.classList.add('sola-a11y-' + state.colorVision);
+    if (estado.spacing) {
+      root.classList.add('sola-a11y-espacamento');
+    }
+    if (estado.focus) {
+      root.classList.add('sola-a11y-foco');
+    }
+    if (estado.clickArea) {
+      root.classList.add('sola-a11y-area-clique');
+    }
+    if (estado.dyslexia) {
+      root.classList.add('sola-a11y-dislexia');
+    }
+    if (estado.reduceMotion) {
+      root.classList.add('sola-a11y-reduzir-estimulos');
+    }
+    if (estado.readingMask) {
+      root.classList.add('sola-a11y-mascara');
+    }
+    if (estado.darkTheme) {
+      root.classList.add('sola-a11y-tema-escuro');
+    }
+    if (estado.contrast === 'high') {
+      root.classList.add('sola-a11y-alto-contraste');
+    }
+    if (estado.contrast === 'inverse') {
+      root.classList.add('sola-a11y-inverso');
+    }
+    if (estado.colorVision !== 'normal') {
+      root.classList.add('sola-a11y-' + estado.colorVision);
+    }
 
-    clearTransientFontScale();
-    window.requestAnimationFrame(applyFontScale);
-    updateButtons();
+    if (estado.font !== ultimaFonteAplicada) {
+      ultimaFonteAplicada = estado.font;
+      limparEscalaFonteTransitoria();
+      window.requestAnimationFrame(aplicarEscalaFonte);
+    }
+    atualizarBotoes();
   }
 
-  function updateButtons() {
+  function textoBooleano(valor) {
+    if (valor) {
+      return 'true';
+    }
+    return 'false';
+  }
+
+  function atualizarBotoes() {
     var menu = document.getElementById('sola-acessibilidade');
-    if (!menu) return;
-
-    menu.querySelectorAll('[data-a11y-toggle]').forEach(function (button) {
-      var key = button.getAttribute('data-a11y-toggle');
-      button.setAttribute('aria-pressed', state[key] ? 'true' : 'false');
-    });
-
-    menu.querySelectorAll('[data-a11y-value]').forEach(function (button) {
-      var pair = button.getAttribute('data-a11y-value').split(':');
-      button.setAttribute('aria-pressed', state[pair[0]] === pair[1] ? 'true' : 'false');
-    });
-
-    var commandButton = menu.querySelector('[data-a11y-command]');
-    if (commandButton) {
-      commandButton.setAttribute('aria-pressed', state.recognitionBusy ? 'true' : 'false');
-      commandButton.textContent = state.recognitionBusy ? '■ Parar comando por voz' : '🎙 Comando por voz';
-    }
-  }
-
-  function setState(key, value) {
-    state[key] = value;
-    save(key, value);
-    apply();
-  }
-
-  function setOption(key, value) {
-    /* Contraste e simulação de cores são modos visuais exclusivos.
-       Clicar no modo já ativo volta para o estado normal. */
-    if (key === 'contrast') {
-      var nextContrast = state.contrast === value ? 'normal' : value;
-      state.contrast = nextContrast;
-      state.colorVision = 'normal';
-      save('contrast', state.contrast);
-      save('colorVision', state.colorVision);
-      apply();
+    if (!menu) {
       return;
     }
 
-    if (key === 'colorVision') {
-      var nextColor = state.colorVision === value ? 'normal' : value;
-      state.colorVision = nextColor;
-      state.contrast = 'normal';
-      save('colorVision', state.colorVision);
-      save('contrast', state.contrast);
-      apply();
+    menu.querySelectorAll('[data-a11y-toggle]').forEach(function (botao) {
+      var chave = botao.getAttribute('data-a11y-toggle');
+      botao.setAttribute('aria-pressed', textoBooleano(estado[chave]));
+    });
+
+    menu.querySelectorAll('[data-a11y-value]').forEach(function (botao) {
+      var par = botao.getAttribute('data-a11y-value').split(':');
+      botao.setAttribute('aria-pressed', textoBooleano(estado[par[0]] === par[1]));
+    });
+
+    var botaoComando = menu.querySelector('[data-a11y-command]');
+    if (botaoComando) {
+      botaoComando.setAttribute('aria-pressed', textoBooleano(estado.reconhecimentoAtivo));
+
+      var textoBotaoComando;
+      if (estado.reconhecimentoAtivo) {
+        textoBotaoComando = '■ Parar comando por voz';
+      } else {
+        textoBotaoComando = '🎙 Comando por voz';
+      }
+      botaoComando.textContent = textoBotaoComando;
+    }
+  }
+
+  function definirEstado(chave, valor) {
+    estado[chave] = valor;
+    salvar(chave, valor);
+    aplicar();
+  }
+
+  function alternarValorExclusivo(chave, chaveOposta, valor) {
+    var proximoValor;
+    if (estado[chave] === valor) {
+      proximoValor = 'normal';
+    } else {
+      proximoValor = valor;
+    }
+
+    estado[chave] = proximoValor;
+    estado[chaveOposta] = 'normal';
+    salvar(chave, estado[chave]);
+    salvar(chaveOposta, estado[chaveOposta]);
+    aplicar();
+  }
+
+  function definirOpcao(chave, valor) {
+    if (chave === 'contrast') {
+      alternarValorExclusivo('contrast', 'colorVision', valor);
       return;
     }
 
-    setState(key, value);
+    if (chave === 'colorVision') {
+      alternarValorExclusivo('colorVision', 'contrast', valor);
+      return;
+    }
+
+    definirEstado(chave, valor);
   }
 
-  function toggle(key) {
-    setState(key, !state[key]);
+  function alternar(chave) {
+    definirEstado(chave, !estado[chave]);
   }
 
-  function closePanel() {
-    stopRecognition();
-    var panel = document.getElementById('sola-a11y-painel');
-    var trigger = document.getElementById('sola-a11y-trigger');
-    if (panel) panel.hidden = true;
-    if (trigger) {
-      trigger.setAttribute('aria-expanded', 'false');
-      trigger.focus();
+  function fecharPainel() {
+    pararReconhecimento();
+
+    var painel = document.getElementById('sola-a11y-painel');
+    var gatilho = document.getElementById('sola-a11y-trigger');
+
+    if (painel) {
+      painel.hidden = true;
+    }
+    if (gatilho) {
+      gatilho.setAttribute('aria-expanded', 'false');
+      gatilho.focus();
     }
   }
 
-  function normalize(text) {
-    return String(text || '')
+  function normalizar(texto) {
+    return String(texto || '')
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
@@ -205,98 +276,140 @@
       .trim();
   }
 
-  function getPageText() {
-    var target = getContentRoot();
-    if (!target) return '';
-    var clone = target.cloneNode(true);
-    clone.querySelectorAll('#sola-acessibilidade, script, style, noscript, [aria-hidden="true"]').forEach(function (el) { el.remove(); });
+  function obterTextoPagina() {
+    var alvo = obterRaizConteudo();
+    if (!alvo) {
+      return '';
+    }
+
+    var clone = alvo.cloneNode(true);
+    clone.querySelectorAll('#sola-acessibilidade, script, style, noscript, [aria-hidden="true"]').forEach(function (elemento) {
+      elemento.remove();
+    });
+
     return (clone.innerText || clone.textContent || '')
       .replace(/\s+/g, ' ')
       .trim()
       .slice(0, 12000);
   }
 
-  function stopSpeech() {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    setVoiceStatus('Leitura interrompida.');
+  function pararFala() {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    definirStatusVoz('Leitura interrompida.');
   }
 
-  function splitSpeechText(text) {
-    var chunks = [];
-    String(text || '').split(/(?<=[.!?])\s+/).forEach(function (part) {
-      var current = part.trim();
-      while (current.length > 260) {
-        var cut = current.lastIndexOf(' ', 260);
-        if (cut < 80) cut = 260;
-        chunks.push(current.slice(0, cut));
-        current = current.slice(cut).trim();
+  function dividirTextoFala(texto) {
+    var partes = [];
+
+    String(texto || '').split(/(?<=[.!?])\s+/).forEach(function (parte) {
+      var atual = parte.trim();
+      while (atual.length > 260) {
+        var corte = atual.lastIndexOf(' ', 260);
+        if (corte < 80) {
+          corte = 260;
+        }
+        partes.push(atual.slice(0, corte));
+        atual = atual.slice(corte).trim();
       }
-      if (current) chunks.push(current);
+      if (atual) {
+        partes.push(atual);
+      }
     });
-    return chunks.slice(0, 60);
+
+    return partes.slice(0, 60);
   }
 
-  function chooseVoice() {
-    if (!('speechSynthesis' in window)) return null;
-    var voices = window.speechSynthesis.getVoices() || [];
-    state.voices = voices;
-    return voices.find(function (v) { return /^pt-BR$/i.test(v.lang); }) ||
-      voices.find(function (v) { return /^pt[-_]/i.test(v.lang); }) ||
-      voices.find(function (v) { return v.default; }) || null;
+  function escolherVoz() {
+    if (!('speechSynthesis' in window)) {
+      return null;
+    }
+
+    var vozes = window.speechSynthesis.getVoices() || [];
+    estado.vozes = vozes;
+
+    var vozPortuguesBrasil = vozes.find(function (voz) { return /^pt-BR$/i.test(voz.lang); });
+    if (vozPortuguesBrasil) {
+      return vozPortuguesBrasil;
+    }
+
+    var vozPortugues = vozes.find(function (voz) { return /^pt[-_]/i.test(voz.lang); });
+    if (vozPortugues) {
+      return vozPortugues;
+    }
+
+    var vozPadrao = vozes.find(function (voz) { return voz.default; });
+    if (vozPadrao) {
+      return vozPadrao;
+    }
+
+    return null;
   }
 
-  function speak(text) {
+  function falar(texto) {
     if (!('speechSynthesis' in window) || typeof window.SpeechSynthesisUtterance !== 'function') {
-      setVoiceStatus('Seu navegador não oferece leitura de texto por voz.');
+      definirStatusVoz('Seu navegador não oferece leitura de texto por voz.');
       return;
     }
 
-    var clean = String(text || '').trim();
-    if (!clean) {
-      setVoiceStatus('Não encontrei texto principal nesta página para ler.');
+    var textoLimpo = String(texto || '').trim();
+    if (!textoLimpo) {
+      definirStatusVoz('Não encontrei texto principal nesta página para ler.');
       return;
     }
 
-    var synth = window.speechSynthesis;
-    synth.cancel();
-    var chunks = splitSpeechText(clean);
-    var index = 0;
-    var voice = chooseVoice();
+    var sintetizador = window.speechSynthesis;
+    sintetizador.cancel();
 
-    function next() {
-      if (index >= chunks.length) {
-        setVoiceStatus('Leitura concluída.');
+    var partes = dividirTextoFala(textoLimpo);
+    var indice = 0;
+    var voz = escolherVoz();
+
+    function proxima() {
+      if (indice >= partes.length) {
+        definirStatusVoz('Leitura concluída.');
         return;
       }
-      var utterance = new SpeechSynthesisUtterance(chunks[index++]);
-      utterance.lang = voice && voice.lang ? voice.lang : 'pt-BR';
-      utterance.voice = voice || null;
+
+      var utterance = new SpeechSynthesisUtterance(partes[indice++]);
+
+      var idiomaUtterance;
+      if (voz && voz.lang) {
+        idiomaUtterance = voz.lang;
+      } else {
+        idiomaUtterance = 'pt-BR';
+      }
+      utterance.lang = idiomaUtterance;
+      utterance.voice = voz || null;
       utterance.rate = 0.92;
       utterance.pitch = 1;
       utterance.onstart = function () {
-        setVoiceStatus('Lendo a página… ' + index + '/' + chunks.length);
+        definirStatusVoz('Lendo a página… ' + indice + '/' + partes.length);
       };
-      utterance.onerror = function (event) {
-        setVoiceStatus('Não foi possível continuar a leitura: ' + (event.error || 'erro de voz') + '.');
+      utterance.onerror = function (evento) {
+        definirStatusVoz('Não foi possível continuar a leitura: ' + (evento.error || 'erro de voz') + '.');
       };
-      utterance.onend = next;
-      synth.speak(utterance);
+      utterance.onend = proxima;
+      sintetizador.speak(utterance);
     }
 
-    next();
+    proxima();
   }
 
-  function setVoiceStatus(message) {
-    var el = document.querySelector('[data-a11y-voice-status]');
-    if (el) el.textContent = message;
+  function definirStatusVoz(mensagem) {
+    var elemento = document.querySelector('[data-a11y-voice-status]');
+    if (elemento) {
+      elemento.textContent = mensagem;
+    }
   }
 
-  function recognitionConstructor() {
+  function construtorReconhecimento() {
     return window.SpeechRecognition || window.webkitSpeechRecognition || null;
   }
 
-  function recognitionErrorMessage(error) {
-    var messages = {
+  function mensagemErroReconhecimento(erro) {
+    var mensagens = {
       'not-allowed': 'O navegador bloqueou o microfone. Permita o acesso ao microfone para este site e tente novamente.',
       'service-not-allowed': 'O reconhecimento de voz está bloqueado pelo navegador ou pela política da página.',
       'audio-capture': 'Nenhum microfone disponível foi encontrado.',
@@ -305,190 +418,262 @@
       'aborted': 'O comando por voz foi interrompido.',
       'language-not-supported': 'O idioma português não está disponível para o reconhecimento de voz neste navegador.'
     };
-    return messages[error] || 'Não foi possível iniciar o reconhecimento de voz. Tente novamente.';
+
+    return mensagens[erro] || 'Não foi possível iniciar o reconhecimento de voz. Tente novamente.';
   }
 
-  function executeVoiceCommand(transcript) {
-    var command = normalize(transcript);
-    setVoiceStatus('Comando recebido: “' + transcript + '”');
-
-    if (command.includes('parar leitura') || command.includes('parar voz') || command.includes('silencio')) {
-      stopSpeech();
-      return;
+  function alternarEFalar(chave, mensagemLigado, mensagemDesligado) {
+    alternar(chave);
+    if (estado[chave]) {
+      falar(mensagemLigado);
+    } else {
+      falar(mensagemDesligado);
     }
-    if (command.includes('ler pagina') || command.includes('ler a pagina') || command === 'ler' || command.includes('leia pagina')) {
-      speak(getPageText());
-      return;
-    }
-    if (command.includes('aumentar fonte') || command.includes('aumente a fonte') || command.includes('aumentar o tamanho da fonte') || command.includes('fonte maior') || command === 'mais fonte') {
-      var up = state.font === 'small' ? 'normal' : state.font === 'normal' ? 'large' : 'larger';
-      setState('font', up);
-      speak('Tamanho da fonte aumentado.');
-      return;
-    }
-    if (command.includes('diminuir fonte') || command.includes('diminua a fonte') || command.includes('diminuir o tamanho da fonte') || command.includes('fonte menor') || command === 'menos fonte') {
-      var down = state.font === 'larger' ? 'large' : state.font === 'large' ? 'normal' : 'small';
-      setState('font', down);
-      speak('Tamanho da fonte diminuído.');
-      return;
-    }
-    if (command.includes('fonte normal') || command.includes('tamanho normal')) {
-      setState('font', 'normal');
-      speak('Fonte normal ativada.');
-      return;
-    }
-    if (command.includes('alto contraste') || command.includes('contraste alto')) {
-      setState('contrast', state.contrast === 'high' ? 'normal' : 'high');
-      speak(state.contrast === 'high' ? 'Alto contraste ativado.' : 'Alto contraste desativado.');
-      return;
-    }
-    if (command.includes('contraste inverso') || command.includes('inverter contraste') || command.includes('inverter cores')) {
-      setState('contrast', state.contrast === 'inverse' ? 'normal' : 'inverse');
-      speak(state.contrast === 'inverse' ? 'Contraste inverso ativado.' : 'Contraste inverso desativado.');
-      return;
-    }
-    if (command.includes('modo dislexia') || command.includes('fonte dislexia')) {
-      toggle('dyslexia');
-      speak(state.dyslexia ? 'Modo para dislexia ativado.' : 'Modo para dislexia desativado.');
-      return;
-    }
-    if (command.includes('espacar texto') || command.includes('espacamento de texto')) {
-      toggle('spacing');
-      speak(state.spacing ? 'Espaçamento de texto ativado.' : 'Espaçamento de texto desativado.');
-      return;
-    }
-    if (command.includes('pausar animacao') || command.includes('parar animacoes') || command.includes('reduzir movimento')) {
-      toggle('reduceMotion');
-      speak(state.reduceMotion ? 'Animações reduzidas.' : 'Animações restauradas.');
-      return;
-    }
-    if (command.includes('foco destacado') || command.includes('destacar foco')) {
-      toggle('focus');
-      speak(state.focus ? 'Foco destacado ativado.' : 'Foco destacado desativado.');
-      return;
-    }
-    if (command.includes('areas de clique') || command.includes('botoes maiores')) {
-      toggle('clickArea');
-      speak(state.clickArea ? 'Áreas de clique ampliadas.' : 'Áreas de clique normais.');
-      return;
-    }
-    if (command.includes('mascara de leitura') || command.includes('modo leitura')) {
-      toggle('readingMask');
-      speak(state.readingMask ? 'Máscara de leitura ativada.' : 'Máscara de leitura desativada.');
-      return;
-    }
-    if (command.includes('cor normal')) {
-      setState('colorVision', 'normal');
-      speak('Cores normais restauradas.');
-      return;
-    }
-    if (command.includes('protanopia')) { setState('colorVision', 'protanopia'); speak('Filtro para protanopia ativado.'); return; }
-    if (command.includes('deuteranopia')) { setState('colorVision', 'deuteranopia'); speak('Filtro para deuteranopia ativado.'); return; }
-    if (command.includes('tritanopia')) { setState('colorVision', 'tritanopia'); speak('Filtro para tritanopia ativado.'); return; }
-    if (command.includes('fechar menu') || command === 'fechar') {
-      closePanel();
-      return;
-    }
-    setVoiceStatus('Não reconheci esse comando. Diga, por exemplo, “ler página”, “aumentar fonte” ou “alto contraste”.');
-    speak('Comando não reconhecido.');
   }
 
-  function stopRecognition() {
-    if (state.recognition) {
-      try { state.recognition.onend = null; state.recognition.stop(); } catch (_) {}
-      state.recognition = null;
+  function alternarValorEFalar(chave, valorLigado, mensagemLigado, mensagemDesligado) {
+    var proximoValor;
+    if (estado[chave] === valorLigado) {
+      proximoValor = 'normal';
+    } else {
+      proximoValor = valorLigado;
     }
-    state.recognitionBusy = false;
-    updateButtons();
+    definirEstado(chave, proximoValor);
+
+    if (estado[chave] === valorLigado) {
+      falar(mensagemLigado);
+    } else {
+      falar(mensagemDesligado);
+    }
   }
 
-  function startRecognition() {
-    var Recognition = recognitionConstructor();
-    if (!Recognition) {
-      setVoiceStatus('Seu navegador não disponibiliza reconhecimento de voz. Para esta função, use Chrome ou Edge em uma conexão segura (HTTPS ou localhost).');
+  function executarComandoVoz(transcricao) {
+    var comando = normalizar(transcricao);
+    definirStatusVoz('Comando recebido: “' + transcricao + '”');
+
+    if (comando.includes('parar leitura') || comando.includes('parar voz') || comando.includes('silencio')) {
+      pararFala();
+      return;
+    }
+
+    if (comando.includes('ler pagina') || comando.includes('ler a pagina') || comando === 'ler' || comando.includes('leia pagina')) {
+      falar(obterTextoPagina());
+      return;
+    }
+
+    if (comando.includes('aumentar fonte') || comando.includes('aumente a fonte') || comando.includes('aumentar o tamanho da fonte') || comando.includes('fonte maior') || comando === 'mais fonte') {
+      var proximoTamanhoMaior;
+      if (estado.font === 'small') {
+        proximoTamanhoMaior = 'normal';
+      } else if (estado.font === 'normal') {
+        proximoTamanhoMaior = 'large';
+      } else {
+        proximoTamanhoMaior = 'larger';
+      }
+      definirEstado('font', proximoTamanhoMaior);
+      falar('Tamanho da fonte aumentado.');
+      return;
+    }
+
+    if (comando.includes('diminuir fonte') || comando.includes('diminua a fonte') || comando.includes('diminuir o tamanho da fonte') || comando.includes('fonte menor') || comando === 'menos fonte') {
+      var proximoTamanhoMenor;
+      if (estado.font === 'larger') {
+        proximoTamanhoMenor = 'large';
+      } else if (estado.font === 'large') {
+        proximoTamanhoMenor = 'normal';
+      } else {
+        proximoTamanhoMenor = 'small';
+      }
+      definirEstado('font', proximoTamanhoMenor);
+      falar('Tamanho da fonte diminuído.');
+      return;
+    }
+
+    if (comando.includes('fonte normal') || comando.includes('tamanho normal')) {
+      definirEstado('font', 'normal');
+      falar('Fonte normal ativada.');
+      return;
+    }
+
+    if (comando.includes('alto contraste') || comando.includes('contraste alto')) {
+      alternarValorEFalar('contrast', 'high', 'Alto contraste ativado.', 'Alto contraste desativado.');
+      return;
+    }
+
+    if (comando.includes('contraste inverso') || comando.includes('inverter contraste') || comando.includes('inverter cores')) {
+      alternarValorEFalar('contrast', 'inverse', 'Contraste inverso ativado.', 'Contraste inverso desativado.');
+      return;
+    }
+
+    if (comando.includes('modo dislexia') || comando.includes('fonte dislexia')) {
+      alternarEFalar('dyslexia', 'Modo para dislexia ativado.', 'Modo para dislexia desativado.');
+      return;
+    }
+
+    if (comando.includes('espacar texto') || comando.includes('espacamento de texto')) {
+      alternarEFalar('spacing', 'Espaçamento de texto ativado.', 'Espaçamento de texto desativado.');
+      return;
+    }
+
+    if (comando.includes('pausar animacao') || comando.includes('parar animacoes') || comando.includes('reduzir movimento')) {
+      alternarEFalar('reduceMotion', 'Animações reduzidas.', 'Animações restauradas.');
+      return;
+    }
+
+    if (comando.includes('foco destacado') || comando.includes('destacar foco')) {
+      alternarEFalar('focus', 'Foco destacado ativado.', 'Foco destacado desativado.');
+      return;
+    }
+
+    if (comando.includes('areas de clique') || comando.includes('botoes maiores')) {
+      alternarEFalar('clickArea', 'Áreas de clique ampliadas.', 'Áreas de clique normais.');
+      return;
+    }
+
+    if (comando.includes('mascara de leitura') || comando.includes('modo leitura')) {
+      alternarEFalar('readingMask', 'Máscara de leitura ativada.', 'Máscara de leitura desativada.');
+      return;
+    }
+
+    if (comando.includes('cor normal')) {
+      definirEstado('colorVision', 'normal');
+      falar('Cores normais restauradas.');
+      return;
+    }
+
+    if (comando.includes('protanopia')) {
+      definirEstado('colorVision', 'protanopia');
+      falar('Filtro para protanopia ativado.');
+      return;
+    }
+
+    if (comando.includes('deuteranopia')) {
+      definirEstado('colorVision', 'deuteranopia');
+      falar('Filtro para deuteranopia ativado.');
+      return;
+    }
+
+    if (comando.includes('tritanopia')) {
+      definirEstado('colorVision', 'tritanopia');
+      falar('Filtro para tritanopia ativado.');
+      return;
+    }
+
+    if (comando.includes('fechar menu') || comando === 'fechar') {
+      fecharPainel();
+      return;
+    }
+
+    definirStatusVoz('Não reconheci esse comando. Diga, por exemplo, “ler página”, “aumentar fonte” ou “alto contraste”.');
+    falar('Comando não reconhecido.');
+  }
+
+  function pararReconhecimento() {
+    if (estado.reconhecimento) {
+      try {
+        estado.reconhecimento.onend = null;
+        estado.reconhecimento.stop();
+      } catch (erro) {
+        estado.reconhecimento = null;
+      }
+      estado.reconhecimento = null;
+    }
+
+    estado.reconhecimentoAtivo = false;
+    atualizarBotoes();
+  }
+
+  function iniciarReconhecimento() {
+    var ClasseReconhecimento = construtorReconhecimento();
+    if (!ClasseReconhecimento) {
+      definirStatusVoz('Seu navegador não disponibiliza reconhecimento de voz. Para esta função, use Chrome ou Edge em uma conexão segura (HTTPS ou localhost).');
       return;
     }
 
     if (!window.isSecureContext && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && location.hostname !== '[::1]') {
-      setVoiceStatus('O comando por voz precisa de HTTPS ou localhost. Não funciona abrindo o HTML diretamente pelo arquivo.');
+      definirStatusVoz('O comando por voz precisa de HTTPS ou localhost. Não funciona abrindo o HTML diretamente pelo arquivo.');
       return;
     }
 
-    if (state.recognitionBusy) {
-      stopRecognition();
-      setVoiceStatus('Comandos por voz interrompidos.');
+    if (estado.reconhecimentoAtivo) {
+      pararReconhecimento();
+      definirStatusVoz('Comandos por voz interrompidos.');
       return;
     }
 
-    var rec = new Recognition();
-    rec.lang = 'pt-BR';
-    rec.continuous = false;
-    rec.interimResults = false;
-    rec.maxAlternatives = 3;
+    var reconhecimento = new ClasseReconhecimento();
+    reconhecimento.lang = 'pt-BR';
+    reconhecimento.continuous = false;
+    reconhecimento.interimResults = false;
+    reconhecimento.maxAlternatives = 3;
 
-    rec.onstart = function () {
-      state.recognitionBusy = true;
-      state.recognition = rec;
-      setVoiceStatus('Escutando… fale agora.');
-      updateButtons();
+    reconhecimento.onstart = function () {
+      estado.reconhecimentoAtivo = true;
+      estado.reconhecimento = reconhecimento;
+      definirStatusVoz('Escutando… fale agora.');
+      atualizarBotoes();
     };
 
-    rec.onresult = function (event) {
-      var result = event.results && event.results[0] && event.results[0][0];
-      if (result && result.transcript) executeVoiceCommand(result.transcript);
+    reconhecimento.onresult = function (evento) {
+      var resultado = evento.results && evento.results[0] && evento.results[0][0];
+      if (resultado && resultado.transcript) {
+        executarComandoVoz(resultado.transcript);
+      }
     };
 
-    rec.onerror = function (event) {
-      state.recognitionBusy = false;
-      state.recognition = null;
-      setVoiceStatus(recognitionErrorMessage(event.error));
-      updateButtons();
+    reconhecimento.onerror = function (evento) {
+      estado.reconhecimentoAtivo = false;
+      estado.reconhecimento = null;
+      definirStatusVoz(mensagemErroReconhecimento(evento.error));
+      atualizarBotoes();
     };
 
-    rec.onend = function () {
-      state.recognitionBusy = false;
-      state.recognition = null;
-      updateButtons();
+    reconhecimento.onend = function () {
+      estado.reconhecimentoAtivo = false;
+      estado.reconhecimento = null;
+      atualizarBotoes();
     };
 
-    state.recognition = rec;
-    state.recognitionBusy = true;
-    updateButtons();
-    setVoiceStatus('Solicitando acesso ao microfone…');
+    estado.reconhecimento = reconhecimento;
+    estado.reconhecimentoAtivo = true;
+    atualizarBotoes();
+    definirStatusVoz('Solicitando acesso ao microfone…');
 
-    function iniciarReconhecimento() {
+    function tentarIniciar() {
       try {
-        rec.start();
-      } catch (error) {
-        state.recognitionBusy = false;
-        state.recognition = null;
-        setVoiceStatus('Não consegui iniciar o reconhecimento. Verifique a permissão do microfone e tente novamente.');
-        updateButtons();
+        reconhecimento.start();
+      } catch (erro) {
+        estado.reconhecimentoAtivo = false;
+        estado.reconhecimento = null;
+        definirStatusVoz('Não consegui iniciar o reconhecimento. Verifique a permissão do microfone e tente novamente.');
+        atualizarBotoes();
       }
     }
 
-    /* Alguns navegadores só liberam o reconhecimento depois que a permissão
-       do microfone foi concedida explicitamente. O pedido ocorre após o clique
-       do usuário, então continua sendo um gesto válido. */
     if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
       navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(function (stream) {
-          stream.getTracks().forEach(function (track) { track.stop(); });
-          iniciarReconhecimento();
+        .then(function (fluxo) {
+          fluxo.getTracks().forEach(function (faixa) {
+            faixa.stop();
+          });
+          tentarIniciar();
         })
-        .catch(function () {
-          state.recognitionBusy = false;
-          state.recognition = null;
-          setVoiceStatus('Permissão do microfone negada ou indisponível. Autorize o microfone para este site e tente novamente.');
-          updateButtons();
+        .catch(function (erro) {
+          estado.reconhecimentoAtivo = false;
+          estado.reconhecimento = null;
+          definirStatusVoz('Permissão do microfone negada ou indisponível. Autorize o microfone para este site e tente novamente.');
+          atualizarBotoes();
         });
     } else {
-      iniciarReconhecimento();
+      tentarIniciar();
     }
   }
 
-  function addColorFilters() {
-    if (document.getElementById('sola-a11y-filters')) return;
+  function adicionarFiltrosCor() {
+    if (document.getElementById('sola-a11y-filters')) {
+      return;
+    }
+
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.id = 'sola-a11y-filters';
     svg.setAttribute('aria-hidden', 'true');
@@ -502,13 +687,15 @@
     document.body.appendChild(svg);
   }
 
-  function build() {
-    if (document.getElementById('sola-acessibilidade')) return;
-    addColorFilters();
+  function construir() {
+    if (document.getElementById('sola-acessibilidade')) {
+      return;
+    }
+    adicionarFiltrosCor();
 
-    var wrap = document.createElement('div');
-    wrap.id = 'sola-acessibilidade';
-    wrap.innerHTML =
+    var raizMenu = document.createElement('div');
+    raizMenu.id = 'sola-acessibilidade';
+    raizMenu.innerHTML =
       '<button id="sola-a11y-trigger" class="sola-a11y-botao" type="button" aria-expanded="false" aria-controls="sola-a11y-painel" aria-label="Abrir menu de acessibilidade">♿</button>' +
       '<section id="sola-a11y-painel" class="sola-a11y-painel" role="dialog" aria-modal="false" aria-labelledby="sola-a11y-titulo" hidden>' +
         '<div class="sola-a11y-topo">' +
@@ -536,6 +723,7 @@
           '<button class="sola-a11y-acao" type="button" data-a11y-toggle="clickArea" aria-pressed="false">Áreas de clique maiores</button>' +
           '<button class="sola-a11y-acao" type="button" data-a11y-toggle="reduceMotion" aria-pressed="false">Pausar animações</button>' +
           '<button class="sola-a11y-acao" type="button" data-a11y-toggle="readingMask" aria-pressed="false">Máscara de leitura</button>' +
+          '<button class="sola-a11y-acao" type="button" data-a11y-toggle="darkTheme" aria-pressed="false">Tema escuro</button>' +
         '</div></section>' +
         '<section class="sola-a11y-secao"><h3>Voz</h3><div class="sola-a11y-grade">' +
           '<button class="sola-a11y-acao" type="button" data-a11y-speak>🔊 Ler página</button>' +
@@ -545,71 +733,108 @@
         '<p class="sola-a11y-ajuda">O reconhecimento de voz depende do navegador e da permissão do microfone. Diga “ler página”, “aumentar fonte”, “alto contraste” ou “fechar menu”.</p></section>' +
       '</section>';
 
-    document.body.appendChild(wrap);
+    document.body.appendChild(raizMenu);
 
-    var trigger = document.getElementById('sola-a11y-trigger');
-    var panel = document.getElementById('sola-a11y-painel');
+    var gatilho = document.getElementById('sola-a11y-trigger');
+    var painel = document.getElementById('sola-a11y-painel');
 
-    trigger.addEventListener('click', function () {
-      var opening = panel.hidden;
-      panel.hidden = !opening;
-      trigger.setAttribute('aria-expanded', opening ? 'true' : 'false');
-      if (opening) {
-        var first = panel.querySelector('button');
-        if (first) first.focus();
+    gatilho.addEventListener('click', function () {
+      var abrindo = painel.hidden;
+      painel.hidden = !abrindo;
+
+      if (abrindo) {
+        gatilho.setAttribute('aria-expanded', 'true');
+      } else {
+        gatilho.setAttribute('aria-expanded', 'false');
+      }
+
+      if (abrindo) {
+        var primeiroBotao = painel.querySelector('button');
+        if (primeiroBotao) {
+          primeiroBotao.focus();
+        }
       }
     });
 
-    wrap.querySelector('[data-a11y-close]').addEventListener('click', closePanel);
-    wrap.querySelectorAll('[data-a11y-toggle]').forEach(function (button) {
-      button.addEventListener('click', function () { toggle(button.getAttribute('data-a11y-toggle')); });
-    });
-    wrap.querySelectorAll('[data-a11y-value]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        var pair = button.getAttribute('data-a11y-value').split(':');
-        setOption(pair[0], pair[1]);
+    raizMenu.querySelector('[data-a11y-close]').addEventListener('click', fecharPainel);
+
+    raizMenu.querySelectorAll('[data-a11y-toggle]').forEach(function (botao) {
+      botao.addEventListener('click', function () {
+        alternar(botao.getAttribute('data-a11y-toggle'));
       });
     });
-    wrap.querySelector('[data-a11y-speak]').addEventListener('click', function () { speak(getPageText()); });
-    wrap.querySelector('[data-a11y-stop-speech]').addEventListener('click', stopSpeech);
-    wrap.querySelector('[data-a11y-command]').addEventListener('click', startRecognition);
 
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        if (state.recognitionBusy) stopRecognition();
+    raizMenu.querySelectorAll('[data-a11y-value]').forEach(function (botao) {
+      botao.addEventListener('click', function () {
+        var par = botao.getAttribute('data-a11y-value').split(':');
+        definirOpcao(par[0], par[1]);
+      });
+    });
+
+    raizMenu.querySelector('[data-a11y-speak]').addEventListener('click', function () {
+      falar(obterTextoPagina());
+    });
+    raizMenu.querySelector('[data-a11y-stop-speech]').addEventListener('click', pararFala);
+    raizMenu.querySelector('[data-a11y-command]').addEventListener('click', iniciarReconhecimento);
+
+    document.addEventListener('keydown', function (evento) {
+      if (evento.key === 'Escape') {
+        if (estado.reconhecimentoAtivo) {
+          pararReconhecimento();
+        }
+
         var menu = document.getElementById('sola-a11y-painel');
-        if (menu && !menu.hidden) closePanel();
+        if (menu && !menu.hidden) {
+          fecharPainel();
+        }
       }
     });
 
-    document.addEventListener('mousemove', function (event) {
-      if (!state.readingMask) return;
-      document.documentElement.style.setProperty('--sola-mascara-top', Math.max(8, Math.min(88, (event.clientY / window.innerHeight) * 100)) + 'vh');
+    document.addEventListener('mousemove', function (evento) {
+      if (!estado.readingMask) {
+        return;
+      }
+
+      document.documentElement.style.setProperty('--sola-mascara-top', Math.max(8, Math.min(88, (evento.clientY / window.innerHeight) * 100)) + 'vh');
     }, { passive: true });
 
-    document.addEventListener('focusin', function (event) {
-      if (state.readingMask && event.target && event.target.scrollIntoView) {
-        try { event.target.scrollIntoView({ block: 'center', behavior: state.reduceMotion ? 'auto' : 'smooth' }); } catch (_) {}
+    document.addEventListener('focusin', function (evento) {
+      if (estado.readingMask && evento.target && evento.target.scrollIntoView) {
+        var comportamentoRolagem;
+        if (estado.reduceMotion) {
+          comportamentoRolagem = 'auto';
+        } else {
+          comportamentoRolagem = 'smooth';
+        }
+
+        try {
+          evento.target.scrollIntoView({ block: 'center', behavior: comportamentoRolagem });
+        } catch (erro) {
+          return;
+        }
       }
     });
 
     if ('speechSynthesis' in window && window.speechSynthesis.addEventListener) {
-      window.speechSynthesis.addEventListener('voiceschanged', chooseVoice);
+      window.speechSynthesis.addEventListener('voiceschanged', escolherVoz);
     }
 
-    apply();
+    aplicar();
   }
 
   window.SolaAccessibility = {
-    build: build,
-    apply: apply,
-    speak: speak,
-    stopSpeech: stopSpeech,
-    startRecognition: startRecognition,
-    stopRecognition: stopRecognition,
-    state: state
+    construir: construir,
+    aplicar: aplicar,
+    falar: falar,
+    pararFala: pararFala,
+    iniciarReconhecimento: iniciarReconhecimento,
+    pararReconhecimento: pararReconhecimento,
+    estado: estado
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
-  else build();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', construir);
+  } else {
+    construir();
+  }
 })();

@@ -12,13 +12,15 @@ if (!rows.length) {
 }
 
 console.log('Contas com senha em texto puro (valor atual, para poder reverter):');
-for (const u of rows) console.log('  ' + u.email.padEnd(24) + ' tipo=' + u.tipo.padEnd(9) + ' senha="' + u.senha + '"');
+for (const usuario of rows) {
+  console.log('  ' + usuario.email.padEnd(24) + ' tipo=' + usuario.tipo.padEnd(9) + ' senha="' + usuario.senha + '"');
+}
 
 console.log('\nRegravando com bcrypt (mantendo a MESMA senha)...');
-for (const u of rows) {
-  const hash = await gerarHash(u.senha);
-  await pool.query('UPDATE usuarios SET senha=$1 WHERE id_usuario=$2', [hash, u.id_usuario]);
-  console.log('  ok: ' + u.email);
+for (const usuario of rows) {
+  const hash = await gerarHash(usuario.senha);
+  await pool.query('UPDATE usuarios SET senha=$1 WHERE id_usuario=$2', [hash, usuario.id_usuario]);
+  console.log('  ok: ' + usuario.email);
 }
 
 const { rows: depois } = await pool.query(

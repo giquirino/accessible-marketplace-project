@@ -12,21 +12,110 @@
   background: var(--branco);
 }
 
-#pagina-demo-fluxo .demo-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-#pagina-demo-fluxo .demo-cartao { padding: 2rem; border: 1px solid var(--borda); border-radius: var(--raio-pequeno); }
-#pagina-demo-fluxo .demo-cartao h4 { margin-bottom: 1.2rem; font-size: 2rem; }
-#pagina-demo-fluxo .demo-etiqueta { display: inline-block; margin-top: 1.6rem; padding: .6rem 1rem; border-radius: 99rem; font-size: 1.2rem; font-weight: 700; }
-#pagina-demo-fluxo .demo-cliente { background: #e3f2fd; color: #1565c0; }
-#pagina-demo-fluxo .demo-vendedor { background: #f3e5f5; color: #6a1b9a; }
-#pagina-demo-fluxo .demo-admin { background: #fce4ec; color: #c2185b; }
-#pagina-demo-fluxo .demo-fluxo { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 1.2rem 0 2.4rem; }
-#pagina-demo-fluxo .demo-item, #pagina-demo-fluxo .bloco-codigo { padding: 1.2rem; border-radius: var(--raio-pequeno); background: var(--areia); }
-#pagina-demo-fluxo .demo-seta { font-size: 2rem; }
-#pagina-demo-fluxo .teste-form { display: grid; grid-template-columns: 1fr auto; gap: 1.2rem; }
-#pagina-demo-fluxo .teste-campo { min-height: 4.4rem; padding: 0 1.2rem; border: 1px solid var(--borda); border-radius: var(--raio-pequeno); font: inherit; }
-#pagina-demo-fluxo .teste-resultado { grid-column: 1 / -1; display: none; padding: 1.2rem; border-radius: var(--raio-pequeno); }
-#pagina-demo-fluxo .teste-resultado.aparece { display: block; }
-#pagina-demo-fluxo .bloco-codigo { overflow-wrap: anywhere; font-family: monospace; font-size: 1.3rem; line-height: 1.6; }
+#pagina-demo-fluxo .demo-grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
 
-@media (max-width: 64rem) { #pagina-demo-fluxo .demo-grade { grid-template-columns: 1fr; } }
-@media (max-width: 40rem) { #pagina-demo-fluxo #area-demo { padding-inline: 1.6rem; } #pagina-demo-fluxo .teste-form { grid-template-columns: 1fr; } }
+#pagina-demo-fluxo .demo-cartao {
+  padding: 2rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+}
+
+#pagina-demo-fluxo .demo-cartao h4 {
+  margin-bottom: 1.2rem;
+  font-size: 2rem;
+}
+
+#pagina-demo-fluxo .demo-etiqueta {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: .6rem 1rem;
+  border-radius: 99rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+#pagina-demo-fluxo .demo-cliente {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+#pagina-demo-fluxo .demo-vendedor {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
+
+#pagina-demo-fluxo .demo-admin {
+  background: #fce4ec;
+  color: #c2185b;
+}
+
+#pagina-demo-fluxo .demo-fluxo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.2rem 0 2.4rem;
+}
+
+#pagina-demo-fluxo .demo-item,
+#pagina-demo-fluxo .bloco-codigo {
+  padding: 1.2rem;
+  border-radius: var(--raio-pequeno);
+  background: var(--areia);
+}
+
+#pagina-demo-fluxo .demo-seta {
+  font-size: 2rem;
+}
+
+#pagina-demo-fluxo .teste-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.2rem;
+}
+
+#pagina-demo-fluxo .teste-campo {
+  min-height: 4.4rem;
+  padding: 0 1.2rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  font: inherit;
+}
+
+#pagina-demo-fluxo .teste-resultado {
+  grid-column: 1 / -1;
+  display: none;
+  padding: 1.2rem;
+  border-radius: var(--raio-pequeno);
+}
+
+#pagina-demo-fluxo .teste-resultado.aparece {
+  display: block;
+}
+
+#pagina-demo-fluxo .bloco-codigo {
+  overflow-wrap: anywhere;
+  font-family: monospace;
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 64rem) {
+  #pagina-demo-fluxo .demo-grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  #pagina-demo-fluxo #area-demo {
+    padding-inline: 1.6rem;
+  }
+
+  #pagina-demo-fluxo .teste-form {
+    grid-template-columns: 1fr;
+  }
+}

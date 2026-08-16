@@ -193,11 +193,11 @@
 }
 
 .botao-menu-barra:first-child {
-  transform: translate(-50%, calc(-50% - 0.45rem));
+  transform: translate(-50%, -50%) translateY(-0.45rem);
 }
 
 .botao-menu-barra:last-child {
-  transform: translate(-50%, calc(-50% + 0.45rem));
+  transform: translate(-50%, -50%) translateY(0.45rem);
 }
 
 .botao-menu[aria-expanded="true"] .botao-menu-barra:first-child {
@@ -274,13 +274,17 @@
 #menu-lateral {
   background-color: var(--azul);
   background-image:
-    radial-gradient(circle at 100% 0, rgba(147, 51, 234, .55), transparent 38%),
+    radial-gradient(circle at 100% 0, rgba(107, 78, 158, .35), transparent 38%),
     repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0, rgba(255,255,255,.06) .1rem, transparent .1rem, transparent .9rem);
 }
 
 #menu-lateral .marca-texto::after { color: var(--branco); }
 
-.item-menu.ativo { background: var(--roxo); color: var(--branco); box-shadow: 0 .6rem 1.6rem rgba(0, 0, 0, .18); }
+.item-menu.ativo {
+  background: var(--roxo);
+  color: var(--branco);
+  box-shadow: 0 .6rem 1.6rem rgba(0, 0, 0, .18);
+}
 
 .menu-lista .item-menu.ativo img.icone { filter: brightness(0) invert(1); }
 

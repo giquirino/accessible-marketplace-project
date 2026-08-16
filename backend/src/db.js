@@ -5,6 +5,7 @@ function configurarSsl() {
   if (config.databaseCaCert) {
     return { rejectUnauthorized: true, ca: config.databaseCaCert.replace(/\\n/g, '\n') };
   }
+
   if (config.databaseSslInseguro) {
     console.warn(
       '[db] DATABASE_SSL_INSECURE=true: a cadeia TLS do banco NÃO será verificada. ' +
@@ -12,6 +13,7 @@ function configurarSsl() {
     );
     return { rejectUnauthorized: false };
   }
+
   return { rejectUnauthorized: true };
 }
 
@@ -25,17 +27,18 @@ export const pool = new pg.Pool({
 
 pool.on('error', (erro) => console.error('[db] Erro em conexão ociosa:', erro));
 
-export async function transaction(callback) {
-  const client = await pool.connect();
+export async function transaction(operacao) {
+  const conexao = await pool.connect();
+
   try {
-    await client.query('BEGIN');
-    const result = await callback(client);
-    await client.query('COMMIT');
-    return result;
-  } catch (error) {
-    await client.query('ROLLBACK');
-    throw error;
+    await conexao.query('BEGIN');
+    const resultado = await operacao(conexao);
+    await conexao.query('COMMIT');
+    return resultado;
+  } catch (erro) {
+    await conexao.query('ROLLBACK');
+    throw erro;
   } finally {
-    client.release();
+    conexao.release();
   }
 }

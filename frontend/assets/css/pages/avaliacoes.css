@@ -65,6 +65,34 @@
   color: var(--borda);
 }
 
+.estrela-nota {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 0.6rem;
+  transition: transform 0.15s ease;
+}
+
+.estrela-nota img {
+  width: 3.2rem;
+  height: 3.2rem;
+  pointer-events: none;
+}
+
+.estrela-nota:hover,
+.estrela-nota:focus-visible {
+  transform: scale(1.12);
+}
+
+.estrela-nota:focus-visible {
+  outline: 0.2rem solid var(--preto);
+  outline-offset: 0.2rem;
+}
+
 .rotulo-nota {
   display: block;
   font-size: 1.3rem;
