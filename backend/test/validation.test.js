@@ -80,3 +80,32 @@ test('validar responde 422 com detalhes e não chama o próximo middleware', () 
   assert.equal(res.corpo.erro, 'Dados inválidos.');
   assert.ok(res.corpo.detalhes);
 });
+
+test('login exige e-mail válido e senha não vazia', () => {
+  assert.equal(analisar(schemas.login, { body: { email: 'ana@exemplo.com', senha: 'qualquer' } }).success, true);
+  assert.equal(analisar(schemas.login, { body: { email: 'nao-e-email', senha: 'qualquer' } }).success, false);
+  assert.equal(analisar(schemas.login, { body: { email: 'ana@exemplo.com', senha: '' } }).success, false);
+});
+
+test('favorito exige idTenis numérico e positivo', () => {
+  assert.equal(analisar(schemas.favorito, { body: { idTenis: '10' } }).success, true);
+  assert.equal(analisar(schemas.favorito, { body: { idTenis: '0' } }).success, false);
+  assert.equal(analisar(schemas.favorito, { body: { idTenis: 'abc' } }).success, false);
+});
+
+test('favoritoParam e itemCarrinhoParam validam o id vindo da URL', () => {
+  assert.equal(analisar(schemas.favoritoParam, { params: { idTenis: '7' } }).success, true);
+  assert.equal(analisar(schemas.favoritoParam, { params: { idTenis: '-1' } }).success, false);
+  assert.equal(analisar(schemas.itemCarrinhoParam, { params: { idItemCarrinho: '3' } }).success, true);
+  assert.equal(analisar(schemas.itemCarrinhoParam, { params: { idItemCarrinho: '0' } }).success, false);
+});
+
+test('logo da loja aceita a mesma regra de imagem da foto de perfil', () => {
+  assert.equal(analisar(schemas.logoLoja, { body: { logo: 'data:image/png;base64,AAAA' } }).success, true);
+  assert.equal(analisar(schemas.logoLoja, { body: { logo: 'nao-e-imagem' } }).success, false);
+});
+
+test('busca de imagens (Pexels) limita o tamanho da query e categoria', () => {
+  assert.equal(analisar(schemas.imagens, { query: { q: 'tenis', categoria: 'esportivo' } }).success, true);
+  assert.equal(analisar(schemas.imagens, { query: { q: 'x'.repeat(81) } }).success, false);
+});
