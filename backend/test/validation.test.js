@@ -46,6 +46,17 @@ test('catálogo trata filtro vazio como ausente', () => {
   assert.equal(r.data.query.categoria, undefined);
 });
 
+test('busca do catálogo e da busca de imagens remove espaço colado nas pontas', () => {
+  const catalogo = analisar(schemas.catalogo, { query: { busca: '  tenis azul  ' } });
+  assert.equal(catalogo.success, true);
+  assert.equal(catalogo.data.query.busca, 'tenis azul');
+
+  const imagens = analisar(schemas.imagens, { query: { q: ' running ', categoria: ' corrida ' } });
+  assert.equal(imagens.success, true);
+  assert.equal(imagens.data.query.q, 'running');
+  assert.equal(imagens.data.query.categoria, 'corrida');
+});
+
 test('foto de perfil aceita apenas data URL de imagem', () => {
   assert.equal(analisar(schemas.foto, { body: { foto: 'data:image/jpeg;base64,AAAA' } }).success, true);
   assert.equal(analisar(schemas.foto, { body: { foto: 'data:text/html;base64,AAAA' } }).success, false);

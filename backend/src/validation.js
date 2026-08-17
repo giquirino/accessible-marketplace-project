@@ -111,7 +111,7 @@ export const schemas = {
     body: z.object({}),
     params: z.object({}),
     query: z.object({
-      busca: z.string().max(80).optional(),
+      busca: z.string().trim().max(80).optional(),
       marca: filtroDeIdOpcional,
       categoria: filtroDeIdOpcional
     })
@@ -121,8 +121,8 @@ export const schemas = {
     body: z.object({}),
     params: z.object({}),
     query: z.object({
-      q: z.string().max(80).optional(),
-      categoria: z.string().max(80).optional()
+      q: z.string().trim().max(80).optional(),
+      categoria: z.string().trim().max(80).optional()
     })
   }),
 
