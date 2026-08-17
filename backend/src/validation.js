@@ -42,6 +42,7 @@ const nomeDeUsuario = z
 
 const email = z
   .string()
+  .trim()
   .email()
   .max(255);
 
@@ -58,7 +59,7 @@ export const schemas = {
 
   login: z.object({
     body: z.object({
-      email: z.string().email(),
+      email: email,
       senha: z.string().min(1)
     }),
     ...semParametros

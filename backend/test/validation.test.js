@@ -87,6 +87,16 @@ test('login exige e-mail válido e senha não vazia', () => {
   assert.equal(analisar(schemas.login, { body: { email: 'ana@exemplo.com', senha: '' } }).success, false);
 });
 
+test('e-mail com espaço em branco colado por engano é aceito e limpo (login e cadastro)', () => {
+  const loginComEspaco = analisar(schemas.login, { body: { email: '  ana@exemplo.com  ', senha: 'qualquer' } });
+  assert.equal(loginComEspaco.success, true);
+  assert.equal(loginComEspaco.data.body.email, 'ana@exemplo.com');
+
+  const cadastroComEspaco = analisar(schemas.cadastro, { body: { nome: 'Ana Souza', email: ' ana@exemplo.com ', senha: 'senhaforte1' } });
+  assert.equal(cadastroComEspaco.success, true);
+  assert.equal(cadastroComEspaco.data.body.email, 'ana@exemplo.com');
+});
+
 test('favorito exige idTenis numérico e positivo', () => {
   assert.equal(analisar(schemas.favorito, { body: { idTenis: '10' } }).success, true);
   assert.equal(analisar(schemas.favorito, { body: { idTenis: '0' } }).success, false);
