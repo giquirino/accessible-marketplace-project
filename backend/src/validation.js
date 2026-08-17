@@ -42,6 +42,7 @@ const nomeDeUsuario = z
 
 const email = z
   .string()
+  .trim()
   .email()
   .max(255);
 
@@ -58,7 +59,7 @@ export const schemas = {
 
   login: z.object({
     body: z.object({
-      email: z.string().email(),
+      email: email,
       senha: z.string().min(1)
     }),
     ...semParametros
@@ -67,7 +68,7 @@ export const schemas = {
   produto: z.object({
     body: z.object({
       nome: z.string().trim().min(2).max(160),
-      descricao: z.string().max(5000).optional(),
+      descricao: z.string().trim().max(5000).optional(),
       preco: z.coerce.number().nonnegative().max(1_000_000),
       idCategoria: z.coerce.number().int().positive(),
       idMarca: z.coerce.number().int().positive()
@@ -110,7 +111,7 @@ export const schemas = {
     body: z.object({}),
     params: z.object({}),
     query: z.object({
-      busca: z.string().max(80).optional(),
+      busca: z.string().trim().max(80).optional(),
       marca: filtroDeIdOpcional,
       categoria: filtroDeIdOpcional
     })
@@ -120,8 +121,8 @@ export const schemas = {
     body: z.object({}),
     params: z.object({}),
     query: z.object({
-      q: z.string().max(80).optional(),
-      categoria: z.string().max(80).optional()
+      q: z.string().trim().max(80).optional(),
+      categoria: z.string().trim().max(80).optional()
     })
   }),
 

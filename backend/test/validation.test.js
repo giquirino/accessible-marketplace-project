@@ -27,6 +27,12 @@ test('produto descarta o status enviado pelo cliente', () => {
   assert.equal(r.data.body.status, undefined);
 });
 
+test('produto remove espaço nas pontas da descrição', () => {
+  const r = analisar(schemas.produto, { body: { nome: 'Tênis X', descricao: '  confortável e leve  ', preco: '10', idCategoria: '1', idMarca: '2' } });
+  assert.equal(r.success, true);
+  assert.equal(r.data.body.descricao, 'confortável e leve');
+});
+
 test('catálogo converte marca e categoria em número', () => {
   const r = analisar(schemas.catalogo, { query: { busca: 'run', marca: '3', categoria: '7' } });
   assert.equal(r.success, true);
@@ -44,6 +50,17 @@ test('catálogo trata filtro vazio como ausente', () => {
   assert.equal(r.success, true);
   assert.equal(r.data.query.marca, undefined);
   assert.equal(r.data.query.categoria, undefined);
+});
+
+test('busca do catálogo e da busca de imagens remove espaço colado nas pontas', () => {
+  const catalogo = analisar(schemas.catalogo, { query: { busca: '  tenis azul  ' } });
+  assert.equal(catalogo.success, true);
+  assert.equal(catalogo.data.query.busca, 'tenis azul');
+
+  const imagens = analisar(schemas.imagens, { query: { q: ' running ', categoria: ' corrida ' } });
+  assert.equal(imagens.success, true);
+  assert.equal(imagens.data.query.q, 'running');
+  assert.equal(imagens.data.query.categoria, 'corrida');
 });
 
 test('foto de perfil aceita apenas data URL de imagem', () => {
@@ -85,6 +102,16 @@ test('login exige e-mail válido e senha não vazia', () => {
   assert.equal(analisar(schemas.login, { body: { email: 'ana@exemplo.com', senha: 'qualquer' } }).success, true);
   assert.equal(analisar(schemas.login, { body: { email: 'nao-e-email', senha: 'qualquer' } }).success, false);
   assert.equal(analisar(schemas.login, { body: { email: 'ana@exemplo.com', senha: '' } }).success, false);
+});
+
+test('e-mail com espaço em branco colado por engano é aceito e limpo (login e cadastro)', () => {
+  const loginComEspaco = analisar(schemas.login, { body: { email: '  ana@exemplo.com  ', senha: 'qualquer' } });
+  assert.equal(loginComEspaco.success, true);
+  assert.equal(loginComEspaco.data.body.email, 'ana@exemplo.com');
+
+  const cadastroComEspaco = analisar(schemas.cadastro, { body: { nome: 'Ana Souza', email: ' ana@exemplo.com ', senha: 'senhaforte1' } });
+  assert.equal(cadastroComEspaco.success, true);
+  assert.equal(cadastroComEspaco.data.body.email, 'ana@exemplo.com');
 });
 
 test('favorito exige idTenis numérico e positivo', () => {
