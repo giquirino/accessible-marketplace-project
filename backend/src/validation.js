@@ -68,7 +68,7 @@ export const schemas = {
   produto: z.object({
     body: z.object({
       nome: z.string().trim().min(2).max(160),
-      descricao: z.string().max(5000).optional(),
+      descricao: z.string().trim().max(5000).optional(),
       preco: z.coerce.number().nonnegative().max(1_000_000),
       idCategoria: z.coerce.number().int().positive(),
       idMarca: z.coerce.number().int().positive()

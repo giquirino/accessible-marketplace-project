@@ -27,6 +27,12 @@ test('produto descarta o status enviado pelo cliente', () => {
   assert.equal(r.data.body.status, undefined);
 });
 
+test('produto remove espaço nas pontas da descrição', () => {
+  const r = analisar(schemas.produto, { body: { nome: 'Tênis X', descricao: '  confortável e leve  ', preco: '10', idCategoria: '1', idMarca: '2' } });
+  assert.equal(r.success, true);
+  assert.equal(r.data.body.descricao, 'confortável e leve');
+});
+
 test('catálogo converte marca e categoria em número', () => {
   const r = analisar(schemas.catalogo, { query: { busca: 'run', marca: '3', categoria: '7' } });
   assert.equal(r.success, true);
