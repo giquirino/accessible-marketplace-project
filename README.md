@@ -44,6 +44,13 @@ Para publicar o frontend em outro domínio (GitHub Pages, por exemplo), defina `
 npm test    # testes de unidade do backend (validação, autenticação)
 ```
 
+### Solução de problemas
+
+- **`npm` não é reconhecido no terminal**: o Node.js não está instalado ou não foi adicionado ao PATH do sistema. Instale a versão 20+ em [nodejs.org](https://nodejs.org) e abra um terminal novo depois de instalar.
+- **`Variável obrigatória ausente: DATABASE_URL`**: o arquivo `.env` precisa estar dentro de `backend/`, não na raiz do repositório. O `backend/src/config.js` só lê `backend/.env`.
+- **Acessar `http://localhost:3000/` no navegador mostra `{"erro":"Rota não encontrada."}`**: isso é esperado, a raiz `/` não é uma rota da API. Para confirmar que o backend está de pé e conectado ao banco, acesse `http://localhost:3000/api/saude`.
+- **Erro de conexão TLS com o banco**: se ainda não tiver o certificado da autoridade (`DATABASE_CA_CERT`), defina `DATABASE_SSL_INSECURE=true` no `backend/.env` só para desenvolvimento local.
+
 ## Rotas implementadas
 
 | Método | Rota | Finalidade |
